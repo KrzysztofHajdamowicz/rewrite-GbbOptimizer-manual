@@ -1,0 +1,4 @@
+{{- $type := .Get 0 -}}
+{{- $colors := dict "deprecated" "#e74c3c" "required" "#e67e22" "recommended" "#27ae60" "victron-only" "#3498db" "deye-only" "#9b59b6" "beta" "#f39c12" -}}
+{{- $color := index $colors $type | default "#95a5a6" -}}
+<span class="badge" style="background-color: {{ $color }}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; text-transform: uppercase; vertical-align: middle;">{{ $type }}</span>

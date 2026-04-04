@@ -1,0 +1,23 @@
+{{- $topic := .Get "topic" -}}
+{{- $direction := .Get "direction" | default "publish" -}}
+{{- $qos := .Get "qos" -}}
+{{- $retained := .Get "retained" -}}
+{{- $description := .Get "description" -}}
+{{- $dirClass := "mqtt-direction--publish" -}}
+{{- $dirLabel := "PUB" -}}
+{{- if eq $direction "subscribe" -}}
+  {{- $dirClass = "mqtt-direction--subscribe" -}}
+  {{- $dirLabel = "SUB" -}}
+{{- end -}}
+
+<div class="mqtt-topic-card {{ $dirClass }}">
+  <div class="mqtt-topic-header">
+    <span class="mqtt-badge {{ $dirClass }}">{{ $dirLabel }}</span>
+    <code class="mqtt-topic-path">{{ $topic }}</code>
+    {{- with $qos }}<span class="mqtt-badge mqtt-qos">QoS {{ . }}</span>{{ end -}}
+    {{- if eq $retained "true" }}<span class="mqtt-badge mqtt-retained">Retained</span>{{ end -}}
+  </div>
+  {{- with $description }}
+  <p class="mqtt-topic-description">{{ . }}</p>
+  {{- end -}}
+</div>

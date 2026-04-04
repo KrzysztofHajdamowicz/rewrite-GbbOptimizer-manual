@@ -1,0 +1,8 @@
+<div class="glossary-list">
+{{- range $key, $entry := hugo.Data.glossary -}}
+<div class="glossary-entry" id="{{ $key }}">
+  <h3>{{ $entry.term }}</h3>
+  <p>{{ $entry.definition }}</p>
+</div>
+{{- end -}}
+</div>

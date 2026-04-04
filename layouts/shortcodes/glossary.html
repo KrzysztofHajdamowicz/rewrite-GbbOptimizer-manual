@@ -1,0 +1,8 @@
+{{- $term := .Get 0 -}}
+{{- $key := $term | lower | replaceRE "[^a-z0-9]+" "" -}}
+{{- $entry := index hugo.Data.glossary $key -}}
+{{- if $entry -}}
+<a href="{{ relURL "/reference/glossary" }}#{{ $key }}" class="glossary-term" title="{{ $entry.short }}">{{ $entry.term }}</a>
+{{- else -}}
+<span class="glossary-term--missing" title="Glossary entry not found: {{ $term }}">{{ $term }}</span>
+{{- end -}}

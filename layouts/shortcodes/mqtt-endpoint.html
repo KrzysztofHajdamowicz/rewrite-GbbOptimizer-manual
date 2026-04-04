@@ -1,0 +1,51 @@
+{{- $name := .Get "name" -}}
+{{- $requestTopic := .Get "request-topic" -}}
+{{- $responseTopic := .Get "response-topic" -}}
+{{- $topic := .Get "topic" -}}
+{{- $direction := .Get "direction" | default "publish" -}}
+{{- $description := .Get "description" -}}
+{{- $slug := $name | urlize -}}
+
+<details class="mqtt-endpoint" id="endpoint-{{ $slug }}">
+  <summary class="mqtt-endpoint-summary">
+    {{- if $requestTopic -}}
+    <span class="mqtt-badge mqtt-direction--request">REQ</span>
+    <span class="mqtt-badge mqtt-direction--response">RES</span>
+    {{- else if eq $direction "subscribe" -}}
+    <span class="mqtt-badge mqtt-direction--subscribe">SUB</span>
+    {{- else -}}
+    <span class="mqtt-badge mqtt-direction--publish">PUB</span>
+    {{- end -}}
+    <span class="mqtt-endpoint-name">{{ $name }}</span>
+    {{- with $description }}
+    <span class="mqtt-endpoint-description">{{ . }}</span>
+    {{- end -}}
+  </summary>
+  <div class="mqtt-endpoint-body">
+    {{- with $requestTopic }}
+    <div class="mqtt-topic-row">
+      <span class="mqtt-badge mqtt-direction--request">REQ</span>
+      <code class="mqtt-topic-path">{{ . }}</code>
+    </div>
+    {{- end -}}
+    {{- with $responseTopic }}
+    <div class="mqtt-topic-row">
+      <span class="mqtt-badge mqtt-direction--response">RES</span>
+      <code class="mqtt-topic-path">{{ . }}</code>
+    </div>
+    {{- end -}}
+    {{- with $topic }}
+    <div class="mqtt-topic-row">
+      {{- if eq $direction "subscribe" -}}
+      <span class="mqtt-badge mqtt-direction--subscribe">SUB</span>
+      {{- else -}}
+      <span class="mqtt-badge mqtt-direction--publish">PUB</span>
+      {{- end -}}
+      <code class="mqtt-topic-path">{{ . }}</code>
+    </div>
+    {{- end -}}
+    <div class="mqtt-endpoint-content">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</details>

@@ -1,0 +1,166 @@
+// MQTT Topic Cards
+.mqtt-topic-card {
+  border: 1px solid var(--body-background);
+  border-left: 4px solid #49cc90;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: var(--body-background);
+
+  &.mqtt-direction--subscribe {
+    border-left-color: #61affe;
+  }
+}
+
+.mqtt-topic-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.mqtt-topic-path {
+  font-size: 0.95em;
+  word-break: break-all;
+}
+
+.mqtt-topic-description {
+  margin: 0.5rem 0 0;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+// MQTT Badges
+.mqtt-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+  flex-shrink: 0;
+
+  &.mqtt-direction--publish { background-color: #49cc90; }
+  &.mqtt-direction--subscribe { background-color: #61affe; }
+  &.mqtt-direction--request { background-color: #fca130; }
+  &.mqtt-direction--response { background-color: #50e3c2; color: #1a1a1a; }
+  &.mqtt-qos { background-color: #95a5a6; }
+  &.mqtt-retained { background-color: #8e44ad; }
+}
+
+// MQTT Endpoint (Swagger-like expandable)
+.mqtt-endpoint {
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  margin: 1rem 0;
+  overflow: hidden;
+
+  &[open] .mqtt-endpoint-summary {
+    border-bottom: 1px solid var(--gray-200);
+  }
+}
+
+.mqtt-endpoint-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background: var(--gray-100);
+  flex-wrap: wrap;
+
+  &:hover {
+    background: var(--gray-200);
+  }
+
+  &::marker,
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::before {
+    content: "▶";
+    font-size: 0.6em;
+    transition: transform 0.2s;
+  }
+
+  details[open] > & {
+    &::before {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.mqtt-endpoint-name {
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+.mqtt-endpoint-description {
+  font-size: 0.85em;
+  opacity: 0.7;
+  margin-left: auto;
+}
+
+.mqtt-endpoint-body {
+  padding: 1rem;
+}
+
+.mqtt-topic-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+
+  code {
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+}
+
+.mqtt-endpoint-content {
+  margin-top: 1rem;
+
+  table {
+    font-size: 0.9em;
+  }
+}
+
+// Glossary Terms
+.glossary-term {
+  border-bottom: 1px dotted currentColor;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    background: rgba(100, 100, 255, 0.1);
+    border-bottom-style: solid;
+  }
+}
+
+.glossary-term--missing {
+  border-bottom: 1px dashed #e74c3c;
+  color: #e74c3c;
+}
+
+// Glossary List
+.glossary-list {
+  .glossary-entry {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+
+    h3 {
+      margin-bottom: 0.25rem;
+      font-family: monospace;
+    }
+
+    p {
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+}
