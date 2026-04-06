@@ -1,6 +1,6 @@
 baseURL = "https://krzysztofahajdamowicz.github.io/rewrite-GbbOptimizer-manual/"
-locale = "en"
-title = "GbbOptimizer Manual"
+locale = "pl"
+title = "GbbOptimizer — Podręcznik"
 
 [module]
   [[module.imports]]

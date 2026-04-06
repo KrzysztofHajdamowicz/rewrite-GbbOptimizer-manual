@@ -3,89 +3,50 @@ title: "ModbusInMqtt"
 weight: 50
 ---
 
-# ModbusInMqtt Protocol
+# Protokół ModbusInMqtt
 
-The {{< glossary "ModbusInMqtt" >}} protocol is used for communication between {{< glossary "GbbConnect2" >}} and GbbOptimizer. {{< glossary "Modbus" >}} commands are wrapped in MQTT messages for cloud-based inverter control.
+Protokół komunikacji między GbbOptimizer a {{< glossary "GbbConnect2" >}} — transfer komend Modbus przez MQTT.
 
-## Topics
+## GbbOptimizer → GbbConnect2
 
-{{< mqtt-topic topic="{PlantId}/ModbusInMqtt/toDevice" direction="publish" description="Commands from GbbOptimizer to GbbConnect2" >}}
+{{< mqtt-topic topic="{PlantId}/ModbusInMqtt/toDevice" direction="publish" description="Komendy Modbus wysyłane do GbbConnect2" >}}
 
-{{< mqtt-topic topic="{PlantId}/ModbusInMqtt/fromDevice" direction="subscribe" description="Responses from GbbConnect2 to GbbOptimizer" >}}
+| Pole | | Typ | Wymagane | Opis |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nie | Tekst skopiowany do odpowiedzi |
+| `Lines` | | tablica | tak | |
+| | `LineNo` | int | tak | Numer linii |
+| | `Tag` | string | nie | Dowolny tekst skopiowany do odpowiedzi |
+| | `Timestamp` | int | nie | Czas Unix UTC (sekundy) |
+| | `Modbus` | string | tak | Komenda Modbus do przesłania do falownika |
+| `LogLevel` | | string | nie | Zmień poziom logów: `OnlyErrors`, `Min`, `Max` |
+| `SendLastLog` | | int | nie | 1 = dołącz logi do odpowiedzi (przyrostowo) |
 
----
-
-## Request Format
-
-{{< mqtt-endpoint name="ModbusInMqtt Request" topic="{PlantId}/ModbusInMqtt/toDevice" direction="publish" description="Send Modbus commands to the inverter via GbbConnect2" >}}
-
-### Payload
-
+**Przykład:**
 ```json
 {
-  "OrderId": "abc123",
   "Lines": [
-    {
-      "LineNo": 1,
-      "Tag": "read_soc",
-      "Timestamp": 1713600000,
-      "Modbus": "01 03 00 60 00 01"
-    }
+    {"LineNo": 0, "Timestamp": 1746136816, "Modbus": "010300D6000225F3"},
+    {"LineNo": 1, "Timestamp": 1746136816, "Modbus": "0103020800024471"}
   ],
-  "LogLevel": "Min",
-  "SendLastLog": true
+  "OrderId": "f0PGI3obQIZTs8w="
 }
 ```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `OrderId` | string | no | Identifier echoed in the response |
-| `Lines` | array | yes | Array of Modbus command objects |
-| `Lines[].LineNo` | number | yes | Sequential line number |
-| `Lines[].Tag` | string | no | Optional descriptive tag |
-| `Lines[].Timestamp` | number | no | Unix timestamp (seconds) |
-| `Lines[].Modbus` | string | yes | Modbus command in hex |
-| `LogLevel` | string | no | `"OnlyErrors"`, `"Min"`, or `"Max"` |
-| `SendLastLog` | boolean | no | Request incremental log lines |
+## GbbConnect2 → GbbOptimizer
 
-{{< /mqtt-endpoint >}}
+{{< mqtt-topic topic="{PlantId}/ModbusInMqtt/fromDevice" direction="subscribe" description="Odpowiedzi Modbus z GbbConnect2" >}}
 
-## Response Format
-
-{{< mqtt-endpoint name="ModbusInMqtt Response" topic="{PlantId}/ModbusInMqtt/fromDevice" direction="subscribe" description="Responses from GbbConnect2 with Modbus data" >}}
-
-### Payload
-
-```json
-{
-  "OrderId": "abc123",
-  "Error": "OK",
-  "Lines": [
-    {
-      "LineNo": 1,
-      "Tag": "read_soc",
-      "Modbus": "01 03 02 00 4B"
-    }
-  ],
-  "GbbVersion": "2.1.0",
-  "GbbEnvironment": "Docker",
-  "LastLog": "..."
-}
-```
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `OrderId` | string | Echoed from request |
-| `Error` | string | `"OK"` or error message |
-| `Lines` | array | Modbus responses from inverter |
-| `Lines[].LineNo` | number | Matching line number from request |
-| `Lines[].Modbus` | string | Modbus response data in hex |
-| `GbbVersion` | string | GbbConnect2 version (optional) |
-| `GbbEnvironment` | string | Runtime environment (optional) |
-| `LastLog` | string | Incremental log output (if requested) |
-
-### Error Handling
-
-Lines are processed sequentially. If an error occurs, transmission stops at the first failed line.
-
-{{< /mqtt-endpoint >}}
+| Pole | | Typ | Wymagane | Opis |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nie | Skopiowany z zapytania |
+| `Error` | | string | tak | `"OK"` lub opis błędu (niezwiązany z konkretną linią) |
+| `Lines` | | tablica | tak | |
+| | `LineNo` | int | tak | Numer linii |
+| | `Tag` | string | nie | Skopiowany z zapytania |
+| | `Timestamp` | int | nie | Czas Unix UTC |
+| | `Modbus` | string | tak | Odpowiedź Modbus z falownika (puste po pierwszym błędzie) |
+| | `Error` | string | nie | Puste = OK. Wypełnione = błąd podczas komunikacji z falownikiem |
+| `GbbVersion` | | string | nie | Wersja GbbConnect |
+| `GbbEnvironment` | | string | nie | Środowisko: Windows, Console, Library |
+| `LastLog` | | string | nie | Logi od poprzedniego wysłania (jeśli `SendLastLog=1`) |

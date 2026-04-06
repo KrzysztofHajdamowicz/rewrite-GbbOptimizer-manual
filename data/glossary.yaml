@@ -1,104 +1,104 @@
 plantid:
   term: "PlantId"
-  short: "Unique identifier for your solar installation"
-  definition: "A unique string identifier assigned to each solar plant registered in GbbOptimizer. Used as the root prefix in all MQTT topics and for authentication."
+  short: "Unikalny identyfikator instalacji fotowoltaicznej"
+  definition: "Unikalny ciąg znaków przypisany do każdej instalacji zarejestrowanej w GbbOptimizer. Używany jako prefiks we wszystkich tematach MQTT oraz do uwierzytelniania."
 
 planttoken:
   term: "PlantToken"
-  short: "Authentication token for MQTT and API access"
-  definition: "A secret token generated for each plant, used as the MQTT password and for API authentication."
+  short: "Token uwierzytelniający do MQTT i API"
+  definition: "Tajny token generowany dla każdej instalacji, używany jako hasło MQTT oraz do uwierzytelniania w API."
 
 soc:
   term: "SOC"
-  short: "State of Charge — battery level percentage (0-100%)"
-  definition: "State of Charge represents the current battery energy level as a percentage from 0% (empty) to 100% (full)."
+  short: "Stan naładowania — poziom baterii w procentach (0–100%)"
+  definition: "Stan naładowania (State of Charge) określa aktualny poziom energii w baterii jako wartość procentową od 0% (pusta) do 100% (pełna)."
 
 minsoc:
   term: "MinSOC"
-  short: "Minimum State of Charge threshold"
-  definition: "The minimum battery level the optimizer will maintain. The system prevents discharge below this threshold to protect battery health."
+  short: "Minimalny próg stanu naładowania"
+  definition: "Minimalny poziom naładowania baterii utrzymywany przez optymalizator. System zapobiega rozładowaniu poniżej tego progu, chroniąc żywotność baterii."
 
 maxsoc:
   term: "MaxSOC"
-  short: "Maximum State of Charge target"
-  definition: "The maximum SOC the optimizer will charge to. Recommended at 90% to provide buffer for PV forecast inaccuracies."
+  short: "Maksymalny docelowy stan naładowania"
+  definition: "Maksymalny SOC, do którego optymalizator będzie ładował baterię. Zalecana wartość to 90%, aby zapewnić bufor na niedokładności prognozy PV."
 
 gridsetpoint:
   term: "GridSetpoint"
-  short: "Target grid power exchange value in watts"
-  definition: "Determines how much power should flow to/from the grid in normal operation. Positive values draw from grid; negative values export to grid."
+  short: "Docelowa wartość wymiany mocy z siecią w watach"
+  definition: "Określa, ile mocy powinno przepływać do/z sieci podczas normalnej pracy. Wartości dodatnie oznaczają pobór z sieci, ujemne — eksport do sieci."
 
 dynamicdischarge:
   term: "Dynamic Discharge"
-  short: "Price-responsive real-time discharge algorithm"
-  definition: "An advanced discharge mode that adjusts battery output in real-time based on electricity sale price fluctuations, rather than using fixed time windows."
+  short: "Algorytm rozładowania reagujący na cenę energii"
+  definition: "Zaawansowany tryb rozładowania, który dostosowuje moc wyjściową baterii w czasie rzeczywistym na podstawie zmian ceny sprzedaży energii, zamiast korzystać ze stałych okien czasowych."
 
 rte:
   term: "RTE"
-  short: "Round-Trip Efficiency"
-  definition: "The ratio of energy output to energy input for a complete charge-discharge cycle. Measures overall battery system efficiency including conversion losses."
+  short: "Sprawność cyklu ładowania/rozładowania"
+  definition: "Stosunek energii oddanej do energii pobranej w pełnym cyklu ładowania i rozładowania. Mierzy całkowitą sprawność systemu bateryjnego, uwzględniając straty konwersji."
 
 fastsetup:
   term: "FastSetup"
-  short: "Quick initial plant configuration wizard"
-  definition: "A guided setup process that runs after creating a new plant. Configures essential parameters and establishes initial connection to the inverter."
+  short: "Kreator szybkiej konfiguracji początkowej"
+  definition: "Proces konfiguracji uruchamiany po utworzeniu nowej instalacji. Ustawia podstawowe parametry i nawiązuje początkowe połączenie z falownikiem."
 
 testmode:
   term: "Test Mode"
-  short: "Observation mode — calculates but does not send commands"
-  definition: "Initial operating mode for new plants. The optimizer runs calculations and forecasts but does not send any commands to the inverter. Should be kept active for approximately one week while the system calibrates."
+  short: "Tryb obserwacji — oblicza, ale nie wysyła komend"
+  definition: "Początkowy tryb pracy dla nowych instalacji. Optymalizator wykonuje obliczenia i prognozy, ale nie wysyła żadnych komend do falownika. Powinien być aktywny przez około tydzień, aż system się skalibruje."
 
 ess:
   term: "ESS"
-  short: "Energy Storage System"
-  definition: "Victron's Energy Storage System module that manages battery charging, discharging, and grid interaction."
+  short: "System magazynowania energii"
+  definition: "Moduł Energy Storage System firmy Victron, zarządzający ładowaniem i rozładowaniem baterii oraz interakcją z siecią."
 
 vrm:
   term: "VRM"
-  short: "Victron Remote Management portal"
-  definition: "Victron's cloud portal (VRM Portal) for remote monitoring and management of Victron systems."
+  short: "Portal zdalnego zarządzania Victron"
+  definition: "Portal chmurowy Victron (VRM Portal) do zdalnego monitorowania i zarządzania systemami Victron."
 
 modbus:
   term: "Modbus"
-  short: "Serial communication protocol for industrial devices"
-  definition: "A serial communication protocol used to communicate with inverters. GbbConnect2 uses ModbusInMqtt to wrap Modbus commands in MQTT messages."
+  short: "Protokół komunikacji szeregowej dla urządzeń przemysłowych"
+  definition: "Protokół komunikacji szeregowej używany do komunikacji z falownikami. GbbConnect2 wykorzystuje ModbusInMqtt do przesyłania komend Modbus w wiadomościach MQTT."
 
 modbusinmqtt:
   term: "ModbusInMqtt"
-  short: "Modbus commands transported over MQTT"
-  definition: "A protocol used by GbbConnect2 where Modbus register read/write commands are encapsulated in MQTT messages, enabling cloud-based inverter control."
+  short: "Komendy Modbus przesyłane przez MQTT"
+  definition: "Protokół używany przez GbbConnect2, w którym komendy odczytu/zapisu rejestrów Modbus są enkapsulowane w wiadomościach MQTT, umożliwiając zdalne sterowanie falownikiem przez chmurę."
 
 selfconsumption:
   term: "Self-Consumption"
-  short: "Percentage of solar energy used locally"
-  definition: "The proportion of generated solar energy that is consumed directly by the household rather than exported to the grid."
+  short: "Procent energii słonecznej zużywanej lokalnie"
+  definition: "Udział wytworzonej energii słonecznej, który jest bezpośrednio zużywany przez gospodarstwo domowe, a nie eksportowany do sieci."
 
 selfsufficiency:
   term: "Self-Sufficiency"
-  short: "Percentage of consumption covered by solar"
-  definition: "The proportion of total household energy consumption that is supplied by the solar installation rather than imported from the grid."
+  short: "Procent zużycia pokrywanego przez fotowoltaikę"
+  definition: "Udział całkowitego zużycia energii przez gospodarstwo domowe, który jest pokrywany przez instalację fotowoltaiczną, a nie importowany z sieci."
 
 correctionfactor:
   term: "Correction Factor"
-  short: "PV forecast accuracy calibration"
-  definition: "A multiplier calculated over approximately one week of operation that adjusts PV forecast values to match actual production, improving prediction accuracy."
+  short: "Kalibracja dokładności prognozy PV"
+  definition: "Mnożnik obliczany w ciągu około tygodnia pracy, który koryguje wartości prognozy PV tak, aby odpowiadały rzeczywistej produkcji, poprawiając dokładność przewidywań."
 
 batteryfulldate:
   term: "Battery Full Date"
-  short: "Scheduled day for 100% SOC charge"
-  definition: "Specific days of the month when the optimizer targets 100% battery SOC. Entered as comma-separated values (e.g., '1, 15'). Allows periodic full charge cycles for battery health."
+  short: "Zaplanowany dzień pełnego naładowania do 100% SOC"
+  definition: "Konkretne dni miesiąca, w których optymalizator dąży do naładowania baterii do 100% SOC. Podawane jako wartości rozdzielone przecinkami (np. '1, 15'). Umożliwia okresowe pełne cykle ładowania dla zdrowia baterii."
 
 gbbconnect2:
   term: "GbbConnect2"
-  short: "Local dongle software for direct inverter connection"
-  definition: "A software application that runs locally (Windows or Docker) to connect your inverter directly to GbbOptimizer via ModbusInMqtt, bypassing cloud services like Solarman."
+  short: "Lokalne oprogramowanie do bezpośredniego połączenia z falownikiem"
+  definition: "Aplikacja działająca lokalnie (Windows lub Docker), łącząca falownik bezpośrednio z GbbOptimizer przez ModbusInMqtt, z pominięciem usług chmurowych takich jak Solarman."
 
 dongledirect:
   term: "DongleDirect"
-  short: "Dongle redirect connection method"
-  definition: "A connection method where the inverter's WiFi dongle is reconfigured to communicate directly with GbbOptimizer's server instead of the manufacturer's cloud."
+  short: "Metoda połączenia przez przekierowanie dongla"
+  definition: "Metoda połączenia, w której dongle WiFi falownika jest przekonfigurowany tak, aby komunikował się bezpośrednio z serwerem GbbOptimizer zamiast z chmurą producenta."
 
 solarassistant:
   term: "SolarAssistant"
-  short: "Third-party inverter monitoring software"
-  definition: "A monitoring application that connects to inverters and publishes data via MQTT. Can be used as a bridge between Deye inverters and GbbOptimizer through Home Assistant."
+  short: "Oprogramowanie monitorujące falowniki"
+  definition: "Aplikacja monitorująca, która łączy się z falownikami i publikuje dane przez MQTT. Może służyć jako pomost między falownikami Deye a GbbOptimizer przez Home Assistant."
