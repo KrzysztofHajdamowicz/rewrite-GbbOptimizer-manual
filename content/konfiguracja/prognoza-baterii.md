@@ -126,7 +126,7 @@ Próbuje maksymalizować sumę w kolumnie „Kwota zysku" — znajduje najlepsz�
 |----------|------|
 | Minimalny SOC aby uznać za balansowanie | SOC, od którego program uznaje, że trwa balansowanie. Jeśli SOC spada nieznacznie — wpisz niższą wartość |
 | Musi trwać co najmniej (godzin) | Czas trwania balansowania |
-| Lista dni w miesiącu do 3h×100% | Wymuszaj balansowanie w te dni miesiąca (oddzielone przecinkiem) |
+| Lista dni w miesiącu dla 3h×100% | Wymuszaj balansowanie w te dni miesiąca (oddzielone przecinkiem) |
 | Ile dni wstecz sprawdzać 3h×100% | Blokada zbyt częstego balansowania |
 | Po ilu dniach ponownie trzymać 3h×100% | Alternatywne wymuszanie: co X dni od poprzedniego |
 | Ręcznie wymuś 3h×100% dzisiaj | Jednorazowe wymuszenie, wyłącza się po balansowaniu |
@@ -201,5 +201,5 @@ Aby uruchomić:
 | Opcja | Opis |
 |-------|------|
 | Uruchom także w połowie godziny | Dla 24 przedziałów (60 min): dodatkowe uruchomienie o x:30. Nie rekomendowane |
-| Wysyłaj dane do falownika wcześniej | Najpierw wyślij ustawienia (obliczone godzinę wcześniej), potem uruchom optymalizator, potem wyślij nowe ustawienia. Przydatne, gdy optymalizator trwa 4–5 min. Dla 96 przedziałów: zawsze włączone |
+| Wysyłaj dane do falownika wcześniej | Najpierw wyślij ustawienia (obliczone o godzinę wcześniej), potem uruchom optymalizator, potem wyślij nowe ustawienia. Przydatne, gdy optymalizator trwa 4–5 min. Dla 96 przedziałów: zawsze włączone |
 | Pobierz Prognozę PV tylko podczas Zadań Godzinowych | Prognoza PV importowana tylko przy zadaniach godzinowych (nie przy „Pobierz wszystkie dane"). Pozwala zobaczyć ostatnią prognozę użytą w optymalizacji |

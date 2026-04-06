@@ -11,7 +11,7 @@ Konfiguracja falownika GoodWe z GbbOptimizer wymaga udostępnienia dostępu prze
 
 1. Zaloguj się do portalu **SEMS** (GoodWe)
 2. W menu **Zarządzanie**, w danych swojej elektrowni, dodaj email `gbbsoft@gbbsoft.pl` jako **Gość**
-3. W GbbOptimizer dodaj instalację z GoodWe, ale **nie wybieraj SerialNo** — lista powinna być pusta (z wyjątkiem napisu „Wybierz SerialNo")
+3. W GbbOptimizer dodaj instalację z GoodWe, ale **nie wybieraj SerialNo** — lista powinna być pusta (z wyjątkiem napisu „Wybierz SerialNo”)
 4. Na końcu strony zaznacz **Udostępnij instalację pomocy technicznej**
 5. Skontaktuj się z pomocą techniczną (np. przez Discord: `gbbsoft`) i podaj **SerialNo** swojego falownika
 6. Pomoc techniczna wybierze Twój SerialNo

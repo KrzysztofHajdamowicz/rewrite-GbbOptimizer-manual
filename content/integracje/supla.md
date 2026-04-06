@@ -3,19 +3,19 @@ title: "Supla"
 weight: 40
 ---
 
-# Integracja z Supla
+# Integracja z Suplą
 
-GbbOptimizer moze sterowac urzadzeniami [Supla](https://www.supla.org/) (np. przekaznikami, gniazdkami) przez linki bezposrednie (Direct Links).
+GbbOptimizer może sterować urządzeniami [Supla](https://www.supla.org/) (np. przekaźnikami, gniazdkami) przez linki bezpośrednie (Direct Links).
 
 ## Konfiguracja
 
-Aby polaczyc urzadzenie Supla z GbbOptimizer, nalezy utworzyc **link bezposredni** w panelu Supla Cloud:
+Aby połączyć urządzenie Supla z GbbOptimizer, należy utworzyć **link bezpośredni** w panelu Supla Cloud:
 
-1. Zaloguj sie do [cloud.supla.org](https://cloud.supla.org/)
-2. Przejdz do urzadzenia, ktore chcesz sterowac
-3. Utworz link bezposredni (Direct Link) z odpowiednimi uprawnieniami (wlacz/wylacz)
+1. Zaloguj się do [cloud.supla.org](https://cloud.supla.org/)
+2. Przejdź do urządzenia, które chcesz sterować
+3. Utwórz link bezpośredni (Direct Link) z odpowiednimi uprawnieniami (włącz/wyłącz)
 4. Skopiuj wygenerowany URL
 5. Wklej URL w konfiguracji GbbOptimizer w sekcji **IoT** -> **Supla**
 
 > [!NOTE]
-> Szczegolowy opis tworzenia linkow bezposrednich znajdziesz w [dokumentacji Supla](https://gui-generic-builder.supla.io/guide/funkcjonalno%C5%9Bci%20supla/sterowanie-linki-bezposrednie).
+> Szczegółowy opis tworzenia linków bezpośrednich znajdziesz w [dokumentacji Supla](https://gui-generic-builder.supla.io/guide/funkcjonalno%C5%9Bci%20supla/sterowanie-linki-bezposrednie).

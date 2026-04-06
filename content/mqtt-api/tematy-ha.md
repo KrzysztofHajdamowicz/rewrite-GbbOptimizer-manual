@@ -15,7 +15,7 @@ Tematy używane do komunikacji między GbbOptimizer a Home Assistant / GbbConnec
 
 | Pole | Typ | Opis |
 |------|-----|------|
-| `soc_perc` | decimal | SOC baterii (%). Użyj `V` jeśli zaznaczono „Steruj poprzez V" |
+| `soc_perc` | decimal | SOC baterii (%). Użyj `V` jeśli zaznaczono „Steruj poprzez V” |
 | `loads_total_kWh` | decimal | Zużycie — licznik narastający |
 | `fromgrid_total_kWh` | decimal | Import z sieci — licznik narastający |
 | `togrid_total_kWh` | decimal | Eksport do sieci — licznik narastający |

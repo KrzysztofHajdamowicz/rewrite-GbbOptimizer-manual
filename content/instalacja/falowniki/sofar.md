@@ -14,8 +14,8 @@ Program ustawia `StorageMode = 3` (Passive Mode) oraz (przy obsłudze 5 parametr
 | Operacja | Gdes (Grid setpoint) | Blo (battery high) | Bup (battery low) | Gdzup (grid high) | Gdzlo (grid low) |
 |----------|---------------------|--------------------|--------------------|-------------------|------------------|
 | **Normal** | Domyślny {{< glossary "GridSetpoint" >}} (z menu Discharge) | ChargeLimit lub MaxBatteryChargePower lub MaxInverterChargePower | -(DischargeLimit lub MaxBatteryDischargePower lub MaxInverterDischargeLimit) | MaxBuyPower lub MaxInverterChargePower | -(MaxSellPower lub MaxInverterDischargePower) |
-| **Charge** | = Gdzup | ChargeLimit (korygowane aby osiągnąć TargetSOC w pełnej godzinie) | 0 | InputLimit lub MaxBuyPower lub MaxInverterChargePower | 0 |
-| **Discharge** | = Gdzlo | = Bup | -(DischargeLimit, korygowane aby osiągnąć TargetSOC w pełnej godzinie) | 0 | -(MaxSellPower lub MaxInverterDischargePower) |
+| **Charge** | = Gdzup | ChargeLimit (korygowane, aby osiągnąć TargetSOC w pełnej godzinie) | 0 | InputLimit lub MaxBuyPower lub MaxInverterChargePower | 0 |
+| **Discharge** | = Gdzlo | = Bup | -(DischargeLimit, korygowane, aby osiągnąć TargetSOC w pełnej godzinie) | 0 | -(MaxSellPower lub MaxInverterDischargePower) |
 | **DisableCharge** | 0 | 0 | 0 | MaxBuyPower lub MaxInverterChargePower | -(MaxSellPower lub MaxInverterDischargePower) |
 
 > [!NOTE]

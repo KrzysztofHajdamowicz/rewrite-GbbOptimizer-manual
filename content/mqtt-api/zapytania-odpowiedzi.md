@@ -138,15 +138,15 @@ Każde zapytanie może zwrócić błąd:
 | `Solar_kWh` | decimal? | Produkcja PV |
 | `ToBattery_kWh` | decimal? | Do baterii |
 | `SOC_Min` / `SOC_Max` | decimal? | Min/Max SOC |
-| `SOC_Start` / `SOC_End` | decimal? | Pocz/Koń SOC |
+| `SOC_Start` / `SOC_End` | decimal? | Początek / koniec SOC |
 | `BattChange_kWh` | decimal? | Zmiana baterii |
 | `LostPower_kWh` | decimal? | Straty |
 | `ChargeFromGrid_kWh` | decimal? | Ładowanie z sieci |
 | `ChargeFromPV_kWh` | decimal? | Ładowanie z PV |
 | `DischargeToGrid_kWh` | decimal? | Rozładowanie do sieci |
 | `DischargeToLoads_kWh` | decimal? | Rozładowanie do zużycia |
-| `Start_kWh` / `End_kWh` | decimal? | Pocz/Koń kWh w baterii |
-| `ValueStartAmount` / `ValueEndAmount` | decimal? | Wartość pocz/koń |
+| `Start_kWh` / `End_kWh` | decimal? | Początek / koniec kWh w baterii |
+| `ValueStartAmount` / `ValueEndAmount` | decimal? | Wartość początkowa / końcowa |
 | `ValueChangeAmount` | decimal? | Zmiana wartości |
 
 {{< /mqtt-endpoint >}}

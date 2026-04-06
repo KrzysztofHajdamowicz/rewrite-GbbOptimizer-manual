@@ -9,7 +9,7 @@ Integracja GbbOptimizer z [evcc.io](https://evcc.io/) przez MQTT.
 
 ## Konfiguracja
 
-W Mosquitto broker (lub HA) stwórz plik konfiguracji bridge:
+W brokerze Mosquitto (lub HA) stwórz plik konfiguracji bridge:
 
 ```
 connection GbbOptimizer_<PlantId>

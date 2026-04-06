@@ -145,8 +145,8 @@ Komendy pozwalające zewnętrznym programom zmieniać dane w GbbOptimizer. Każd
 | | `HPForecast_Break_On` | bool | nie | Przerwa w pracy PC: włącz/wyłącz |
 | | `HPForecast_BreakFromDate` | date | nie | Data rozpoczęcia przerwy |
 | | `HPForecast_BreakFromHour` | int (0-23) | nie | Godzina rozpoczęcia |
-| | `HPForecast_BreakToDate` | date | nie | Data zakończenia (włącznie) |
-| | `HPForecast_BreakToHour` | int (0-23) | nie | Godzina zakończenia (włącznie) |
+| | `HPForecast_BreakToDate` | date | nie | Data zakończenia (włączńie) |
+| | `HPForecast_BreakToHour` | int (0-23) | nie | Godzina zakończenia (włączńie) |
 
 **Przykład:**
 ```json

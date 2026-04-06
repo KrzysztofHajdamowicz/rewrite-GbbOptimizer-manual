@@ -69,12 +69,12 @@ Zweryfikuj w module [Prognoza baterii]({{< relref "/konfiguracja/prognoza-bateri
 
 ## 6. Poczekaj w trybie testowym
 
-Nowa instalacja startuje w {{< glossary "Test Mode" >}} — optymalizator wykonuje obliczenia, ale **nie wysyła komend do falownika**.
+Nowa instalacja startuje w {{< glossary "Test Mode" >}} — optymalizator wykonuje obliczenia, ale **nie wysyła komendy do falownika**.
 
 Przez pierwszy tydzień:
 
 - Profil zużycia się zaktualizuje (jeśli włączono automatyczny import)
-- {{< glossary "Correction Factor" >}} dla prognozy PV się skalibruje
+- {{< glossary "Correction Factor" >}} dla prognozy PV kalibruje się
 - Możesz obserwować, co optymalizator *planuje* robić, bez ryzyka
 
 ## 7. Wyłącz tryb testowy

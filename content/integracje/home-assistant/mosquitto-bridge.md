@@ -5,7 +5,7 @@ weight: 10
 
 # Mosquitto Bridge
 
-Aby GbbOptimizer mog komunikowac sie z Home Assistant, nalezy skonfigurowac most (bridge) miedzy lokalnym brokerem Mosquitto w HA a serwerem MQTT GbbOptimizer.
+Aby GbbOptimizer mógł komunikować się z Home Assistant, należy skonfigurować most (bridge) między lokalnym brokerem Mosquitto w HA a serwerem MQTT GbbOptimizer.
 
 ## Wymagania
 
@@ -15,19 +15,19 @@ Aby GbbOptimizer mog komunikowac sie z Home Assistant, nalezy skonfigurowac most
 
 ## Konfiguracja krok po kroku
 
-### 1. Wlacz folder konfiguracyjny w Mosquitto
+### 1. Włącz folder konfiguracyjny w Mosquitto
 
-W Home Assistant przejdz do **Ustawienia** -> **Dodatki** -> **Mosquitto broker** -> **Konfiguracja**.
+W Home Assistant przejdź do **Ustawienia** -> **Dodatki** -> **Mosquitto broker** -> **Konfiguracja**.
 
-Aktywuj opcje **Customize** i ustaw folder na:
+Aktywuj opcję **Customize** i ustaw folder na:
 
 ```
 mosquitto
 ```
 
-### 2. Utworz plik konfiguracyjny bridge
+### 2. Utwórz plik konfiguracyjny bridge
 
-Utworz plik `/share/mosquitto/GbbOptimizer.conf` z nastepujaca zawartoscia:
+Utwórz plik `/share/mosquitto/GbbOptimizer.conf` z następującą zawartością:
 
 ```conf
 connection GbbOptimizer_<PlantId>
@@ -38,9 +38,9 @@ bridge_capath /etc/ssl/certs
 topic # both 2 ha_gbb/ <PlantId>/ha_gbb/
 ```
 
-Zamien:
-- `<PlantId>` — na Twoj {{< glossary "PlantId" >}}
-- `<PlantToken>` — na Twoj {{< glossary "PlantToken" >}}
+Zamień:
+- `<PlantId>` — na Twój {{< glossary "PlantId" >}}
+- `<PlantToken>` — na Twój {{< glossary "PlantToken" >}}
 - `<adres-serwera-mqtt>` — na adres serwera z tabeli [Serwery MQTT]({{< relref "/referencje/serwery-mqtt" >}})
 
 ### 3. Zrestartuj Mosquitto
@@ -48,9 +48,9 @@ Zamien:
 Po zapisaniu pliku zrestartuj dodatek Mosquitto broker w Home Assistant.
 
 > [!NOTE]
-> Polaczenie uzywa portu **8883** (MQTT over TLS). Certyfikaty CA sa pobierane z `/etc/ssl/certs` — nie trzeba dodawac wlasnych.
+> Połączenie używa portu **8883** (MQTT over TLS). Certyfikaty CA są pobierane z `/etc/ssl/certs` — nie trzeba dodawać własnych.
 
-## Jak dziala bridge
+## Jak działa bridge
 
 Linia `topic` w konfiguracji mapuje topiki:
 
@@ -59,29 +59,29 @@ Linia `topic` w konfiguracji mapuje topiki:
 | HA -> GbbOptimizer | `ha_gbb/#` | `<PlantId>/ha_gbb/#` |
 | GbbOptimizer -> HA | `ha_gbb/#` | `<PlantId>/ha_gbb/#` |
 
-Dzieki temu:
-- Dane z czujnikow wyslane na `ha_gbb/sensor` w HA trafiaja do GbbOptimizer jako `<PlantId>/ha_gbb/sensor`
-- Komendy z GbbOptimizer (np. `<PlantId>/ha_gbb/Start_Charge`) pojawiaja sie w HA jako `ha_gbb/Start_Charge`
+Dzięki temu:
+- Dane z czujników wysłane na `ha_gbb/sensor` w HA trafiają do GbbOptimizer jako `<PlantId>/ha_gbb/sensor`
+- Komendy z GbbOptimizer (np. `<PlantId>/ha_gbb/Start_Charge`) pojawiają się w HA jako `ha_gbb/Start_Charge`
 
 ## Bridge dla SolarAssistant
 
-Jesli uzywasz {{< glossary "SolarAssistant" >}}, zmien linie `topic` na:
+Jeśli używasz {{< glossary "SolarAssistant" >}}, zmień linię `topic` na:
 
 ```conf
 topic # both 2 solar_assistant/ <PlantId>/solar_assistant/
 ```
 
-Wiecej informacji: [SolarAssistant]({{< relref "/integracje/home-assistant/solar-assistant" >}})
+Więcej informacji: [SolarAssistant]({{< relref "/integracje/home-assistant/solar-assistant" >}})
 
 ## Bridge dla evcc
 
-Jesli integrujesz z evcc, dodaj osobna linie `topic`:
+Jeśli integrujesz z evcc, dodaj osobną linię `topic`:
 
 ```conf
 topic # both 2 evcc/loadpoints/ <PlantId>/evcc/site/loadpoints/
 ```
 
-Wiecej informacji: [evcc]({{< relref "/integracje/evcc" >}})
+Więcej informacji: [evcc]({{< relref "/integracje/evcc" >}})
 
 > [!WARNING]
-> Upewnij sie, ze {{< glossary "PlantId" >}} i {{< glossary "PlantToken" >}} sa poprawne. Bledne dane uwierzytelniajace spowoduja brak polaczenia — sprawdz logi Mosquitto w HA.
+> Upewnij się, że {{< glossary "PlantId" >}} i {{< glossary "PlantToken" >}} są poprawne. Błędne dane uwierzytelniające spowodują brak połączenia — sprawdź logi Mosquitto w HA.

@@ -5,15 +5,15 @@ weight: 40
 
 # Wykresy w Home Assistant
 
-GbbOptimizer udostepnia interaktywne wykresy (produkcja PV, zuzycie, SOC, ceny energii itp.) przez interfejs webowy. Mozna je osadzic w dashboardzie Home Assistant.
+GbbOptimizer udostępnia interaktywne wykresy (produkcja PV, zużycie, SOC, ceny energii itp.) przez interfejs webowy. Można je osadzić w dashboardzie Home Assistant.
 
-## Osadzanie wykresow
+## Osadzanie wykresów
 
-Uzyj karty **Webpage** (lub **iFrame**) w dashboardzie HA:
+Użyj karty **Webpage** (lub **iFrame**) w dashboardzie HA:
 
-1. Przejdz do dashboardu HA -> **Edytuj** -> **Dodaj karte**
-2. Wybierz karte **Webpage** (lub karte reczna typu `iframe`)
-3. W polu URL wklej adres wykresow z GbbOptimizer
+1. Przejdź do dashboardu HA -> **Edytuj** -> **Dodaj kartę**
+2. Wybierz kartę **Webpage** (lub kartę ręczną typu `iframe`)
+3. W polu URL wklej adres wykresów z GbbOptimizer
 
 ```yaml
 type: iframe
@@ -21,14 +21,14 @@ url: "https://<serwer>.gbbsoft.pl/Charts?PlantId=<PlantId>"
 aspect_ratio: "16:9"
 ```
 
-Zamien `<serwer>` i `<PlantId>` na odpowiednie wartosci Twojej instalacji.
+Zamień `<serwer>` i `<PlantId>` na odpowiednie wartości Twojej instalacji.
 
 > [!NOTE]
-> Wykresy wymagaja dostepu do internetu. Jesli Home Assistant dziala w sieci lokalnej bez dostepu do zewnetrznych uslug, wykresy nie beda sie ladowac.
+> Wykresy wymagają dostępu do internetu. Jeśli Home Assistant działa w sieci lokalnej bez dostępu do zewnętrznych usług, wykresy nie będą się ładować.
 
-## Alternatywa — wlasne wykresy z danych MQTT
+## Alternatywa — własne wykresy z danych MQTT
 
-Jesli wolisz tworzyc wykresy lokalnie, mozesz uzyc danych przesylanych przez MQTT (patrz [Automatyzacja]({{< relref "/integracje/home-assistant/automatyzacja" >}})) w polaczeniu z kartami typu:
+Jeśli wolisz tworzyć wykresy lokalnie, możesz użyć danych przesyłanych przez MQTT (patrz [Automatyzacja]({{< relref "/integracje/home-assistant/automatyzacja" >}})) w połączeniu z kartami typu:
 
 - **ApexCharts Card** (HACS)
 - **Mini Graph Card** (HACS)

@@ -7,7 +7,7 @@ weight: 30
 
 Porady i wskazówki od doświadczonych użytkowników GbbOptimizer.
 
-## Cierpliwości
+## Cierpliwość
 
 > [!WARNING]
 > Najczęstszy błąd nowych użytkowników to zbyt szybkie zmiany konfiguracji. Program potrzebuje czasu na kalibrację.
@@ -32,7 +32,7 @@ Ustaw {{< glossary "MaxSOC" >}} na **90%** zamiast 100%. Dlaczego?
 
 ### Okresowe pełne ładowanie
 
-Dla zdrowia baterii warto jednak okresowo ładować do 100%. Ustaw parametr **„Lista dni w miesiącu kiedy MaxSOC ma być zmieniony na 100%"** np. na:
+Dla zdrowia baterii warto jednak okresowo ładować do 100%. Ustaw parametr **„Lista dni w miesiącu kiedy MaxSOC ma być zmieniony na 100%”** np. na:
 
 ```
 1, 15
@@ -46,12 +46,12 @@ Dzięki temu 1. i 15. dnia każdego miesiąca bateria naładuje się do pełna (
 
 Domyślne źródło prognozy PV to **forecast.solar**. Rozważ zmianę na **solcast.com**, które jest zazwyczaj dokładniejsze:
 
-1. Załóż darmowe konto „Home" na [solcast.com](https://solcast.com)
+1. Załóż darmowe konto „Home” na [solcast.com](https://solcast.com)
 2. Dodaj swoje płaszczyzny PV (jedno konto obsługuje do dwóch płaszczyzn)
 3. W parametrach instalacji zmień źródło prognozy PV na Solcast
 
 > [!NOTE]
-> Solcast ma limit zapytań na darmowym koncie — jedno konto „Home" obsługuje maksymalnie dwie płaszczyzny PV. Jeśli masz więcej, potrzebujesz dodatkowych kont.
+> Solcast ma limit zapytań na darmowym koncie — jedno konto „Home” obsługuje maksymalnie dwie płaszczyzny PV. Jeśli masz więcej, potrzebujesz dodatkowych kont.
 
 ## Mniej opcji = większe zyski
 
@@ -106,5 +106,5 @@ Daj optymalizatorowi dzień lub dwa na przeliczenie nowych danych, zanim pozwoli
 | Sprawdź poprawność cen i kosztów transportu | {{< badge "required" >}} |
 | Ustaw MaxSOC = 90% | {{< badge "recommended" >}} |
 | Zmień prognozę PV na Solcast | {{< badge "recommended" >}} |
-| Ustaw periodyczne ładowanie do 100% (np. 1, 15 dnia miesiąca) | {{< badge "recommended" >}} |
+| Ustaw peryodyczne ładowanie do 100% (np. 1, 15 dnia miesiąca) | {{< badge "recommended" >}} |
 | Minimalizuj liczbę dodatkowych opcji | {{< badge "recommended" >}} |

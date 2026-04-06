@@ -9,7 +9,7 @@ Moduł rozładowania kontroluje, kiedy i jak energia z baterii jest wysyłana do
 
 ## GridSetpoint — jak działa
 
-{{< glossary "GridSetpoint" >}} określa, ile energii powinno przepływać przez licznik sieci:
+{{< glossary "GridSetpoint" >}} określa, ile energii powinna przepływać przez licznik sieci:
 
 - **Wartość dodatnia** (np. +100 W) — system pobiera energię z sieci. Nadwyżka z PV idzie do baterii.
 - **Wartość ujemna** (np. -5000 W) — system eksportuje energię do sieci. Najpierw z PV, potem z baterii.
@@ -120,7 +120,7 @@ Aby skonfigurować DD:
 4. Dla wszystkich godzin w okresie — wpisz **Max GridSetpoint**
 5. Aby automatyzować: zaznacz **Uruchom zadanie co godzinę** i **Automatycznie optymalizuj DD i DDBD**
 
-Aby przetestować — naciśnij **Optymalizuj Dynamiczne rozładowania teraz**.
+Aby przetestować — naciśnij **Optymalizuj dynamiczne rozładowanie teraz**.
 
 Program zaznacza godziny z maksymalną ceną sprzedaży i blokuje pozostałe. Pomija godziny bez wpisanego GridSetpoint oraz godziny, w których obowiązuje ładowanie.
 

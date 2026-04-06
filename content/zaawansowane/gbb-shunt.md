@@ -5,33 +5,33 @@ weight: 20
 
 # GBB Shunt
 
-GBB Shunt to modul GbbOptimizer przeznaczony do instalacji z bateriami olowianymi (kwasowymi, zelowymi, AGM).
+GBB Shunt to moduł GbbOptimizer przeznaczony do instalacji z bateriami ołowiowymi (kwasowymi, żelowymi, AGM).
 
 ## Czym jest GBB Shunt?
 
-W instalacjach z bateriami olowianymi standardowy pomiar {{< glossary "SOC" >}} przez falownik moze byc niedokladny. GBB Shunt pozwala na dokladniejsze sledzenie stanu naladowania baterii na podstawie pomiaru pradu przez bocznik (shunt).
+W instalacjach z bateriami ołowiowymi standardowy pomiar {{< glossary "SOC" >}} przez falownik może być niedokładny. GBB Shunt pozwala na dokładniejsze śledzenie stanu naładowania baterii na podstawie pomiaru prądu przez bocznik (shunt).
 
 ## Kluczowe funkcje
 
-- **Dokladny pomiar SOC** — na podstawie pomiaru pradu (kulomierz), a nie napiecia
-- **Kompensacja temperatury** — uwzglednia wplyw temperatury na pojemnosc baterii olowianej
-- **Ochrona baterii** — zapobiega glebokim rozladowaniom, ktore skracaja zywotnosc baterii olowianych
+- **Dokładny pomiar SOC** — na podstawie pomiaru prądu (kulomierz), a nie napięcia
+- **Kompensacja temperatury** — uwzględnia wpływ temperatury na pojemność baterii ołowiowej
+- **Ochrona baterii** — zapobiega głębokim rozładowaniom, które skracają żywotność baterii ołowiowych
 
-## Kiedy uzywac?
+## Kiedy używać?
 
-GBB Shunt jest zalecany, jesli:
+GBB Shunt jest zalecany, jeśli:
 
-- Uzywasz baterii olowianych (nie litowych)
-- Falownik nie ma dokladnego pomiaru SOC dla baterii olowianych
-- Chcesz wydluzyc zywotnosc baterii przez precyzyjne sterowanie cyklami
+- Używasz baterii ołowiowych (nie litowych)
+- Falownik nie ma dokładnego pomiaru SOC dla baterii ołowiowych
+- Chcesz wydłużyć żywotność baterii przez precyzyjne sterowanie cyklami
 
 > [!NOTE]
-> Baterie litowe (LiFePO4, Li-ion) z BMS maja wbudowany dokladny pomiar SOC i nie wymagaja modulu GBB Shunt.
+> Baterie litowe (LiFePO4, Li-ion) z BMS mają wbudowany dokładny pomiar SOC i nie wymagają modułu GBB Shunt.
 
 ## Konfiguracja
 
-Modul GBB Shunt konfiguruje sie w ustawieniach instalacji w sekcji zaawansowanej. Wymaga podania:
+Moduł GBB Shunt konfiguruje się w ustawieniach instalacji w sekcji zaawansowanej. Wymaga podania:
 
-- Pojemnosci baterii (Ah)
-- Napiecia nominalnego
-- Parametrow bocznika (shunt)
+- Pojemności baterii (Ah)
+- Napięcia nominalnego
+- Parametrów bocznika (shunt)

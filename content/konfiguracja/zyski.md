@@ -61,7 +61,7 @@ Dane wyświetlane są wg godzin, dni lub miesięcy:
 | Pocz / Koń kWh w baterii | Energia w baterii ponad MinSOC |
 | Pocz / Koń Wartość (PLN) | Wartość energii w baterii |
 | Zmiana Wartości baterii (PLN) | Rozładowanie: kWh × Średnia cena (poprzednia godzina). Ładowanie: kWh × Cena Zakupu |
-| Średnia koń cena (PLN) | Koń Wartość / Koń kWh w baterii |
+| Średnia końcowa cena (PLN) | Koń Wartość / Koń kWh w baterii |
 | MinSOC (%) | Zapamiętana wartość „Minimalna SOC baterii %" z parametrów instalacji |
 
 ## Kolumny — Extra Zużycie

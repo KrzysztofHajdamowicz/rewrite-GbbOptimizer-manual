@@ -5,7 +5,7 @@ weight: 10
 
 # Czym jest GbbOptimizer
 
-GbbOptimizer (dawniej GbbVictronWeb) to program optymalizujacy wykorzystanie energii w domowej instalacji fotowoltaicznej z magazynem energii (baterią). Analizuje prognozy produkcji PV, profil zużycia energii oraz ceny zakupu i sprzedaży, aby automatycznie sterować falownikiem — decydując kiedy ładować baterię, kiedy rozładowywać i kiedy kupować lub sprzedawać energię z/do sieci.
+GbbOptimizer (dawniej GbbVictronWeb) to program optymalizujący wykorzystanie energii w domowej instalacji fotowoltaicznej z magazynem energii (baterią). Analizuje prognozy produkcji PV, profil zużycia energii oraz ceny zakupu i sprzedaży, aby automatycznie sterować falownikiem — decydując kiedy ładować baterię, kiedy rozładowywać i kiedy kupować lub sprzedawać energię z/do sieci.
 
 ## Jak to działa
 

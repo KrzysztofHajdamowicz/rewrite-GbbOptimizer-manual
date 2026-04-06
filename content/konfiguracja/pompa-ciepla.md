@@ -13,7 +13,7 @@ Pompy ciepła i klimatyzacja (podobnie jak ładowarki EV) nie działają zgodnie
 
 ## Konfiguracja krok po kroku
 
-1. Wpisz **szerokość i długość geograficzną** w [parametrach instalacji]({{< relref "/instalacja/parametry-instalacji" >}})
+1. Wpisz **szerokość geograficzną i długość geograficzną** w [parametrach instalacji]({{< relref "/instalacja/parametry-instalacji" >}})
 2. Zaimportuj prognozę pogody
 3. Naciśnij **Parametry PC** i wpisz zużycie kWh pompy/klimatyzacji na każdą godzinę (minimum 2 wartości dla różnych temperatur)
 4. Naciśnij **Policz prognozę PC** i sprawdź wyniki

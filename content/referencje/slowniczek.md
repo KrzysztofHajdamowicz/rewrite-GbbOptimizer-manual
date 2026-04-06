@@ -1,8 +1,8 @@
 ---
-title: "Slowniczek"
+title: "Słowniczek"
 weight: 10
 ---
 
-# Slowniczek
+# Słowniczek
 
 {{< glossary-list >}}

@@ -3,41 +3,41 @@ title: "Victron"
 weight: 50
 ---
 
-# Mapowanie trybow — Victron
+# Mapowanie trybów — Victron
 
 {{< badge "victron-only" >}}
 
-Falowniki Victron sa sterowane przez {{< glossary "ESS" >}} (Energy Storage System) za posrednictwem {{< glossary "VRM" >}} i MQTT.
+Falowniki Victron są sterowane przez {{< glossary "ESS" >}} (Energy Storage System) za pośrednictwem {{< glossary "VRM" >}} i MQTT.
 
 ## Tryb ESS
 
-GbbOptimizer steruje systemem Victron poprzez harmonogramy ESS (ESS Schedules) na Cerbo GX. Harmonogramy okreslaja:
+GbbOptimizer steruje systemem Victron poprzez harmonogramy ESS (ESS Schedules) na Cerbo GX. Harmonogramy określają:
 
-- **Tryb pracy** — ladowanie, rozladowanie, normalna praca
-- **Docelowy SOC** — do jakiego poziomu ladowac/rozladowywac
-- **Limit mocy** — maksymalna moc ladowania/rozladowania
-- **Okno czasowe** — godziny obowiazywania harmonogramu
+- **Tryb pracy** — ładowanie, rozładowanie, normalna praca
+- **Docelowy SOC** — do jakiego poziomu ładować/rozładowywać
+- **Limit mocy** — maksymalna moc ładowania/rozładowania
+- **Okno czasowe** — godziny obowiązywania harmonogramu
 
-## Konfiguracja wstepna
+## Konfiguracja wstępna
 
-1. W {{< glossary "VRM" >}} portal wlacz dostep zdalny do Cerbo
+1. W portalu {{< glossary "VRM" >}} włącz dostęp zdalny do Cerbo
 2. W {{< glossary "ESS" >}} ustaw tryb **"Optimized (without BatteryLife)"**
-3. Upewnij sie, ze GbbOptimizer ma poprawne dane VRM ({{< glossary "PlantId" >}}, {{< glossary "PlantToken" >}})
+3. Upewnij się, że GbbOptimizer ma poprawne dane VRM ({{< glossary "PlantId" >}}, {{< glossary "PlantToken" >}})
 
 > [!NOTE]
-> Jesli **Battery Life** jest wlaczony w ESS, GbbOptimizer nie bedzie mogl w pelni kontrolowac baterii. Wylacz go i ustaw na **"Optimized (without BatteryLife)"**.
+> Jeśli **Battery Life** jest włączony w ESS, GbbOptimizer nie będzie mógł w pełni kontrolować baterii. Wyłącz go i ustaw na **"Optimized (without BatteryLife)"**.
 
 ## Sterowanie
 
-GbbOptimizer komunikuje sie z Cerbo przez serwery MQTT Victrona. W kazdym cyklu optymalizacji program:
+GbbOptimizer komunikuje się z Cerbo przez serwery MQTT Victrona. W każdym cyklu optymalizacji program:
 
-1. Odczytuje aktualne dane (SOC, produkcja PV, zuzycie, stan sieci)
+1. Odczytuje aktualne dane (SOC, produkcja PV, zużycie, stan sieci)
 2. Oblicza optymalny harmonogram
 3. Zapisuje harmonogramy ESS na Cerbo
 
-Szczegolowe informacje o topikach MQTT Victron dostepne sa w dokumentacji API MQTT.
+Szczegółowe informacje o topicach MQTT Victron dostępne są w dokumentacji API MQTT.
 
-## Wiecej informacji
+## Więcej informacji
 
 - [Dokumentacja Victron ESS](https://www.victronenergy.com/media/pg/Energy_Storage_System/en/index-en.html)
 - [VRM Portal](https://vrm.victronenergy.com/)

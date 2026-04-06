@@ -5,11 +5,11 @@ weight: 50
 
 # Serwery MQTT
 
-GbbOptimizer uzywa wielu serwerow MQTT do komunikacji z falownikami i integracjami. Serwer przypisany do Twojej instalacji zalezy od prefixu {{< glossary "PlantId" >}}.
+GbbOptimizer używa wielu serwerów MQTT do komunikacji z falownikami i integracjami. Serwer przypisany do Twojej instalacji zależy od prefiksu {{< glossary "PlantId" >}}.
 
-## Tabela serwerow
+## Tabela serwerów
 
-| Serwer aplikacji | Serwer MQTT | Prefix PlantId |
+| Serwer aplikacji | Serwer MQTT | Prefiks PlantId |
 |-----------------|-------------|----------------|
 | gbboptimizer.gbbsoft.pl | gbboptimizer-mqtt.gbbsoft.pl | (brak) |
 | gbboptimizer2.gbbsoft.pl | gbboptimizer2-mqtt.gbbsoft.pl | B |
@@ -32,16 +32,16 @@ GbbOptimizer uzywa wielu serwerow MQTT do komunikacji z falownikami i integracja
 | gbboptimizer19.gbbsoft.pl | gbboptimizer19-mqtt.gbbsoft.pl | S |
 | gbboptimizer20.gbbsoft.pl | gbboptimizer20-mqtt.gbbsoft.pl | T |
 
-## Jak odczytac serwer z PlantId
+## Jak odczytać serwer z PlantId
 
-Prefix {{< glossary "PlantId" >}} (pierwsza litera) wskazuje, z ktorego serwera korzysta Twoja instalacja:
+Prefiks {{< glossary "PlantId" >}} (pierwsza litera) wskazuje, z którego serwera korzysta Twoja instalacja:
 
-- PlantId zaczynajacy sie od **J** (np. `J1234`) -> serwer `gbboptimizer10-mqtt.gbbsoft.pl`
-- PlantId zaczynajacy sie od **cyfry** (np. `1234`) -> serwer `gbboptimizer-mqtt.gbbsoft.pl`
+- PlantId zaczynający się od **J** (np. `J1234`) -> serwer `gbboptimizer10-mqtt.gbbsoft.pl`
+- PlantId zaczynający się od **cyfry** (np. `1234`) -> serwer `gbboptimizer-mqtt.gbbsoft.pl`
 
 ## Port i szyfrowanie
 
-Wszystkie serwery MQTT uzywaja:
+Wszystkie serwery MQTT używają:
 
 - **Port:** 8883
 - **Szyfrowanie:** TLS/SSL

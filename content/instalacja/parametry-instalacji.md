@@ -44,8 +44,8 @@ Szczegóły wzorów cenowych — w module [Ceny]({{< relref "/konfiguracja/ceny"
 | Minimalny {{< glossary "SOC" >}} baterii | % | {{< glossary "MinSOC" >}} — żelazna rezerwa. Poniżej tej wartości energia używana tylko w sytuacjach awaryjnych |
 | Maksymalna moc ładowania falownika (DC) | kW | Maksymalna moc ładowania po stronie DC |
 | Maksymalna moc rozładowania falownika (DC) | kW | Maksymalna moc rozładowania po stronie DC |
-| Maksymalna moc BMS ładowania baterii (DC) | kW | Istotne gdy jest inna niż moc falownika i PV podłączone po stronie DC |
-| Maksymalna moc BMS rozładowania baterii (DC) | kW | Istotne gdy jest inna niż moc falownika i PV podłączone po stronie DC |
+| Maksymalna moc BMS ładowania baterii (DC) | kW | Istotne, gdy jest inna niż moc falownika i PV podłączone po stronie DC |
+| Maksymalna moc BMS rozładowania baterii (DC) | kW | Istotne, gdy jest inna niż moc falownika i PV podłączone po stronie DC |
 | Straty na ładowaniu baterii z sieci | % | Straty na ładowaniu (wliczając sposób liczenia SOC przez BMS) |
 | Straty na rozładowaniu baterii do sieci/zużycia | % | Straty na rozładowaniu (wliczając sposób liczenia SOC przez BMS) |
 
@@ -96,7 +96,7 @@ Dotyczy tylko instalacji typu Solarman. Szczegóły na stronie [DeyeCloud]({{< r
 
 | Parametr | Opis |
 |----------|------|
-| Steruj poprzez V a nie przez SOC | Falownik używa napięcia (V) zamiast SOC w TimeOfUse |
+| Steruj poprzez V, a nie przez SOC | Falownik używa napięcia (V) zamiast SOC w TimeOfUse |
 | Także aktualne SOC obliczaj z V | Obliczaj bieżący SOC na podstawie napięcia. Jeśli odznaczone — SOC pobierany z falownika |
 
 ## GbbShunt
@@ -108,7 +108,7 @@ Dotyczy tylko instalacji typu Solarman. Szczegóły na stronie [DeyeCloud]({{< r
 | Włączony | — | Aktywuje moduł GbbShunt |
 | Minimalny SOC baterii / V kiedy SOC → MinSOC | V | Napięcie, przy którym SOC zostanie ustawiony na {{< glossary "MinSOC" >}} |
 | Maksymalny SOC baterii / V kiedy SOC → MaxSOC | V | Napięcie, przy którym SOC zostanie ustawiony na {{< glossary "MaxSOC" >}} |
-| Straty na ładowaniu + rozładowaniu | % | Procent energii pomijany w obliczeniach |
+| Straty na ładowaniu + rozładowaniu | % | Procent energii pomijanej w obliczeniach |
 | V podczas ładowania baterii | V | Napięcie wysyłane do TimeOfUse zamiast wartości wyliczonej z docelowego SOC |
 | V podczas rozładowania baterii | V | Napięcie wysyłane do TimeOfUse zamiast wartości wyliczonej z docelowego SOC |
 

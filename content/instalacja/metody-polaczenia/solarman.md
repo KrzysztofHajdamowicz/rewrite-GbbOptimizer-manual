@@ -10,7 +10,7 @@ Solarman to chmurowa metoda połączenia falownika z GbbOptimizer. Dane przechod
 ## Konfiguracja krok po kroku
 
 1. Dodaj instalację: **Dodaj nową instalację z falownikiem połączonym do Solarman**
-2. Wypełnij pola do grupy „Solarman" (szczegóły w [Parametry instalacji]({{< relref "/instalacja/parametry-instalacji" >}}))
+2. Wypełnij pola do grupy „Solarman” (szczegóły w [Parametry instalacji]({{< relref "/instalacja/parametry-instalacji" >}}))
 3. Zaloguj się do serwerów Solarman: wprowadź **email** i **hasło** (te same co do aplikacji Solarman) i naciśnij **Połącz**
 4. Wybierz z listy **Wybierz SerialNo falownika** swój falownik
 5. Wybierz **Rodzaj falownika**
@@ -27,7 +27,7 @@ Jeśli wolisz sterować baterią przez napięcie zamiast {{< glossary "SOC" >}}:
 
 1. Zaznacz **Steruj poprzez V a nie przez SOC**
 2. Naciśnij **Edytuj mapowanie SOC do V**
-3. Wprowadź co najmniej **dwa znane pary** SOC i V, aby program utworzył mapowanie. Im więcej par — tym dokładniejsze mapowanie
+3. Wprowadź co najmniej **dwie znane pary** SOC i V, aby program utworzył mapowanie. Im więcej par — tym dokładniejsze mapowanie
 
 > [!NOTE]
 > Mapowanie jest **proporcjonalne (liniowe)** — program interpoluje na podstawie dwóch najbliższych punktów.

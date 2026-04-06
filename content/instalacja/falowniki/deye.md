@@ -13,7 +13,7 @@ Falowniki hybrydowe Deye mogą być podłączone do GbbOptimizer na kilka sposob
 
 Przed uruchomieniem GbbOptimizer sprawdź na falowniku Deye:
 
-1. **Tryb pracy** — `Zero export to CT` lub `Zero export to Loads` (nie „Selling First"!)
+1. **Tryb pracy** — `Zero export to CT` lub `Zero export to Loads` (nie „Selling First”!)
 
    > [!WARNING]
    > Nie sprawdzaj trybu pracy podczas aktywnego rozładowania — GbbOptimizer tymczasowo zmienia tryb.

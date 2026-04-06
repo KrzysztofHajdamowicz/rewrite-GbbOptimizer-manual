@@ -5,11 +5,11 @@ weight: 20
 
 # Integracja z evcc
 
-[evcc.io](https://evcc.io) to oprogramowanie do inteligentnego ladowania pojazdow elektrycznych. GbbOptimizer moze sie z nim komunikowac przez MQTT, aby koordynowac ladowanie EV z optymalizacja baterii domowej.
+[evcc.io](https://evcc.io) to oprogramowanie do inteligentnego ładowania pojazdów elektrycznych. GbbOptimizer może się z nim komunikować przez MQTT, aby koordynować ładowanie EV z optymalizacją baterii domowej.
 
 ## Wymagania
 
-- Dzialajaca instalacja evcc
+- Działająca instalacja evcc
 - Lokalny broker MQTT (Mosquitto w Home Assistant lub samodzielny)
 - Skonfigurowany [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}})
 
@@ -32,17 +32,17 @@ topic # both 2 evcc/loadpoints/ <PlantId>/evcc/site/loadpoints/
 
 | Topik | Opis |
 |-------|------|
-| `{PlantId}/evcc/site/statistic/total/chargedKWh` | Calkowita energia zaladowana do EV (kWh) |
+| `{PlantId}/evcc/site/statistic/total/chargedKWh` | Całkowita energia załadowana do EV (kWh) |
 
 ### Komendy z GbbOptimizer (GbbOptimizer -> evcc)
 
 | Topik | Payload | Opis |
 |-------|---------|------|
-| `{PlantId}/evcc/loadpoints/{chargerId}/mode` | `off` lub `now` | Wlacz/wylacz ladowanie |
-| `{PlantId}/evcc/loadpoints/{chargerId}/maxCurrent` | liczba (A) | Maksymalny prad ladowania |
-| `{PlantId}/evcc/loadpoints/{chargerId}/connected` | `true`/`false` | Stan polaczenia z ladowarka |
+| `{PlantId}/evcc/loadpoints/{chargerId}/mode` | `off` lub `now` | Włącz/wyłącz ładowanie |
+| `{PlantId}/evcc/loadpoints/{chargerId}/maxCurrent` | liczba (A) | Maksymalny prąd ładowania |
+| `{PlantId}/evcc/loadpoints/{chargerId}/connected` | `true`/`false` | Stan połączenia z ładowarką |
 
-Gdzie `{chargerId}` to identyfikator punktu ladowania w evcc.
+Gdzie `{chargerId}` to identyfikator punktu ładowania w evcc.
 
 > [!NOTE]
-> evcc musi byc skonfigurowane do komunikacji przez MQTT. Sprawdz [dokumentacje evcc](https://docs.evcc.io/docs/reference/configuration/messaging#mqtt) w sekcji dotyczacej MQTT.
+> evcc musi być skonfigurowane do komunikacji przez MQTT. Sprawdź [dokumentację evcc](https://docs.evcc.io/docs/reference/configuration/messaging#mqtt) w sekcji dotyczącej MQTT.

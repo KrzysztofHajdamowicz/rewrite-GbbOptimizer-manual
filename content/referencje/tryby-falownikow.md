@@ -1,58 +1,58 @@
 ---
-title: "Tryby falownikow"
+title: "Tryby falowników"
 weight: 20
 ---
 
-# Tryby falownikow
+# Tryby falowników
 
-GbbOptimizer steruje falownikiem za pomoca czterech podstawowych trybow (operacji protokolu). Kazdy falownik implementuje je w inny sposob — szczegolowe mapowania znajdziesz w sekcji [Mapowania trybow]({{< relref "/referencje/mapowania-trybow" >}}).
+GbbOptimizer steruje falownikiem za pomocą czterech podstawowych trybów (operacji protokołu). Każdy falownik implementuje je w inny sposób — szczegółowe mapowania znajdziesz w sekcji [Mapowania trybów]({{< relref "/referencje/mapowania-trybow" >}}).
 
 ## Wymagane dane z falownika
 
-Falownik musi dostarczac nastepujace dane:
+Falownik musi dostarczać następujące dane:
 
 | Pole | Opis |
 |------|------|
-| `soc_perc` | {{< glossary "SOC" >}} baterii w procentach (lub `V` jesli sterowanie przez napiecie) |
-| `loads_total_kWh` | Licznik zuzycia (kWh, narastajaco) |
+| `soc_perc` | {{< glossary "SOC" >}} baterii w procentach (lub `V` jeśli sterowanie przez napięcie) |
+| `loads_total_kWh` | Licznik zużycia (kWh, narastająco) |
 | `fromgrid_total_kWh` | Licznik energii pobranej z sieci (kWh) |
-| `togrid_total_kWh` | Licznik energii wyslanej do sieci (kWh) |
+| `togrid_total_kWh` | Licznik energii wysłanej do sieci (kWh) |
 | `pv_total_kWh` | Licznik produkcji PV (kWh) |
 
 Opcjonalnie:
 
 | Pole | Opis |
 |------|------|
-| `ev_charge_total_kWh` | Licznik ladowania EV |
-| `hp_total_kWh` | Licznik pompy ciepla |
+| `ev_charge_total_kWh` | Licznik ładowania EV |
+| `hp_total_kWh` | Licznik pompy ciepła |
 | `other1_total_kWh` ... `other2_total_kWh` | Inne liczniki |
 
 ## Tryby operacji
 
 ### Normal
 
-Powrot do normalnej pracy:
-- PV zasila dom, potem baterie, potem siec
+Powrót do normalnej pracy:
+- PV zasila dom, potem baterie, potem sieć
 - Dom zasilany z PV, potem z baterii, potem z sieci
 
 ### Charge
 
-Rozpocznij ladowanie baterii z PV i/lub sieci do zadanego poziomu {{< glossary "SOC" >}} z zadana predkoscia (W).
+Rozpocznij ładowanie baterii z PV i/lub sieci do zadanego poziomu {{< glossary "SOC" >}} z zadaną prędkością (W).
 
-Po osiagnieciu docelowego SOC:
-- Nie laduj baterii z sieci
-- Nie rozladowuj baterii ponizej docelowego SOC
-- Mozna ladowac baterie z PV
+Po osiągnięciu docelowego SOC:
+- Nie ładuj baterii z sieci
+- Nie rozładowuj baterii poniżej docelowego SOC
+- Można ładować baterie z PV
 
 ### Discharge
 
-Rozpocznij rozladowanie baterii (i PV) do sieci do zadanego poziomu {{< glossary "SOC" >}} z zadana predkoscia (W).
+Rozpocznij rozładowanie baterii (i PV) do sieci do zadanego poziomu {{< glossary "SOC" >}} z zadaną prędkością (W).
 
 ### DisableCharge
 
-Wylacz ladowanie baterii. Energia z PV przesylana jest do domu i sieci.
+Wyłącz ładowanie baterii. Energia z PV przesyłana jest do domu i sieci.
 
-## Mapowania dla poszczegolnych falownikow
+## Mapowania dla poszczególnych falowników
 
 - [Deye (Solarman / DeyeCloud / SolarAssistant)]({{< relref "/referencje/mapowania-trybow/deye" >}})
 - [GoodWe]({{< relref "/referencje/mapowania-trybow/goodwe" >}})

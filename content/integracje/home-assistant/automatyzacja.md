@@ -5,12 +5,12 @@ weight: 30
 
 # Automatyzacja Home Assistant
 
-Po skonfigurowaniu [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}}) mozesz tworzyc automatyzacje w Home Assistant, ktore:
+Po skonfigurowaniu [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}}) możesz tworzyć automatyzacje w Home Assistant, które:
 
-- **Wysylaja dane** z czujnikow HA do GbbOptimizer
-- **Reaguja na komendy** otrzymane z GbbOptimizer
+- **Wysyłają dane** z czujników HA do GbbOptimizer
+- **Reagują na komendy** otrzymane z GbbOptimizer
 
-## Wysylanie danych do GbbOptimizer
+## Wysyłanie danych do GbbOptimizer
 
 GbbOptimizer oczekuje danych na topiku `ha_gbb/sensor` (lokalnie w HA; przez bridge trafia jako `<PlantId>/ha_gbb/sensor`).
 
@@ -18,23 +18,23 @@ GbbOptimizer oczekuje danych na topiku `ha_gbb/sensor` (lokalnie w HA; przez bri
 
 | Pole | Opis |
 |------|------|
-| `soc_perc` | {{< glossary "SOC" >}} baterii w procentach (lub `V` jesli zaznaczono sterowanie przez napiecie) |
-| `loads_total_kWh` | Licznik zuzycia (kWh, narastajaco) |
+| `soc_perc` | {{< glossary "SOC" >}} baterii w procentach (lub `V` jeśli zaznaczono sterowanie przez napięcie) |
+| `loads_total_kWh` | Licznik zużycia (kWh, narastająco) |
 | `fromgrid_total_kWh` | Licznik energii pobranej z sieci (kWh) |
-| `togrid_total_kWh` | Licznik energii wyslnej do sieci (kWh) |
+| `togrid_total_kWh` | Licznik energii wysłanej do sieci (kWh) |
 | `pv_total_kWh` | Licznik produkcji PV (kWh) |
 
 ### Pola opcjonalne
 
 | Pole | Opis |
 |------|------|
-| `ev_charge_total_kWh` | Licznik ladowania EV |
-| `hp_total_kWh` | Licznik pompy ciepla |
+| `ev_charge_total_kWh` | Licznik ładowania EV |
+| `hp_total_kWh` | Licznik pompy ciepła |
 | `other1_total_kWh` ... `other6_total_kWh` | Dodatkowe liczniki |
 
 ### Wiele instalacji PV
 
-Aby wyslac dane z kilku plaszczyzn PV, uzyj pola `more`:
+Aby wysłać dane z kilku płaszczyzn PV, użyj pola `more`:
 
 ```json
 {
@@ -47,9 +47,9 @@ Aby wyslac dane z kilku plaszczyzn PV, uzyj pola `more`:
 ```
 
 > [!NOTE]
-> Glowne `pv_total_kWh` odpowiada `number: 1`. Uzywaj albo `pv_total_kWh`, albo `number: 1` w `more` — nie obu jednoczesnie. Odpowiedni numer musi byc skonfigurowany w ustawieniach Plaszczyzny PV -> HomeAssistant.
+> Główne `pv_total_kWh` odpowiada `number: 1`. Używaj albo `pv_total_kWh`, albo `number: 1` w `more` — nie obu jednocześnie. Odpowiedni numer musi być skonfigurowany w ustawieniach Płaszczyzny PV -> HomeAssistant.
 
-### Przyklad automatyzacji — publikacja danych
+### Przykład automatyzacji — publikacja danych
 
 ```yaml
 alias: mqtt_publikacja
@@ -73,48 +73,48 @@ action:
 ```
 
 > [!WARNING]
-> Wartosci mniejsze od 0 sa traktowane jako brak danych (null). Liczniki moga sie zerowac — mozna przesylac np. liczniki dzienne.
+> Wartości mniejsze od 0 są traktowane jako brak danych (null). Liczniki mogą się zerować — można przesyłać np. liczniki dzienne.
 
-### Uwagi dotyczace czesciowego importu danych
+### Uwagi dotyczące częściowego importu danych
 
-- Mozna wysylac **tylko pola opcjonalne**, jesli glowne dane (SOC, zuzycie itp.) sa importowane bezposrednio z falownika. W takim przypadku w menu **IoT** dodaj system HomeAssistant i licznik dla kazdego typu danych opcjonalnych.
-- Pole `pv_total_kWh` mozna wysylac osobno — zostanie dodane do PV z falownika, jesli w **Prognoza PV** -> **Popraw** -> **Zrodlo danych rzeczywistej produkcji PV** ustawiono `HomeAssistant`.
+- Można wysyłać **tylko pola opcjonalne**, jeśli główne dane (SOC, zużycie itp.) są importowane bezpośrednio z falownika. W takim przypadku w menu **IoT** dodaj system HomeAssistant i licznik dla każdego typu danych opcjonalnych.
+- Pole `pv_total_kWh` można wysyłać osobno — zostanie dodane do PV z falownika, jeśli w **Prognoza PV** -> **Popraw** -> **Źródło danych rzeczywistej produkcji PV** ustawiono `HomeAssistant`.
 
 ### Uwagi dla Solarman / DeyeCloud
 
-- Pola `soc_perc`, `fromgrid_total_kWh` i `togrid_total_kWh` mozna wysylac oddzielnie, jesli zaznaczono opcje **"Dane FromGrid, ToGrid i SOC sa wyslane przez HomeAssistant/SolarAssistant"**
-- Pole `loads_total_kWh` mozna przesylac oddzielnie, jesli zaznaczono **"Dane Zuzycia sa wyslane z HomeAssistant/SolarAssistant"**
+- Pola `soc_perc`, `fromgrid_total_kWh` i `togrid_total_kWh` można wysyłać oddzielnie, jeśli zaznaczono opcję **"Dane FromGrid, ToGrid i SOC są wysyłane przez HomeAssistant/SolarAssistant"**
+- Pole `loads_total_kWh` można przesyłać oddzielnie, jeśli zaznaczono **"Dane Zużycia są wysyłane z HomeAssistant/SolarAssistant"**
 
 ## Odbieranie komend z GbbOptimizer
 
-GbbOptimizer wysyla komendy na nastepujace topiki (lokalnie w HA bez prefixu {{< glossary "PlantId" >}}):
+GbbOptimizer wysyła komendy na następujące topiki (lokalnie w HA bez prefixu {{< glossary "PlantId" >}}):
 
 | Topik | Operacja |
 |-------|----------|
-| `ha_gbb/Start_Charge` | Rozpocznij ladowanie baterii z PV/sieci do zadanego SOC |
-| `ha_gbb/Start_Discharge` | Rozpocznij rozladowanie baterii do sieci do zadanego SOC |
-| `ha_gbb/Start_DisableCharge` | Wylacz ladowanie baterii, PV idzie do domu i sieci |
-| `ha_gbb/Start_Normal` | Powrot do normalnej pracy |
-| `ha_gbb/EMS` | Zbiorczy topik z tymi samymi danymi co powyzsze komendy |
+| `ha_gbb/Start_Charge` | Rozpocznij ładowanie baterii z PV/sieci do zadanego SOC |
+| `ha_gbb/Start_Discharge` | Rozpocznij rozładowanie baterii do sieci do zadanego SOC |
+| `ha_gbb/Start_DisableCharge` | Wyłącz ładowanie baterii, PV idzie do domu i sieci |
+| `ha_gbb/Start_Normal` | Powrót do normalnej pracy |
+| `ha_gbb/EMS` | Zbiorczy topik z tymi samymi danymi co powyższe komendy |
 
 ### Payload komend
 
-Kazda komenda wysyla JSON z nastepujacymi polami:
+Każda komenda wysyła JSON z następującymi polami:
 
 | Pole | Typ | Opis |
 |------|-----|------|
 | `Hour` | int | Godzina |
-| `FromMinute` | int | Minuta poczatkowa |
-| `ToMinute` | int | Minuta koncowa |
-| `DischargeLimitW` | int | Limit rozladowania (W) |
-| `ChargeLimitW` | int | Limit ladowania (W) |
+| `FromMinute` | int | Minuta początkowa |
+| `ToMinute` | int | Minuta końcowa |
+| `DischargeLimitW` | int | Limit rozładowania (W) |
+| `ChargeLimitW` | int | Limit ładowania (W) |
 | `InputLimitW` | int | Limit poboru z sieci (W) |
 | `PriceLessZero` | int | 0 = cena normalna, 1 = cena < 0 |
 | `Operation` | string | `"Normal"`, `"Discharge"`, `"DisableCharge"`, `"Charge"` |
 | `SOC` | int | Docelowy poziom SOC |
-| `V` | float | SOC przeliczone na napiecie (jesli sterowanie przez V) |
+| `V` | float | SOC przeliczone na napięcie (jeśli sterowanie przez V) |
 
-### Przyklad automatyzacji — reakcja na komende
+### Przykład automatyzacji — reakcja na komendę
 
 ```yaml
 alias: mqtt_start_charge
@@ -130,4 +130,4 @@ mode: single
 ```
 
 > [!NOTE]
-> Musisz samodzielnie napisac automatyzacje dla kazdej komendy, dostosowane do Twojego falownika i konfiguracji. Powyzszy przyklad jest tylko ilustracja.
+> Musisz samodzielnie napisać automatyzacje dla każdej komendy, dostosowane do Twojego falownika i konfiguracji. Powyższy przykład jest tylko ilustracja.
