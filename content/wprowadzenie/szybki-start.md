@@ -93,6 +93,26 @@ Po ~tygodniu, gdy upewnisz się, że:
 - [Dodawanie falownika Deye przez Solarman](https://youtu.be/y8fhh1UecqQ)
 - [Konfigurowanie cen zakupu i sprzedaży](https://youtu.be/m27uQfO60pc)
 
+## Tylko optymalizacja ładowania EV (bez fotowoltaiki)
+
+Jeśli chcesz optymalizować tylko ładowanie samochodu elektrycznego, bez instalacji PV:
+
+1. Dodaj nową instalację typu **Home Assistant**
+2. Wypełnij pola:
+   - Nazwa
+   - Moc przyłącza — pobieranie
+   - Moc przyłącza — wysyłanie → wpisz **0**
+   - Pojemność kWh baterii → wpisz **0**
+3. Naciśnij **„Zapisz i kontynuj w Szybkiej Konfiguracji"**, na tej stronie:
+   - Odznacz **„Dodaj pierwszą Płaszczyznę PV"**
+   - Zaznacz **„EV: Automatycznie importuj dane z ładowarek EV co godzinę"**
+4. Naciśnij **„Zapisz"** — zostaniesz przeniesiony do menu Ceny:
+   - Wybierz taryfę dystrybutora i sprzedawcy energii
+   - Naciśnij **„Importuj wybrane taryfy"**
+5. Przejdź do modułu [Extra Zużycie / EV]({{< relref "/konfiguracja/dodatkowe-obciazenia-ev" >}}):
+   - W sekcji „Ładowanie EV" dodaj swoją ładowarkę
+   - W sekcji „AutoŁadowanie EV" skonfiguruj warunki ładowania (np. w „Warunki" wybierz „Cena" → 3 najniższe ceny zakupu)
+
 ## Co dalej?
 
 - [Najlepsze praktyki]({{< relref "/wprowadzenie/najlepsze-praktyki" >}}) — porady, jak wyciągnąć z systemu maksimum

@@ -60,3 +60,14 @@ Szczegółowy opis parametrów GbbShunt znajdziesz w [Parametry instalacji]({{< 
 
 > [!NOTE]
 > Dobrze, aby falownik wysyłał dane do Solarman **co 1 minutę** (domyślnie co 5 minut). Zmień ten parametr w ustawieniach falownika.
+
+### GbbShunt Monitor
+
+W interfejsie GbbOptimizer dostępny jest monitor GbbShunt, który wyświetla bieżący stan modułu:
+
+- **Wyliczony SOC** — bieżący SOC obliczony przez GbbShunt
+- **Napięcie baterii** — aktualne napięcie odczytane z falownika
+- **Energia w baterii** — wyliczona energia (kWh) powyżej MinSOC
+- **Stan ładowania / rozładowania** — czy GbbShunt zatrzymał ładowanie lub rozładowanie
+
+Monitor jest przydatny do weryfikacji, czy GbbShunt poprawnie oblicza SOC i reaguje na progi napięciowe.

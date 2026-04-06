@@ -25,6 +25,16 @@ Poniżej opisane są wszystkie parametry konfiguracyjne instalacji w GbbOptimize
 | Jaki % PV jest podłączony po stronie DC? | % | `0%` — wszystkie PV podłączone do AC. `100%` — wszystkie PV podłączone do DC |
 | Szerokość/Długość geograficzna | — | Położenie geograficzne instalacji. Używane przez moduły: Meteo i Prognozy PV |
 
+## Źródła cen
+
+| Parametr | Opis |
+|----------|------|
+| Zakup: Taryfa dla cen zakupu | Źródło zaimportowanych cen zakupu energii |
+| Przesył: Taryfa dla cen przesyłu | Źródło cen przesyłu (transport). Puste = 0 |
+| Sprzedaż: Taryfa dla cen sprzedaży | Źródło zaimportowanych cen sprzedaży energii |
+
+Szczegóły wzorów cenowych — w module [Ceny]({{< relref "/konfiguracja/ceny" >}}).
+
 ## Bateria
 
 | Parametr | Jednostka | Opis |

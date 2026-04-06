@@ -28,7 +28,7 @@ weight: 30
    > Logger pod falownikiem **musi mieć stały adres IP** w sieci lokalnej. Ustaw rezerwację DHCP na routerze.
 
 9. W sekcji **GbbOptimizer** wprowadź {{< glossary "PlantId" >}} i {{< glossary "PlantToken" >}}
-10. Wprowadź adres serwera MQTT
+10. Wprowadź adres serwera MQTT — patrz [Serwery MQTT]({{< relref "/referencje/serwery-mqtt" >}})
 11. W zakładce **Parameters** zaznacz „Start server after program starts", aby komunikacja startowała automatycznie
 12. Naciśnij **StartServer**
 

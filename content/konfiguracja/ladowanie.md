@@ -98,6 +98,9 @@ Konfiguracja:
 > [!NOTE]
 > Jedno Ładowanie może być używane w wielu blokadach, jeśli okresy godzinowe nie nakładają się.
 
+> [!WARNING]
+> Jeśli masz Ładowanie, które zmienia się dynamicznie (np. od 0 do 6), skonfiguruj harmonogram blokowania z **tego samego okresu** (od 0 do 6) **lub dłuższego** (np. od 0 do 9).
+
 ## Zadanie godzinowe
 
 Aby automatycznie optymalizować ładowania i wysyłać dane do instalacji co godzinę:

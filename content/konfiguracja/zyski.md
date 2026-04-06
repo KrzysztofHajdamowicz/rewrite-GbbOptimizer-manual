@@ -30,7 +30,7 @@ Dane wyświetlane są wg godzin, dni lub miesięcy:
 | Do sieci (kWh) | Ile wysłano do sieci |
 | Do sieci zbilansowane (kWh) | Wysłano po bilansowaniu godzinowym (dla Polski) |
 | Cena Sprzedaży | Cena sprzedaży energii |
-| Wartość Sprzedaży | Do sieci [zbilansowane] × Cena Sprzedaży |
+| Wartość Sprzedaży | Do sieci [zbilansowane] × Cena Sprzedaży − Wartość energii wysłanej do sieci |
 | Zużycie (kWh) | Zużycie prądu przez dom |
 | Cena Zużycia | Cena energii zużytej przez dom (wliczając falownik) |
 | Wartość Zużycia | Zużycie kWh × Cena Zużycia |

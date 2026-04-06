@@ -7,6 +7,8 @@ weight: 10
 
 GbbOptimizer wysyła sygnały do zewnętrznych programów (np. Home Assistant) co godzinę, na podstawie prognozy dla bieżącej godziny.
 
+Parametry połączenia z MQTT (adres, port, TLS, ClientID) — patrz [Zapytania / Odpowiedzi]({{< relref "/mqtt-api/zapytania-odpowiedzi" >}}).
+
 > [!NOTE]
 > - Sygnały muszą być najpierw włączone w module [Rozładowanie]({{< relref "/konfiguracja/rozladowanie" >}})
 > - Dany sygnał nie jest wysyłany, jeśli parametr „X" nie jest zdefiniowany (pole puste)
