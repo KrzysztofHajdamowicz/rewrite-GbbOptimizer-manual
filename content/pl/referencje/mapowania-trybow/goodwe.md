@@ -1,7 +1,7 @@
 ---
 title: "GoodWe"
 weight: 20
-translationKey: "goodwe"
+translationKey: "mapowania-goodwe"
 ---
 
 # Mapowanie trybów — GoodWe

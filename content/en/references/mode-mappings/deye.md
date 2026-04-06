@@ -1,7 +1,7 @@
 ---
 title: "Deye"
 weight: 10
-translationKey: "deye"
+translationKey: "mapowania-deye"
 ---
 
 # Mode Mapping — Deye

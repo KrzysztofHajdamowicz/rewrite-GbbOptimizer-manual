@@ -1,7 +1,7 @@
 ---
 title: "Hinen"
 weight: 30
-translationKey: "hinen"
+translationKey: "mapowania-hinen"
 ---
 
 # Mapowanie trybów — Hinen

@@ -1,7 +1,7 @@
 ---
 title: "Sofar"
 weight: 40
-translationKey: "sofar"
+translationKey: "mapowania-sofar"
 ---
 
 # Mode Mapping — Sofar
