@@ -1,6 +1,23 @@
 baseURL = "https://krzysztofahajdamowicz.github.io/rewrite-GbbOptimizer-manual/"
-locale = "pl"
-title = "GbbOptimizer — Podręcznik"
+defaultContentLanguage = "pl"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.pl]
+    languageName = "Polski"
+    contentDir = "content/pl"
+    title = "GbbOptimizer — Podręcznik"
+    weight = 1
+    [languages.pl.params]
+      BookEditPath = "edit/main/content/pl"
+
+  [languages.en]
+    languageName = "English"
+    contentDir = "content/en"
+    title = "GbbOptimizer — Manual"
+    weight = 2
+    [languages.en.params]
+      BookEditPath = "edit/main/content/en"
 
 [module]
   [[module.imports]]
@@ -12,7 +29,7 @@ title = "GbbOptimizer — Podręcznik"
   BookSection = "/"
   BookSearch = true
   BookRepo = "https://github.com/KrzysztofHajdamowicz/rewrite-GbbOptimizer-manual"
-  BookEditPath = "edit/main/content"
+  BookTranslatedOnly = true
 
 [markup]
   [markup.highlight]

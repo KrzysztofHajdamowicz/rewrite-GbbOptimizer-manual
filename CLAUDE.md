@@ -21,7 +21,8 @@ A Hugo static site rewriting the GbbOptimizer user manual (solar energy battery 
 - Theme: `github.com/alex-shpak/hugo-book` — Wiki-style sidebar, collapsible sections, built-in search
 - Custom SCSS **must** be at `assets/_custom.scss` (not `assets/scss/custom.scss`) — this is where hugo-book imports it
 - `markup.goldmark.renderer.unsafe = true` in `hugo.toml` — required for shortcode HTML output
-- Locale config uses `locale = "en"` (not the deprecated `languageCode`)
+- **Multilingual**: configured via `[languages]` block in `hugo.toml`. Polish is the default language (`defaultContentLanguage = "pl"`, no URL prefix). English lives under `/en/` prefix.
+- `BookTranslatedOnly = true` — language switcher only shows links for pages that have a translation
 - Do NOT add `"JSON"` to `[outputs] home` — hugo-book search uses `assets/search-data.json` via JS, not Hugo's JSON output format
 
 ### Markdown alerts (not shortcodes)
@@ -53,8 +54,9 @@ When updating the hugo-book theme, check if these fixes were merged upstream and
 ### Cross-linking
 
 - Between pages: `{{< relref "/path/to/page" >}}`
-- Glossary terms: `{{< glossary "PlantId" >}}` — renders as tooltip link, data from `data/glossary.yaml`
+- Glossary terms: `{{< glossary "PlantId" >}}` — renders as tooltip link, data from `data/glossary/<lang>.yaml`
 - Glossary key derivation: term is lowercased, non-alphanumeric chars stripped (`PlantId` → `plantid`)
+- Glossary shortcode automatically resolves the correct language's data and glossary page via `translationKey`
 
 ### MQTT API documentation shortcodes
 
@@ -120,37 +122,53 @@ uv add <package>
 
 ## Content structure
 
+Content is organized per language using Hugo's `contentDir` approach:
+
 ```
 content/
-├── getting-started/     # Welcome, Quick Start, How It Works
-├── configuration/       # All optimizer modules (9 pages)
-├── integrations/
-│   ├── inverters/       # Victron, Deye, Goodwe, Afore, Hinen, Sofar
-│   ├── connection-methods/  # Solarman, DeyeCloud, GbbConnect2, DongleDirect
-│   ├── home-assistant/  # Mosquitto, SolarAssistant, Automation, Charts
-│   └── other/           # Evcc, Tuya, Supla
-├── mqtt-api/            # Swagger-like MQTT reference (6 pages)
-├── reference/           # Glossary, errors, comparisons, mode mappings
-└── advanced/            # IoT procedures, GBB Shunt
+├── pl/                        # Polish (default, no URL prefix)
+│   ├── wprowadzenie/          # Introduction
+│   ├── instalacja/            # Installation (inverters, connection methods)
+│   ├── konfiguracja/          # Configuration (9 pages)
+│   ├── integracje/            # Integrations (HA, Evcc, Tuya, Supla)
+│   ├── mqtt-api/              # MQTT API reference (6 pages)
+│   ├── referencje/            # References (glossary, errors, mode mappings)
+│   └── zaawansowane/          # Advanced (IoT procedures, GBB Shunt)
+└── en/                        # English (URL prefix: /en/)
+    ├── introduction/
+    ├── installation/
+    ├── configuration/
+    ├── integrations/
+    ├── mqtt-api/
+    ├── references/
+    └── advanced/
 ```
+
+### Multilingual conventions
+
+- Each content file **must** have a `translationKey` in front matter to link PL↔EN pages
+- Convention: use the Polish filename (without `.md`) as the key, or directory name for `_index.md`
+- Example: `translationKey: "szybki-start"` in both `content/pl/wprowadzenie/szybki-start.md` and `content/en/introduction/quick-start.md`
+- Glossary data lives in `data/glossary/pl.yaml` and `data/glossary/en.yaml` (same keys, translated values)
 
 ## Adding new content
 
-1. Create `.md` file in the appropriate section
-2. Add front matter: `title` and `weight`
-3. Use `{{< glossary "Term" >}}` for key terms (must exist in `data/glossary.yaml`)
-4. Use `{{< relref "/path" >}}` for cross-links
-5. Use native `> [!NOTE]` / `> [!WARNING]` for callouts
-6. For MQTT docs, use `mqtt-endpoint` and `mqtt-topic` shortcodes
+1. Create `.md` file in the appropriate language's content directory (`content/pl/` or `content/en/`)
+2. Add front matter: `title`, `weight`, and `translationKey`
+3. If adding a translation, use the **same `translationKey`** as the existing page in the other language
+4. Use `{{< glossary "Term" >}}` for key terms (must exist in `data/glossary/<lang>.yaml`)
+5. Use `{{< relref "/path" >}}` for cross-links
+6. Use native `> [!NOTE]` / `> [!WARNING]` for callouts
+7. For MQTT docs, use `mqtt-endpoint` and `mqtt-topic` shortcodes
 
 ## Adding glossary terms
 
-Edit `data/glossary.yaml`:
+Edit both `data/glossary/pl.yaml` and `data/glossary/en.yaml`:
 ```yaml
-termkey:            # lowercase, no special chars
-  term: "TermName"  # display name
+termkey:            # lowercase, no special chars — must be the same in both files
+  term: "TermName"  # display name (usually not translated for technical terms)
   short: "One-line definition for tooltips"
-  long: "Extended definition for glossary page"
+  definition: "Extended definition for glossary page"
 ```
 
 ## CI/CD

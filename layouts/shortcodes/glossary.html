@@ -1,8 +1,20 @@
 {{- $term := .Get 0 -}}
 {{- $key := $term | lower | replaceRE "[^a-z0-9]+" "" -}}
-{{- $entry := index hugo.Data.glossary $key -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- $glossaryData := index hugo.Data.glossary $lang -}}
+{{- $entry := index $glossaryData $key -}}
 {{- if $entry -}}
-<a href="{{ relURL "/referencje/slowniczek" }}#{{ $key }}" class="glossary-term" title="{{ $entry.short }}">{{ $entry.term }}</a>
+{{- $glossaryPage := "" -}}
+{{- range .Page.Site.Pages -}}
+  {{- if eq .Params.translationKey "slowniczek" -}}
+    {{- $glossaryPage = . -}}
+  {{- end -}}
+{{- end -}}
+{{- if $glossaryPage -}}
+<a href="{{ $glossaryPage.RelPermalink }}#{{ $key }}" class="glossary-term" title="{{ $entry.short }}">{{ $entry.term }}</a>
+{{- else -}}
+<span class="glossary-term" title="{{ $entry.short }}">{{ $entry.term }}</span>
+{{- end -}}
 {{- else -}}
 <span class="glossary-term--missing" title="Glossary entry not found: {{ $term }}">{{ $term }}</span>
 {{- end -}}

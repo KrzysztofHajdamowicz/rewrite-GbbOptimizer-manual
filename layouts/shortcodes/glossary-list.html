@@ -1,5 +1,7 @@
 <div class="glossary-list">
-{{- range $key, $entry := hugo.Data.glossary -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- $glossaryData := index hugo.Data.glossary $lang -}}
+{{- range $key, $entry := $glossaryData -}}
 <div class="glossary-entry" id="{{ $key }}">
   <h3>{{ $entry.term }}</h3>
   <p>{{ $entry.definition }}</p>
