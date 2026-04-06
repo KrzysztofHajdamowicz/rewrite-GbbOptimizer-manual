@@ -106,6 +106,18 @@ hugo server --buildDrafts --navigateToChanged
 
 Site serves at `http://localhost:1313/rewrite-GbbOptimizer-manual/`
 
+### Python scripts (uv)
+
+Python scripts (e.g. `originals/convert_html.py`) use **uv** for dependency management. Dependencies are declared in `pyproject.toml`.
+
+```bash
+# Run a Python script (uv auto-uses the .venv in the repo root):
+uv run python3 originals/convert_html.py
+
+# Add a new dependency:
+uv add <package>
+```
+
 ## Content structure
 
 ```

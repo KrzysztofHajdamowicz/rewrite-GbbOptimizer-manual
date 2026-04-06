@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Optimization of hybrid inverters as Victron (like Dynamic ESS, DESS), Deya to increase profits.">
+    <title>Manual - GbbOptimizer</title>
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/bootstrap.min.css"> 
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/site.css">
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/GbbVictronWeb.styles.css">
+    
+    <style>
+        tbody, td, tfoot, th, thead, tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 1px;
+            padding: 0.3rem;
+        }
+    </style>
+
+</head>
+<body>
+        
+
+
+
+
+        <header b-c1dh7t3kmm="" style="position: fixed;  top: 0;  width: 100vw; z-index: 10">
+            <nav b-c1dh7t3kmm="" class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light bg-black border-bottom box-shadow mb-3">
+                <div b-c1dh7t3kmm="" class="container">
+                    <div b-c1dh7t3kmm="" class="navbar-brand">
+                        <a class="navbar-brand" href="https://gbboptimizer10.gbbsoft.pl/">
+                                     🐰
+                                     GbbOptimizer(v18.33)
+                                     🐏
+                        </a>
+                        <br b-c1dh7t3kmm="">
+                        
+
+<div>
+        <form id="NextPlant" method="post" class="form-horizontal" role="form" action="/Plants/Next?returnUrl=~%2FManual%3FFilters.PageNo%3D19">
+            <button type="submit" class="border-0">
+                <div style="font-size:0.7em">
+                    Dom
+                </div>
+            </button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV2ASkl6ZXPigwAfcXZu9ArlZqtIQGjYC62iMD2FtjLYP6JMelnHrubLl-b2XVJHSpPKLpn5c-gi83DoELPGRgFAp6bhxDeTu8WsxHQt705QvNPzbTOx3uxUYDAYtz---37eJEQXWU6KL2Ve1iqQz5gg1qqnwiG3GgFRdBV9hxAQeA"></form>
+</div>
+                    </div>
+                    <button b-c1dh7t3kmm="" class="navbar-toggler d-print-none" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span b-c1dh7t3kmm="" class="navbar-toggler-icon"></span>
+                    </button>
+                    <div b-c1dh7t3kmm="" class="navbar-collapse collapse d-xl-inline-flex justify-content-between">
+                        <ul b-c1dh7t3kmm="" class="navbar-nav flex-grow-1 d-print-none navbar-nav-scroll">
+                                <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Plants">Instalacje</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Forecast">Prognoza Baterii</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Inverters">Prognoza PV</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/WindTurbineForecast">Wiatrak</a></li>
+                                        <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Schedules">Ładowanie z sieci</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LoadProfiles">Profile Zużycia</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LoadsExtra">EV/Extra Zużycie</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/IoT_Systems">IoT</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/HPForecast">Prognoza PC/Klima</a></li>
+                                        <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/DischargePlans">Rozładowanie do sieci</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/SellingPrices">Ceny</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/History">Zyski</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Companies/Installer">Instalator</a></li>
+                                <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LogView?PlantId=297">Log</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Manual">Manual</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/About">O programie</a></li>
+
+                        </ul>
+                        
+
+<div>
+    <form id="selectLanguage" method="post" class="form-horizontal" role="form" action="/SetLanguage?returnUrl=~%2FManual%3FFilters.PageNo%3D19">
+            <button type="submit" class="border-0">
+                <svg width="28" height="22" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" rx="2" fill="white"></rect><mask id="mask0_267_1153" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20" style="mask-type: luminance;"><rect width="28" height="20" rx="2" fill="white"></rect></mask><g mask="url(#mask0_267_1153)"><rect width="28" height="20" fill="#0A17A7"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M-1.2825 -1.9165L10.6666 6.14329V-1.33339H17.3333V6.14329L29.2824 -1.9165L30.7736 0.294263L21.3262 6.66661H28V13.3333H21.3262L30.7736 19.7056L29.2824 21.9164L17.3333 13.8566V21.3333H10.6666V13.8566L-1.2825 21.9164L-2.77368 19.7056L6.67371 13.3333H-3.14713e-05V6.66661H6.67371L-2.77368 0.294263L-1.2825 -1.9165Z" fill="white"></path><path d="M18.668 6.33219L31.3333 -2" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M20.0128 13.6975L31.3667 21.3503" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M8.00549 6.31042L-3.83752 -1.67102" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M9.29 13.6049L-3.83752 22.3104" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M0 12H12V20H16V12H28V8H16V0H12V8H0V12Z" fill="#E6273E"></path></g></svg>
+            </button>
+            <input name="nextculture" value="en" hidden="">
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV2ASkl6ZXPigwAfcXZu9ArlZqtIQGjYC62iMD2FtjLYP6JMelnHrubLl-b2XVJHSpPKLpn5c-gi83DoELPGRgFAp6bhxDeTu8WsxHQt705QvNPzbTOx3uxUYDAYtz---37eJEQXWU6KL2Ve1iqQz5gg1qqnwiG3GgFRdBV9hxAQeA"></form>
+</div>
+                        
+
+
+<ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link " title="krzysztof@hajdamowicz.info" href="https://gbboptimizer10.gbbsoft.pl/Identity/Account/Manage">Konto </a>
+        </li>
+            <li class="nav-item d-print-none">
+            <form class="form-inline" method="post" action="/Identity/Account/Logout">
+                <button type="submit" class="nav-link btn btn-link ">Wyloguj</button>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV2ASkl6ZXPigwAfcXZu9ArlZqtIQGjYC62iMD2FtjLYP6JMelnHrubLl-b2XVJHSpPKLpn5c-gi83DoELPGRgFAp6bhxDeTu8WsxHQt705QvNPzbTOx3uxUYDAYtz---37eJEQXWU6KL2Ve1iqQz5gg1qqnwiG3GgFRdBV9hxAQeA"></form>
+        </li>
+</ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <div b-c1dh7t3kmm="" class="container">
+        <main b-c1dh7t3kmm="" role="main" class="pb-3" style="padding-top: 6em">
+                    <div b-c1dh7t3kmm="" style="text-align:center; padding:2rem 1rem 1rem 1rem;" class="mb-2 bg-warning text-light rounded-3">
+                        <h3>Due to issues with Solarman, I suggest adding DeyeCloud as an additional connection (or changing the plant type to DeyeCloud)<br>
+Z powodu nie działania Solarmana, proponuje dodać DeyeCloud jako dodatkowe połączenie (lub zmienić typ instalacji na DeyeCloud)</h3>
+
+<h3><a href="https://discord.com/channels/1119519533498126380/1294610337936441357/1488872450157711420">https://discord.com/...</a></h3>
+
+                    </div>
+
+            
+
+
+
+
+<h2>Manual</h2>
+
+
+
+
+<div class="mt-2 accordion d-print-none" id="accordion1">
+    <div class="accordion-item">
+        <div class="accordion-header" id="heading1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    Filtry
+            </button>
+        </div>
+        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+            <div class="accordion-body">
+
+                <form class="form-inline" id="FilterForm">
+
+                    <div class="row row-cols-sm-auto g-3 align-items-center">
+                        <div class="col-12">
+                            <label class="my-1 mr-2" for="Filters_PageNo">Rozdział:</label>
+                            <select class="my-1 mr-sm-2 form-control" onchange="SubmitFilterForm()" id="Filters_PageNo" name="Filters.PageNo">
+                            <option value="3">Jak zacząć?</option>
+<option value="6">menu: Prognoza Baterii</option>
+<option value="39">Parametry instalacji</option>
+<option value="2">menu: Ładowanie</option>
+<option value="7">menu: Profile Zużycia</option>
+<option value="25">menu: Extra Zużycie/EV</option>
+<option value="16">menu: Prognoza PC/Klima</option>
+<option value="1">menu: Rozładowanie</option>
+<option value="27">menu: Ceny</option>
+<option value="12">menu: Zyski</option>
+<option value="33">Err: Najczęstsze błędy otrzymane w emailach z programu</option>
+<option value="35">Compare different way to connect to inverter (Deye)</option>
+<option value="23">Tuya: Jak uzyskać Access ID/Client ID i Access Secret/Client Secret?</option>
+<option value="24">Supla: Jak tworzyć linki?</option>
+<option value="40">Evcc.io: Connection Evcc.io to GbbOptimizer</option>
+<option value="37">IoT: C# Procedure: App object</option>
+<option value="13">Victron: Lista kontrolna</option>
+<option value="21">Victron: topics/properties changed by program</option>
+<option value="18">Solarman: Jak połączyć się z inwerterem poprzez Solarman?</option>
+<option value="36">DongleDirect: konfiguracja</option>
+<option value="31">GbbConnect2: Jak połączyć GbbConnect z Deye i GbbOptimizer</option>
+<option value="32">GbbConnect2: protocol between GbbConnect2 and GbbOptimizer (ModbusInMqtt)</option>
+<option value="9">Jak integrować z Home Assistant?</option>
+<option value="10">Home Assistant z SolarAssisntant i inwerterem hybrydowym Deye</option>
+<option value="11">Home Assistant z Automation</option>
+<option value="26">Deye: Lista kontrolna</option>
+<option value="20">Deye: Map Protocol Modes to inverter settings</option>
+<option value="29">Goodwe: Jak uzyskać dostęp do OpenAPI?</option>
+<option value="28">Goodwe: Map Protocol Modes to inverter settings</option>
+<option value="30">Afore: Map Protocol Modes to inverter settings</option>
+<option value="34">Hinen: Map Protocol Modes to inverter settings</option>
+<option value="38">Sofar: Map Protocol Modes to inverter settings</option>
+<option selected="selected" value="19">MQTT: Protocols between GbbVictronWeb and external program (by mqtt)</option>
+<option value="22">List of inverter modes</option>
+<option value="14">Addresses of Mqtt servers</option>
+</select>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="my-1 btn btn-secondary">Pokaż</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-2 text-danger validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+
+<form id="edit-form" method="post">
+
+
+    <div class="mt-2 accordion d-print-none" id="accordion2">
+        <div class="accordion-item">
+            <div class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    Rozdział
+                </button>
+            </div>
+            <div id="collapse2" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion2">
+                <div class="accordion-body">
+
+
+                    <div>
+                        <h2>Mqtt</h2>
+
+<p>GbbOptimizer (ex. GbbVictronWeb) uses Mqtt protocol to receive requests from external program (e.g. Home Assistant).</p>
+
+<p>External program should connect to Mqtt with:</p>
+
+<ul>
+	<li>Address:&nbsp;<a href="https://gbboptimizer.gbbsoft.pl/Manual?PageNo=14" rel="nofollow">see here</a></li>
+	<li>Port: 8883</li>
+	<li>User: {PlantId}</li>
+	<li>Password: {PlantToken}</li>
+	<li>UseTTL: true</li>
+	<li>ClientID should end with:&nbsp;_{PlantId}</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h1>1. Signals send from mqtt to external program:</h1>
+
+<ul>
+	<li>Signals must be first enable in 'Discharge Plan' module.</li>
+	<li>Data are calculated based on forecast for current hour.</li>
+	<li>Signals are send every hour.</li>
+	<li>Given signal is not send if "X" is not defined in "Discharge Plan" (field is empty in form)</li>
+</ul>
+
+<p>External program can subscribe to following signals:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<tbody>
+		<tr>
+			<td>Topic</td>
+			<td>Payload</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/SOCHigherEqThanX</td>
+			<td>"1" if SOC &gt;= x, otherwise "0"</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/SOCLowerEqThanX</td>
+			<td>"1" if SOC &lt;= x, otherwise "0"</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/SellingPriceHigherEqThanX</td>
+			<td>"1" if SellingPrice &gt;= x, otherwise "0"</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/SellingPriceLowerEqThanX</td>
+			<td>"1" if SellingPrice &lt;= x, otherwise "0"</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/FromGridHigherEqThanX</td>
+			<td>"1" if FromGrid &gt;= x, otherwise "0"</td>
+		</tr>
+		<tr>
+			<td>{PlantId}/signals/ToGridHigherEqThanX</td>
+			<td>"1" if ToGrid &gt;= x, otherwise "0"</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Program also send json data on topic: {PlantId}/signals/data</p>
+
+<table border="1" cellpadding="5" cellspacing="0" style="width:500px">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>Type</td>
+			<td>Value</td>
+		</tr>
+		<tr>
+			<td>SOC</td>
+			<td>int</td>
+			<td>SOC value (%) on start of hour</td>
+		</tr>
+		<tr>
+			<td>SellingPrice</td>
+			<td>decimal</td>
+			<td>Current&nbsp;SellingPrice (missing if no price)</td>
+		</tr>
+		<tr>
+			<td>PurchasePrice</td>
+			<td>decimal</td>
+			<td>Current&nbsp;PurchasePrice (missing if no price)</td>
+		</tr>
+		<tr>
+			<td>FromGrid_kWh</td>
+			<td>decimal</td>
+			<td>Forecasted FromGrid</td>
+		</tr>
+		<tr>
+			<td>ToGrid_kWh</td>
+			<td>decimal</td>
+			<td>Forecasted&nbsp;ToGrid_kWh</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h1>2. Requests to program by mqtt:</h1>
+
+<ul>
+	<li>Send requests to {PlantId}/ha_gbb/dataserver/serverrequest</li>
+	<li>Listen for answers on {PlantId}/ha_gbb/dataserver/serverresponse</li>
+</ul>
+
+<p>For compatible with previous versions program also support following (not recommended):</p>
+
+<ul>
+	<li>Send requests to {PlantId}/dataserver/serverrequest</li>
+	<li>Listen for answers on {PlantId}/dataserver/serverresponse</li>
+</ul>
+
+<h2>Response with error</h2>
+
+<p>For every request there can be response with error:</p>
+
+<p>{"Operation": “xxx”, "Status": “ERROR”, "ErrDesc": “any description of error”}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>operation from request</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>String</td>
+			<td>“ERROR”</td>
+		</tr>
+		<tr>
+			<td>ErrDesc</td>
+			<td>String</td>
+			<td>Any description of error for user.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>&nbsp;</h2>
+
+<h2>Operation BatteryForecast_GetChartData</h2>
+
+<p>Return information about battery forecast.</p>
+
+<h3>&nbsp;</h3>
+
+<h3>Request from External Program:</h3>
+
+<p>{"Operation": "BatteryForecast_GetChartData"}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“BatteryForecast_GetChartData”</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>&nbsp;</h3>
+
+<h3>Response from GbbOptimizer</h3>
+
+<p>{"Operation": "BatteryForecast_GetChartData", "Status": “OK”, 
+"BatteryForecast_GetChartData": [ {"Hour": 7, "StartBattery_Perc": 13.5,
+ ...}, ...]}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>&nbsp;</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“BatteryForecast_GetChartData”</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“OK”</td>
+		</tr>
+		<tr>
+			<td>BatteryForecast_GetChartData</td>
+			<td>&nbsp;</td>
+			<td>Table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Day</td>
+			<td>date</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Hour</td>
+			<td>Integer 0-23</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartBattery_Perc</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartBattery_kWh</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartBattery_kWhAC</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PVForecast_Perc</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PVForecast_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PVForecast_kWhAC</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Loads_Perc</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Loads_kWh</td>
+			<td>decimal, optional</td>
+			<td>with ExtraLoad</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Loads_kWhAC</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>GridCharge_Perc</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>GridCharge_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>GridCharge_kWhAC</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Discharge_Perc</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Discharge_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Discharge_kWhAC</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>EndBattery_Perc</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>EndBattery_kWh</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>EndBattery_kWhAC</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>EndBattery_Price</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Profit_Amount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Purchase_Price</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Purchase_Amount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Sale_Price</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Sale_Amount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_kWh</td>
+			<td>decimal, optional</td>
+			<td>the same as Loads_kWh</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_Price</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_Amount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_ElectricVehicle</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_HeatingPump</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic1</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic2</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic3</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic4</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic5</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoadsKW_Generic6</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>&nbsp;</h2>
+
+<h2>Operation History_GetHours</h2>
+
+<p>Returns information about hour history from Gain/Profits module.</p>
+
+<h3>&nbsp;</h3>
+
+<h3>Request from External Program:</h3>
+
+<p>{"Operation": "History_GetHours", "FromDate": "2024-01-01", "ToDate": "2024-01-01"}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetDays”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromDate</td>
+			<td>Date, optional</td>
+			<td>"2024-01-01"</td>
+			<td>if omitted: today</td>
+		</tr>
+		<tr>
+			<td>ToDate</td>
+			<td>Date, optional</td>
+			<td>"2024-01-01"</td>
+			<td>if omitted: today</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Second form:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetHours”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>String</td>
+			<td>"curr_day" or "prev_day" or "today_yesterday"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>AddPeriodToProperty</td>
+			<td>int, optional</td>
+			<td>1</td>
+			<td>if 1 then in responce "History_Hours" will be sufixed with "_[Period]", eg. "History_Hour_curr_day"</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>&nbsp;</h3>
+
+<h3>Response from GbbOptimizer</h3>
+
+<p>{"Operation": "History_GetHours", "Status": “OK”, "History_Hours": [ {"Day": ...]}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>&nbsp;</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“History_GetDays”</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“OK”</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>String, optional</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromDate</td>
+			<td>Date</td>
+			<td>"2024-01-01"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>ToDate</td>
+			<td>Date</td>
+			<td>"2024-01-03"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>History_Hours</td>
+			<td>&nbsp;</td>
+			<td>Table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Hour</td>
+			<td>decimal</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Day</td>
+			<td>date</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PurchaseAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SaleAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ConsumptionAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ProfitAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Solar_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToBattery_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Min</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Max</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Start</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_End</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>BattChange_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>LostPower_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromPV_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToLoads_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Start_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>End_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueStartAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueEndAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueChangeAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>&nbsp;</h2>
+
+<h2>Operation History_GetDays</h2>
+
+<p>Returns information about day history from Gain/Profits module.</p>
+
+<h3>&nbsp;</h3>
+
+<h3>Request from External Program:</h3>
+
+<p>{"Operation": "History_GetDays", "FromDate": "2024-01-01", "ToDate": "2024-01-03"}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetDays”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromDate</td>
+			<td>Date, optional</td>
+			<td>"2024-01-01"</td>
+			<td>if omitted: today</td>
+		</tr>
+		<tr>
+			<td>ToDate</td>
+			<td>Date, optional</td>
+			<td>"2024-01-03"</td>
+			<td>if omitted: today</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Second form:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetDays”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>String</td>
+			<td>"curr_month" or "prev_month" or "curr_year" or "prev_year"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>AddPeriodToProperty</td>
+			<td>int, optional</td>
+			<td>1</td>
+			<td>if 1 then in responce "History_Days" will be sufixed with "_[Period]", eg. "History_Days_prev_month"</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>&nbsp;</h3>
+
+<h3>Response from GbbOptimizer</h3>
+
+<p>{"Operation": "History_GetDays", "Status": “OK”, "History_Days": [ {"Day": ...]}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>&nbsp;</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“History_GetDays”</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“OK”</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>String, optional</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromDate</td>
+			<td>Date</td>
+			<td>"2024-01-01"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>ToDate</td>
+			<td>Date</td>
+			<td>"2024-01-03"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>History_Days</td>
+			<td>&nbsp;</td>
+			<td>Table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Day</td>
+			<td>date</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PurchaseAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SaleAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ConsumptionAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ProfitAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Solar_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToBattery_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Min</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Max</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Start</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_End</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>BattChange_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>LostPower_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromPV_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToLoads_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Start_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>End_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueStartAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueEndAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueChangeAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>&nbsp;</h2>
+
+<h2>Operation History_GetMonths</h2>
+
+<p>Returns information about month history from Gain/Profits module.</p>
+
+<h3>&nbsp;</h3>
+
+<h3>Request from External Program:</h3>
+
+<p>{"Operation": "History_GetMonths", "FromYear": 2024, "FromMonth": 1, "ToYear": 2024, "ToMonth": 2}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetMonths”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromYear</td>
+			<td>int, optional</td>
+			<td>2024</td>
+			<td>if omitted: current year</td>
+		</tr>
+		<tr>
+			<td>FromMonth</td>
+			<td>int, optional</td>
+			<td>1</td>
+			<td>if omitted: current month</td>
+		</tr>
+		<tr>
+			<td>ToYear</td>
+			<td>int, optional</td>
+			<td>2024</td>
+			<td>if omitted: current year</td>
+		</tr>
+		<tr>
+			<td>ToMonth</td>
+			<td>int, optional</td>
+			<td>2</td>
+			<td>if omitted: current month</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Second form:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Remarks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>String</td>
+			<td>“History_GetMonths”</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>String</td>
+			<td>"curr_month" or "prev_month" or "curr_year" or "prev_year"</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>AddPeriodToProperty</td>
+			<td>int, optional</td>
+			<td>1</td>
+			<td>if 1 then in responce "History_Months" will be sufixed with "_[Period]", eg: "History_Months_prev_month"</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>&nbsp;</h3>
+
+<h3>Response from GbbOptimizer</h3>
+
+<p>{"Operation": "History_GetMonths", "Status": “OK”, "History_Months": [ {"Year": ...]}</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>&nbsp;</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Operation</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“History_GetMonths”</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>“OK”</td>
+		</tr>
+		<tr>
+			<td>Period</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>FromYear</td>
+			<td>&nbsp;</td>
+			<td>String</td>
+			<td>2024</td>
+		</tr>
+		<tr>
+			<td>FromMonth</td>
+			<td>&nbsp;</td>
+			<td>int</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>ToYear</td>
+			<td>&nbsp;</td>
+			<td>int</td>
+			<td>2024</td>
+		</tr>
+		<tr>
+			<td>ToMonth</td>
+			<td>&nbsp;</td>
+			<td>int</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>History_Month</td>
+			<td>&nbsp;</td>
+			<td>Table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Day</td>
+			<td>date</td>
+			<td>First day of month</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Year</td>
+			<td>int</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Month</td>
+			<td>int</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>FromGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PurchaseAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToGrid2_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SaleAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Consumption_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ConsumptionAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ProfitAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Solar_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ToBattery_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Min</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Max</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_Start</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_End</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>BattChange_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>LostPower_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeFromPV_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToGrid_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>DischargeToLoads_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Start_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>End_kWh</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueStartAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueEndAmount</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ValueChangeAmount</td>
+			<td>decimal, optional</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h1>3. Changes data in program</h1>
+
+<h2>Change manual prices</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/setmanualprices</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Date</td>
+			<td>Date, required</td>
+			<td>Date of price</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartHour</td>
+			<td>int, hour (0-23), required</td>
+			<td>Start hour of price</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartMinute</td>
+			<td>int, minute (0-59), optional</td>
+			<td>Start minute of hour, if missing then 0</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>PurchasePrice</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>TransferPrice</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SalePrice</td>
+			<td>decimal, optional</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br>
+example:</p>
+
+<p>{ "Data": [ {"Date": "2024-04-20", "StartHour": 20, "PurchasePrice": 0.23} ] }</p>
+
+<p>&nbsp;</p>
+
+<h2>Change extra loads</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/setextraloads</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Date</td>
+			<td>Date, required</td>
+			<td>Date of extra loads (today or tomorrow)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartHour</td>
+			<td>int, hour (0-23), required</td>
+			<td>Start hour of extra loads</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>StartMinute</td>
+			<td>int, minute (0-59), optional</td>
+			<td>Start minute of hour, if missing then 0</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>TypeNo</td>
+			<td>int, required</td>
+			<td>0 - EV, 1 - HeatPump, 2 - Other1, 3 - Other2, ..., 7 - Other6</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ExtraLoads_kWh</td>
+			<td>decimal, required</td>
+			<td>kWh</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br>
+example:</p>
+
+<p>{ "Data": [ {"Date": "2024-04-20", "StartHour": 20, "TypeNo": 1,&nbsp;"ExtraLoads": 1.23} ] }</p>
+
+<p>&nbsp;</p>
+
+<h2>Change real temperature</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/setrealtemperature</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>table</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Date</td>
+			<td>Date, required</td>
+			<td>Date of extra loads (yesterday, today or tomorrow)<br>
+			If Hour is not present than hour is taken from Date, otherwise time (hour and minutes) are ignored</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Hour</td>
+			<td>int, hour (0-23), optional</td>
+			<td>Hour of temperature</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>RealTemperature</td>
+			<td>decimal, required</td>
+			<td>stC</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br>
+example:</p>
+
+<p>{ "Data": [ {"Date": "2024-04-20", "Hour": 20, "RealTemperature": 1.23} ] }</p>
+
+<p>&nbsp;</p>
+
+<h2>Set optimizer parameters</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/setoptimizer</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>object</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Opt2_3x100Request</td>
+			<td>int, optional</td>
+			<td>0 or 1</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>CurrentLoadProfileId</td>
+			<td>int, optional</td>
+			<td>Id of LoadProfile</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>CurrentLoadProfileName</td>
+			<td>string, optional</td>
+			<td>Name of LoadProfile (case are not important)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><br>
+example:</p>
+
+<p>{ "Data": {"Opt2_3x100Request": 1}&nbsp;}</p>
+
+<p>&nbsp;</p>
+
+<h2>Set car parameters</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/setcar</p>
+
+<p>Remark: 'HomeAssistant EV Car' must be added first (one)</p>
+
+<p>Remark2: only given parameters are changed, so in different payload 
+different parameters can be changes. But program required following 
+information to be up to 
+date:&nbsp;SOC,&nbsp;SOC_ChargeLimit,&nbsp;IsConnected,&nbsp;IsCharging,
+ Position_Longitude,&nbsp;Position_Latitude</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>Table</td>
+			<td>More then one car can be update</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>VIN</td>
+			<td>string, required</td>
+			<td>Key to search existing car. If new VIN than new car is added (up to 10 cars)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>BatteryKWh</td>
+			<td>decimal, optional</td>
+			<td>Car battery size</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>ChargeA</td>
+			<td>decimal, optional</td>
+			<td>Default car charge A</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Phases</td>
+			<td>int, optional</td>
+			<td>1 or 3 phases of charge</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC</td>
+			<td>int, optional</td>
+			<td>Current SOC</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>SOC_ChargeLimit</td>
+			<td>int, optional</td>
+			<td>Target SOC</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>InService</td>
+			<td>bool, optional</td>
+			<td>is car in service?</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>IsConnected</td>
+			<td>bool, optional</td>
+			<td>is car connected to charge?</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>IsCharging</td>
+			<td>bool, optional</td>
+			<td>is car is cahrging now?</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>Position_Longitude,&nbsp;Position_Latitude</td>
+			<td>double, optional</td>
+			<td>Current car position</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>example:</p>
+
+<p>{ "Data": [ {"VIN":"vin1234", "SOC":40, "SOC_ChargeLimit": 90} ], [ {"VIN":"vin4321", "InService": true] }</p>
+
+<p>&nbsp;</p>
+
+<h2>Set HP&nbsp;parameters</h2>
+
+<p>Topic with data send to program: {plantId}/ha_gbb/api/sethp</p>
+
+<p>Remark: only given parameters are changed.</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>&nbsp;</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>&nbsp;</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>object</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>HPForecast_Break_On</td>
+			<td>bool, optional</td>
+			<td>HP doesn't work: on/off</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>HPForecast_BreakFromDate</td>
+			<td>date, optional</td>
+			<td>Start Date</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>HPForecast_BreakFromHour</td>
+			<td>int, optional</td>
+			<td>Start Hour (0-23)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>HPForecast_BreakToDate</td>
+			<td>date, optional</td>
+			<td>End Date (included)</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>HPForecast_BreakToHour</td>
+			<td>int, optional</td>
+			<td>End Hour (included) (0-23)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p>example:</p>
+
+<p>{ "Data": {"HPForecast_Break_On":true, "HPForecast_BreakToDate":"2026-01-30", "HPForecast_BreakToHour": 23} }</p>
+
+<h2>&nbsp;</h2>
+
+<h2>Result of changes</h2>
+
+<p>After every change in data (eg. {plantid}/ha_gbb/api/setmanualprices)
+ program send info on this topic with OK or error description.</p>
+
+<p>Topic with data send from program: {plantid}/ha_gbb/api/result</p>
+
+<p>Payload:</p>
+
+<table border="1" cellpadding="1" cellspacing="1">
+	<tbody>
+		<tr>
+			<td>Key</td>
+			<td>type</td>
+			<td>remarks</td>
+		</tr>
+		<tr>
+			<td>OrderId</td>
+			<td>string(255), optional</td>
+			<td>Any text copied from request to answer</td>
+		</tr>
+		<tr>
+			<td>Result</td>
+			<td>string(255)</td>
+			<td>OK or error description</td>
+		</tr>
+		<tr>
+			<td>Data</td>
+			<td>&nbsp;</td>
+			<td>Data from original request</td>
+		</tr>
+	</tbody>
+</table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV2ASkl6ZXPigwAfcXZu9ArlZqtIQGjYC62iMD2FtjLYP6JMelnHrubLl-b2XVJHSpPKLpn5c-gi83DoELPGRgFAp6bhxDeTu8WsxHQt705QvNPzbTOx3uxUYDAYtz---37eJEQXWU6KL2Ve1iqQz5gg1qqnwiG3GgFRdBV9hxAQeA"></form>
+
+
+
+        </main>
+    </div>
+
+        <footer b-c1dh7t3kmm="" class="border-top no-footer text-muted d-print-none">
+            <div b-c1dh7t3kmm="" class="container">
+                <div b-c1dh7t3kmm="" class="row mt-2">
+                    <div b-c1dh7t3kmm="" class="col">
+                        © Gbb Software 2023-2026 
+                        - <a href="https://gbboptimizer10.gbbsoft.pl/Privacy">Polityka prywatności</a>
+                        <span b-c1dh7t3kmm="">
+                            - <a href="https://gbboptimizer10.gbbsoft.pl/Regulations">Regulamin</a>
+                            - <a href="https://gbboptimizer10.gbbsoft.pl/Pricelist">Cennik</a>
+                        </span>
+                    </div>
+                </div>
+                <div b-c1dh7t3kmm="" class="row mt-2">
+                    <div b-c1dh7t3kmm="" class="col">
+                        <span b-c1dh7t3kmm="" style="color: red"> Jeżeli masz jakieś pytania, zapraszamy na Discorda:</span>
+                        <a b-c1dh7t3kmm="" href="https://discord.gg/XEhNSqQ6Jj" target="_blank">https://discord.gg/XEhNSqQ6Jj</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    <script src="Manual%20-%20GbbOptimizer_files/jquery.min.js"></script>
+    <script src="Manual%20-%20GbbOptimizer_files/bootstrap.bundle.min.js"></script>
+    <script src="Manual%20-%20GbbOptimizer_files/site.js"></script>
+
+    
+
+    <script type="text/javascript">
+        function SubmitFilterForm() {
+            document.getElementById("FilterForm").submit();
+        }
+    </script>
+
+    
+<deepl-input-controller translate="no"></deepl-input-controller></body><div style="display: contents !important;"></div></html>

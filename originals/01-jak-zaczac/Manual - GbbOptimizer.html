@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Optimization of hybrid inverters as Victron (like Dynamic ESS, DESS), Deya to increase profits.">
+    <title>Manual - GbbOptimizer</title>
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/bootstrap.min.css"> 
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/site.css">
+    <link rel="stylesheet" href="Manual%20-%20GbbOptimizer_files/GbbVictronWeb.styles.css">
+    
+    <style>
+        tbody, td, tfoot, th, thead, tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 1px;
+            padding: 0.3rem;
+        }
+    </style>
+
+</head>
+<body>
+        
+
+
+
+
+        <header b-c1dh7t3kmm="" style="position: fixed;  top: 0;  width: 100vw; z-index: 10">
+            <nav b-c1dh7t3kmm="" class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light bg-black border-bottom box-shadow mb-3">
+                <div b-c1dh7t3kmm="" class="container">
+                    <div b-c1dh7t3kmm="" class="navbar-brand">
+                        <a class="navbar-brand" href="https://gbboptimizer10.gbbsoft.pl/">
+                                     🐰
+                                     GbbOptimizer(v18.33)
+                                     🐏
+                        </a>
+                        <br b-c1dh7t3kmm="">
+                        
+
+<div>
+        <form id="NextPlant" method="post" class="form-horizontal" role="form" action="/Plants/Next?returnUrl=~%2FManual%3FFilters.PageNo%3D3">
+            <button type="submit" class="border-0">
+                <div style="font-size:0.7em">
+                    Dom
+                </div>
+            </button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV1kIZC_CXXXHEvo6ZBrp1vUHq-VCX6hwXwzq5wHo9EKNyYLpHq1R44R2Sqk2S1Z0cGnQwUB2fzG671yBxY_51MZeQQJupuC1Gyi5ZgSK8Yeq7x6UUqfwwWgbGLVALM0Vz8ZZGnHf7lyGJw86rVvucfbX7k3KYDpyNNMjEtQh4OcOA"></form>
+</div>
+                    </div>
+                    <button b-c1dh7t3kmm="" class="navbar-toggler d-print-none" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span b-c1dh7t3kmm="" class="navbar-toggler-icon"></span>
+                    </button>
+                    <div b-c1dh7t3kmm="" class="navbar-collapse collapse d-xl-inline-flex justify-content-between">
+                        <ul b-c1dh7t3kmm="" class="navbar-nav flex-grow-1 d-print-none navbar-nav-scroll">
+                                <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Plants">Instalacje</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Forecast">Prognoza Baterii</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Inverters">Prognoza PV</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/WindTurbineForecast">Wiatrak</a></li>
+                                        <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Schedules">Ładowanie z sieci</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LoadProfiles">Profile Zużycia</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LoadsExtra">EV/Extra Zużycie</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/IoT_Systems">IoT</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/HPForecast">Prognoza PC/Klima</a></li>
+                                        <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/DischargePlans">Rozładowanie do sieci</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/SellingPrices">Ceny</a></li>
+                                    <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/History">Zyski</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Companies/Installer">Instalator</a></li>
+                                <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/LogView?PlantId=297">Log</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/Manual">Manual</a></li>
+                            <li b-c1dh7t3kmm="" class="nav-item"><a class="nav-link text-light" href="https://gbboptimizer10.gbbsoft.pl/About">O programie</a></li>
+
+                        </ul>
+                        
+
+<div>
+    <form id="selectLanguage" method="post" class="form-horizontal" role="form" action="/SetLanguage?returnUrl=~%2FManual%3FFilters.PageNo%3D3">
+            <button type="submit" class="border-0">
+                <svg width="28" height="22" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" rx="2" fill="white"></rect><mask id="mask0_267_1153" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20" style="mask-type: luminance;"><rect width="28" height="20" rx="2" fill="white"></rect></mask><g mask="url(#mask0_267_1153)"><rect width="28" height="20" fill="#0A17A7"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M-1.2825 -1.9165L10.6666 6.14329V-1.33339H17.3333V6.14329L29.2824 -1.9165L30.7736 0.294263L21.3262 6.66661H28V13.3333H21.3262L30.7736 19.7056L29.2824 21.9164L17.3333 13.8566V21.3333H10.6666V13.8566L-1.2825 21.9164L-2.77368 19.7056L6.67371 13.3333H-3.14713e-05V6.66661H6.67371L-2.77368 0.294263L-1.2825 -1.9165Z" fill="white"></path><path d="M18.668 6.33219L31.3333 -2" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M20.0128 13.6975L31.3667 21.3503" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M8.00549 6.31042L-3.83752 -1.67102" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path d="M9.29 13.6049L-3.83752 22.3104" stroke="#DB1F35" stroke-width="0.666667" stroke-linecap="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M0 12H12V20H16V12H28V8H16V0H12V8H0V12Z" fill="#E6273E"></path></g></svg>
+            </button>
+            <input name="nextculture" value="en" hidden="">
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV1kIZC_CXXXHEvo6ZBrp1vUHq-VCX6hwXwzq5wHo9EKNyYLpHq1R44R2Sqk2S1Z0cGnQwUB2fzG671yBxY_51MZeQQJupuC1Gyi5ZgSK8Yeq7x6UUqfwwWgbGLVALM0Vz8ZZGnHf7lyGJw86rVvucfbX7k3KYDpyNNMjEtQh4OcOA"></form>
+</div>
+                        
+
+
+<ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link " title="krzysztof@hajdamowicz.info" href="https://gbboptimizer10.gbbsoft.pl/Identity/Account/Manage">Konto </a>
+        </li>
+            <li class="nav-item d-print-none">
+            <form class="form-inline" method="post" action="/Identity/Account/Logout">
+                <button type="submit" class="nav-link btn btn-link ">Wyloguj</button>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV1kIZC_CXXXHEvo6ZBrp1vUHq-VCX6hwXwzq5wHo9EKNyYLpHq1R44R2Sqk2S1Z0cGnQwUB2fzG671yBxY_51MZeQQJupuC1Gyi5ZgSK8Yeq7x6UUqfwwWgbGLVALM0Vz8ZZGnHf7lyGJw86rVvucfbX7k3KYDpyNNMjEtQh4OcOA"></form>
+        </li>
+</ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <div b-c1dh7t3kmm="" class="container">
+        <main b-c1dh7t3kmm="" role="main" class="pb-3" style="padding-top: 6em">
+                    <div b-c1dh7t3kmm="" style="text-align:center; padding:2rem 1rem 1rem 1rem;" class="mb-2 bg-warning text-light rounded-3">
+                        <h3>Due to issues with Solarman, I suggest adding DeyeCloud as an additional connection (or changing the plant type to DeyeCloud)<br>
+Z powodu nie działania Solarmana, proponuje dodać DeyeCloud jako dodatkowe połączenie (lub zmienić typ instalacji na DeyeCloud)</h3>
+
+<h3><a href="https://discord.com/channels/1119519533498126380/1294610337936441357/1488872450157711420">https://discord.com/...</a></h3>
+
+                    </div>
+
+            
+
+
+
+
+<h2>Manual</h2>
+
+
+
+
+<div class="mt-2 accordion d-print-none" id="accordion1">
+    <div class="accordion-item">
+        <div class="accordion-header" id="heading1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    Filtry
+            </button>
+        </div>
+        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+            <div class="accordion-body">
+
+                <form class="form-inline" id="FilterForm">
+
+                    <div class="row row-cols-sm-auto g-3 align-items-center">
+                        <div class="col-12">
+                            <label class="my-1 mr-2" for="Filters_PageNo">Rozdział:</label>
+                            <select class="my-1 mr-sm-2 form-control" onchange="SubmitFilterForm()" id="Filters_PageNo" name="Filters.PageNo">
+                            <option selected="selected" value="3">Jak zacząć?</option>
+<option value="6">menu: Prognoza Baterii</option>
+<option value="39">Parametry instalacji</option>
+<option value="2">menu: Ładowanie</option>
+<option value="7">menu: Profile Zużycia</option>
+<option value="25">menu: Extra Zużycie/EV</option>
+<option value="16">menu: Prognoza PC/Klima</option>
+<option value="1">menu: Rozładowanie</option>
+<option value="27">menu: Ceny</option>
+<option value="12">menu: Zyski</option>
+<option value="33">Err: Najczęstsze błędy otrzymane w emailach z programu</option>
+<option value="35">Compare different way to connect to inverter (Deye)</option>
+<option value="23">Tuya: Jak uzyskać Access ID/Client ID i Access Secret/Client Secret?</option>
+<option value="24">Supla: Jak tworzyć linki?</option>
+<option value="40">Evcc.io: Connection Evcc.io to GbbOptimizer</option>
+<option value="37">IoT: C# Procedure: App object</option>
+<option value="13">Victron: Lista kontrolna</option>
+<option value="21">Victron: topics/properties changed by program</option>
+<option value="18">Solarman: Jak połączyć się z inwerterem poprzez Solarman?</option>
+<option value="36">DongleDirect: konfiguracja</option>
+<option value="31">GbbConnect2: Jak połączyć GbbConnect z Deye i GbbOptimizer</option>
+<option value="32">GbbConnect2: protocol between GbbConnect2 and GbbOptimizer (ModbusInMqtt)</option>
+<option value="9">Jak integrować z Home Assistant?</option>
+<option value="10">Home Assistant z SolarAssisntant i inwerterem hybrydowym Deye</option>
+<option value="11">Home Assistant z Automation</option>
+<option value="26">Deye: Lista kontrolna</option>
+<option value="20">Deye: Map Protocol Modes to inverter settings</option>
+<option value="29">Goodwe: Jak uzyskać dostęp do OpenAPI?</option>
+<option value="28">Goodwe: Map Protocol Modes to inverter settings</option>
+<option value="30">Afore: Map Protocol Modes to inverter settings</option>
+<option value="34">Hinen: Map Protocol Modes to inverter settings</option>
+<option value="38">Sofar: Map Protocol Modes to inverter settings</option>
+<option value="19">MQTT: Protocols between GbbVictronWeb and external program (by mqtt)</option>
+<option value="22">List of inverter modes</option>
+<option value="14">Addresses of Mqtt servers</option>
+</select>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="my-1 btn btn-secondary">Pokaż</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-2 text-danger validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+
+<form id="edit-form" method="post">
+
+
+    <div class="mt-2 accordion d-print-none" id="accordion2">
+        <div class="accordion-item">
+            <div class="accordion-header" id="heading2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    Rozdział
+                </button>
+            </div>
+            <div id="collapse2" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion2">
+                <div class="accordion-body">
+
+
+                    <div>
+                        <h1>Witamy w programie GbbOptimizer (vel. GbbVictronWeb).</h1>
+
+<h2><span style="color:#e74c3c">Alternatywny Manual stworzony przez 0xDEADBEEF1137:&nbsp;</span></h2>
+
+<p><a href="https://krzysztofhajdamowicz.github.io/rewrite-GbbOptimizer-manual/" target="_blank">https://krzysztofhajdamowicz.github.io/rewrite-GbbOptimizer-manual/</a></p>
+
+<h2>Aby zacząć używac program powinieneś:</h2>
+
+<p>- Stworzyć 'Instalację': Instalacja to jeden system Victron (Cerbo GX lub inny moduł GX) lub jeden inwerter Deye.</p>
+
+<ul>
+	<li>Naciśnij 'Dodaj nową instalację z Victron System', jezeli masz system Victron (z lub bez HomeAssistant)</li>
+	<li>Naciśnij 'Dodaj nowa instalację z inwerterem Deye podłączonym do 
+DeyeCloud', jeżeli masz inwerter hybrydowy Deye połączony do DeyeCloud</li>
+	<li>Naciśnij 'Dodaj nowa instalację z Solarman', jeżeli masz inwerter 
+hybrydowy Deye połączony z programem Solarman (i nie chcesz 
+wykorzystywac HomeAssistant)</li>
+	<li>Naciśnij 'Dodaj nowa instalację z Solarman', jeżeli masz inny 
+inwerter hybrydowy połączony z programem Solarman i wiesz jak ustawiać 
+rejestry w nim dla różnych trybów z programu.</li>
+	<li>Naciśnij 'Dodaj nową instalację z Home Assistant', jeżeli masz 
+inwerter hybrydowy Deye połączony z HomeAssistant (z lub bez 
+SolarAssistant) LUB inny inwerter hybrydowy podłączony bezpośrednio do 
+HomeAssistant.&nbsp;</li>
+	<li>Itd</li>
+	<li>Jeżeli masz inwerter SofarSolar: (1) naciśnij 'Instalacja z 
+DongleDirect (Deye, SofarSolar)' (2) na końcu przejdź także tą 
+procedurę:&nbsp;<a href="https://gbboptimizer10.gbbsoft.pl/Manual?Filters.PageNo=36">DongleDirect konfiguracja</a></li>
+	<li>Jeżeli masz inwertery Deye w układzie Master-Slave, to (1) naciśnij
+ 'Instalacja z Solarman' (2) dodaj Master jako głównym inwerter i 
+Slave-y jako dodatkowe (w parametrach instalacji)</li>
+</ul>
+
+<p>- Wypełnij wszystkie pola (przynajmniej te z gwiazdką *)&nbsp;i 
+kontynuj w Szybkiej Konfiguracji. Po wypełnieniu wszystkich pól naciśnij
+ 'Zapisz zmiany'<br>
+- w module 'Ceny': powinieneś zaimportować taryfę lub ręcznie skonfigurować ceny zakupu i sprzedazy.<br>
+- w module 'Profil Zużycia': wprowadź ręcznie zużycie twojego domu lub zaimportuj z Instalacji</p>
+
+<p>Po tym wszystkich:</p>
+
+<ul>
+	<li>Instalacja jest w 'trybie testowym'. Aby rozpocząć wysyłanie 
+ustawień do Istalacji powinieneś wyłączyć 'tryb testowy' w module 
+'Prognoza Baterii'</li>
+	<li>Wybrany jest "Optymalizator oparty o ceny"</li>
+	<li>Najlepiej poczekać tydzień, aby profil zuzycia się zaktualizował a w prognozie PV policzył się współczynnik korygujący.</li>
+	<li>Dopiero po tygodniu wyłączyc 'tryb testowy'</li>
+</ul>
+
+<p>Najważniejsze rzeczy do sprawdzenia:</p>
+
+<ul>
+	<li>czy ceny są prawidłowe. Pamiętaj wprowadzić koszty transportu dla cen zakupu.</li>
+	<li>czy Prognoza PV jest prawidłowa. Jeżeli nie, spróbuj inne źródło prognozy PV.</li>
+	<li>czy Profil Zużycia jest prawidłowy. Jezeli nie chcesz wprowadzać ręczcnie Profilu Zużycia poczekaj tydzień aby zebrać dane.</li>
+</ul>
+
+<h2>Filmy:</h2>
+
+<ul>
+	<li>Dodawanie systemu Victron do GbbOptimizer: <a href="https://youtu.be/5q6gORx1KUY">https://youtu.be/5q6gORx1KUY</a></li>
+	<li>Dodawanie inwertera Deye przez Solarmana:&nbsp;<a href="https://youtu.be/y8fhh1UecqQ">https://youtu.be/y8fhh1UecqQ</a></li>
+	<li>Konfigurowanie cen zakupu i sprzedaży:&nbsp;<a href="https://youtu.be/m27uQfO60pc">https://youtu.be/m27uQfO60pc</a></li>
+</ul>
+
+<h2>Najlepsze praktyki</h2>
+
+<ul>
+	<li>Cierpliwości. Program uczy cierpliwości.</li>
+	<li>zmień źródło prognozy PV z 'foracast.solar' na 'solcast.com' (ale 
+najpierw tam załóż darmowe konto 'Home', jedno konto na każde dwie 
+Płaszczyzny PV)</li>
+	<li>czym mniej dodatkowych opcji zaznaczonych w parametrach optymalizatora, tym wieksze zyski</li>
+	<li>ustaw MaxSOC=90% aby mieć bufor na nietrafioną prognozę pogody. 
+Oraz ustaw 'Lista dni w miesiącu (oddzielona przecinkiem) kiedy 
+'Maksymalna SOC baterii' ma być zmieniony na 100% (na około 2h)' na (na 
+przykład): 1, 15, aby jednak czasami dochodzić do 100% dla dobra 
+baterii.</li>
+	<li>Jezeli w HomeAssistant jest importowanie danych z inwertera, 
+ustawić "update_interval" na co najmniej 20sek. Inaczej Solarman gryzie 
+się z HomeAssistant.&nbsp;(&nbsp;<a href="https://discord.com/channels/1119519533498126380/1294610337936441357/1353688730698780764">Discord</a>&nbsp;). Albo przejść z Solarman na&nbsp;GbbConnect2.</li>
+</ul>
+
+<h2><br>
+Jeżeli chcesz tylko optymalizować ładowanie EV (bez fotowoltaiki)</h2>
+
+<p>1. Dodaj inatalację "z HomeAssistant"<br>
+2. Wypełnij pola<br>
+- Nazwa<br>
+- Moc przyłacza - pobieranie<br>
+- Moc przyłacza - wysyłanie &lt;- wpisz 0<br>
+- pojemność KWh baterii &lt;- wpisz 0<br>
+3. Przycisk "Zapisz i kontynuj w Szybkiej Konfiguracji", na tej stronie zrób tylko takie zmiany<br>
+-&nbsp;odznacz 'Dodaj pierwsza PłaszczyznęPV'<br>
+- zaznacz 'EV: Automatycznie importuj dane z ładowarek EV co godzinę'<br>
+4. Przycisk "Zapisz" i zostaniesz przeniesiony do menu Ceny<br>
+- w pozycji 'albo Wybierz taryfę dystrybutora i sprzedawcy energii' wybierz taryfę dystrybucji i taryfę dostawcy energii<br>
+- naciśnij "Importuj wybrane taryfy"<br>
+5. Przejdź do menu 'EV/Extra Zuzycie'<br>
+- w sekcji "Ładowanie EV" dodaj swoja ładowarkę<br>
+- w sekcji 'AutoŁadowanie EV' dodaj jak chcesz ładować samochód (np: w 
+sekcji "Warunki" wybierz "Cena" 3 "najniższa Cena Zakupu")</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IItszGcXl9GsFAmN2XPTV1kIZC_CXXXHEvo6ZBrp1vUHq-VCX6hwXwzq5wHo9EKNyYLpHq1R44R2Sqk2S1Z0cGnQwUB2fzG671yBxY_51MZeQQJupuC1Gyi5ZgSK8Yeq7x6UUqfwwWgbGLVALM0Vz8ZZGnHf7lyGJw86rVvucfbX7k3KYDpyNNMjEtQh4OcOA"></form>
+
+
+
+        </main>
+    </div>
+
+        <footer b-c1dh7t3kmm="" class="border-top no-footer text-muted d-print-none">
+            <div b-c1dh7t3kmm="" class="container">
+                <div b-c1dh7t3kmm="" class="row mt-2">
+                    <div b-c1dh7t3kmm="" class="col">
+                        © Gbb Software 2023-2026 
+                        - <a href="https://gbboptimizer10.gbbsoft.pl/Privacy">Polityka prywatności</a>
+                        <span b-c1dh7t3kmm="">
+                            - <a href="https://gbboptimizer10.gbbsoft.pl/Regulations">Regulamin</a>
+                            - <a href="https://gbboptimizer10.gbbsoft.pl/Pricelist">Cennik</a>
+                        </span>
+                    </div>
+                </div>
+                <div b-c1dh7t3kmm="" class="row mt-2">
+                    <div b-c1dh7t3kmm="" class="col">
+                        <span b-c1dh7t3kmm="" style="color: red"> Jeżeli masz jakieś pytania, zapraszamy na Discorda:</span>
+                        <a b-c1dh7t3kmm="" href="https://discord.gg/XEhNSqQ6Jj" target="_blank">https://discord.gg/XEhNSqQ6Jj</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    <script src="Manual%20-%20GbbOptimizer_files/jquery.min.js"></script>
+    <script src="Manual%20-%20GbbOptimizer_files/bootstrap.bundle.min.js"></script>
+    <script src="Manual%20-%20GbbOptimizer_files/site.js"></script>
+
+    
+
+    <script type="text/javascript">
+        function SubmitFilterForm() {
+            document.getElementById("FilterForm").submit();
+        }
+    </script>
+
+    
+<deepl-input-controller translate="no"></deepl-input-controller></body><div style="display: contents !important;"></div></html>
