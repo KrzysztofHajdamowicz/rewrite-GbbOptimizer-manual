@@ -1,0 +1,105 @@
+
+plantid:
+  term: "PlantId"
+  short: "Unique identifier for a PV installation"
+  definition: "A unique string assigned to each installation registered in GbbOptimizer. Used as a prefix in all MQTT topics and for authentication."
+ 
+planttoken:
+  term: "PlantToken"
+  short: "Authentication token for MQTT and API"
+  definition: "A secret token generated for each installation, used as the MQTT password and for API authentication."
+ 
+soc:
+  term: "SOC"
+  short: "State of Charge — battery level as a percentage (0–100%)"
+  definition: "State of Charge indicates the current energy level in the battery as a percentage from 0% (empty) to 100% (full)."
+ 
+minsoc:
+  term: "MinSOC"
+  short: "Minimum state of charge threshold"
+  definition: "The minimum battery charge level maintained by the optimizer. The system prevents discharge below this threshold, protecting battery longevity."
+ 
+maxsoc:
+  term: "MaxSOC"
+  short: "Maximum target state of charge"
+  definition: "The maximum SOC to which the optimizer will charge the battery. The recommended value is 90% to provide a buffer for PV forecast inaccuracies."
+ 
+gridsetpoint:
+  term: "GridSetpoint"
+  short: "Target grid power exchange value in watts"
+  definition: "Defines how much power should flow to/from the grid during normal operation. Positive values indicate grid import, negative values indicate grid export."
+ 
+dynamicdischarge:
+  term: "Dynamic Discharge"
+  short: "Discharge algorithm responsive to energy prices"
+  definition: "An advanced discharge mode that adjusts battery output power in real time based on energy sell price changes, instead of using fixed time windows."
+ 
+rte:
+  term: "RTE"
+  short: "Round-trip efficiency of charge/discharge cycle"
+  definition: "The ratio of energy delivered to energy consumed in a full charge and discharge cycle. Measures overall battery system efficiency, including conversion losses."
+ 
+fastsetup:
+  term: "FastSetup"
+  short: "Quick initial configuration wizard"
+  definition: "A configuration process launched after creating a new installation. Sets basic parameters and establishes the initial connection with the inverter."
+ 
+testmode:
+  term: "Test Mode"
+  short: "Observation mode — calculates but does not send commands"
+  definition: "The initial operating mode for new installations. The optimizer performs calculations and forecasts but does not send any commands to the inverter. Should remain active for about a week until the system calibrates."
+ 
+ess:
+  term: "ESS"
+  short: "Energy Storage System"
+  definition: "Victron's Energy Storage System module, managing battery charging and discharging as well as grid interaction."
+ 
+vrm:
+  term: "VRM"
+  short: "Victron Remote Management portal"
+  definition: "Victron's cloud portal (VRM Portal) for remote monitoring and management of Victron systems."
+ 
+modbus:
+  term: "Modbus"
+  short: "Serial communication protocol for industrial devices"
+  definition: "A serial communication protocol used for communicating with inverters. GbbConnect2 uses ModbusInMqtt to transmit Modbus commands within MQTT messages."
+ 
+modbusinmqtt:
+  term: "ModbusInMqtt"
+  short: "Modbus commands transmitted via MQTT"
+  definition: "A protocol used by GbbConnect2, where Modbus register read/write commands are encapsulated in MQTT messages, enabling remote inverter control through the cloud."
+ 
+selfconsumption:
+  term: "Self-Consumption"
+  short: "Percentage of solar energy consumed locally"
+  definition: "The share of generated solar energy that is directly consumed by the household rather than exported to the grid."
+ 
+selfsufficiency:
+  term: "Self-Sufficiency"
+  short: "Percentage of consumption covered by PV"
+  definition: "The share of total household energy consumption that is covered by the PV installation rather than imported from the grid."
+ 
+correctionfactor:
+  term: "Correction Factor"
+  short: "PV forecast accuracy calibration"
+  definition: "A multiplier calculated over approximately one week of operation that corrects PV forecast values to match actual production, improving prediction accuracy."
+ 
+batteryfulldate:
+  term: "Battery Full Date"
+  short: "Scheduled day for full charge to 100% SOC"
+  definition: "Specific days of the month when the optimizer aims to charge the battery to 100% SOC. Provided as comma-separated values (e.g., '1, 15'). Enables periodic full charge cycles for battery health."
+ 
+gbbconnect2:
+  term: "GbbConnect2"
+  short: "Local software for direct inverter connection"
+  definition: "An application running locally (Windows or Docker) that connects the inverter directly to GbbOptimizer via ModbusInMqtt, bypassing cloud services such as Solarman."
+ 
+dongledirect:
+  term: "DongleDirect"
+  short: "Connection method via dongle redirection"
+  definition: "A connection method where the inverter's WiFi dongle is reconfigured to communicate directly with the GbbOptimizer server instead of the manufacturer's cloud."
+ 
+solarassistant:
+  term: "SolarAssistant"
+  short: "Inverter monitoring software"
+  definition: "A monitoring application that connects to inverters and publishes data via MQTT. Can serve as a bridge between Deye inverters and GbbOptimizer through Home Assistant."
