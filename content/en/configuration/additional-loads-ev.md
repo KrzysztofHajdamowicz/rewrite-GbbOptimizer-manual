@@ -9,7 +9,7 @@ translationKey: "dodatkowe-obciazenia-ev"
 Extra Consumption is the portion of energy consumption that **does not enter the home average** — for example, charging an electric vehicle or a heat pump. The goal is to separate the unpredictable, variable part from standard consumption.
 
 **Data flow:**
-- IoT meters → Extra Consumption → [Gains]({{< relref "/konfiguracja/zyski" >}}) → [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}})
+- IoT meters → Extra Consumption → [Gains]({{< relref "/configuration/gains" >}}) → [Battery Forecast]({{< relref "/configuration/battery-forecast" >}})
 - EV chargers → Extra Consumption → Gains → Battery Forecast
 
 ## AutoConverter
@@ -23,7 +23,7 @@ AutoConverter detects peaks in consumption and automatically converts them into 
 | Maximum Extra Consumption (kWh/h) | Maximum converted energy (e.g. EV charger power). The rest = Consumption |
 | Extra Consumption Type | The type to which the converted energy is directed |
 
-AutoConverter runs during import in the [Gains]({{< relref "/konfiguracja/zyski" >}}) module.
+AutoConverter runs during import in the [Gains]({{< relref "/configuration/gains" >}}) module.
 
 ## AutoAdd
 

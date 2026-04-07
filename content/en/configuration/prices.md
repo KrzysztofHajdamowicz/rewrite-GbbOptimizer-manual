@@ -6,7 +6,7 @@ translationKey: "ceny"
 
 # Prices
 
-The energy purchase and sale price configuration module. Price data sources are set in [installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}); the remaining parameters are configured here.
+The energy purchase and sale price configuration module. Price data sources are set in [installation parameters]({{< relref "/installation/installation-parameters" >}}); the remaining parameters are configured here.
 
 ## Purchase Price
 

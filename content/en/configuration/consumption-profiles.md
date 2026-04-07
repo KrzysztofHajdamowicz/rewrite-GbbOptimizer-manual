@@ -35,7 +35,7 @@ Check **Automatically import data at night** — the program imports data from t
 
 ## Multiple Profiles
 
-You can define multiple consumption profiles. The selected profile is used in [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) for displaying data, charts, and optimization.
+You can define multiple consumption profiles. The selected profile is used in [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) for displaying data, charts, and optimization.
 
 ## Restricting the Import Period
 

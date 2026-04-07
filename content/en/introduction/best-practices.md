@@ -73,18 +73,18 @@ After initial configuration, check three key elements:
 
 ### 1. Prices
 
-Make sure that [prices]({{< relref "/konfiguracja/ceny" >}}) are correct:
+Make sure that [prices]({{< relref "/configuration/prices" >}}) are correct:
 - Are transport (transmission) costs included?
 - Is VAT correct?
 - Does the sale price match your tariff?
 
 ### 2. PV forecast
 
-Check in the [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) that the PV forecast is close to actual production. If not — change the forecast source.
+Check in the [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) that the PV forecast is close to actual production. If not — change the forecast source.
 
 ### 3. Consumption profile
 
-Verify the [consumption profile]({{< relref "/konfiguracja/profile-zuzycia" >}}):
+Verify the [consumption profile]({{< relref "/configuration/consumption-profiles" >}}):
 - Do the values correspond to actual home consumption?
 - Do weekends differ from working days (if that is the case in reality)?
 

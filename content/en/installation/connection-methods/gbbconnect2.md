@@ -29,7 +29,7 @@ translationKey: "gbbconnect2"
    > The logger under the inverter **must have a fixed IP address** on the local network. Set a DHCP reservation on the router.
 
 9. In the **GbbOptimizer** section, enter the {{< glossary "PlantId" >}} and {{< glossary "PlantToken" >}}
-10. Enter the MQTT server address — see [MQTT Servers]({{< relref "/referencje/serwery-mqtt" >}})
+10. Enter the MQTT server address — see [MQTT Servers]({{< relref "/references/mqtt-servers" >}})
 11. In the **Parameters** tab, check "Start server after program starts" so that communication starts automatically
 12. Press **StartServer**
 

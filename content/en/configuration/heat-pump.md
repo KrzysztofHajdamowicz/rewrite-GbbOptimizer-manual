@@ -10,11 +10,11 @@ The module for forecasting heat pump (HP) or air conditioning consumption based 
 
 ## Why a Separate Module?
 
-Heat pumps and air conditioning (like EV chargers) do not operate according to the rhythm of the day — they depend on temperature. It is therefore better to **exclude them from the average** in the [Consumption Profiles]({{< relref "/konfiguracja/profile-zuzycia" >}}) module and place them in [Extra Consumption]({{< relref "/konfiguracja/dodatkowe-obciazenia-ev" >}}).
+Heat pumps and air conditioning (like EV chargers) do not operate according to the rhythm of the day — they depend on temperature. It is therefore better to **exclude them from the average** in the [Consumption Profiles]({{< relref "/configuration/consumption-profiles" >}}) module and place them in [Extra Consumption]({{< relref "/configuration/additional-loads-ev" >}}).
 
 ## Step-by-Step Configuration
 
-1. Enter **latitude and longitude** in [installation parameters]({{< relref "/instalacja/parametry-instalacji" >}})
+1. Enter **latitude and longitude** in [installation parameters]({{< relref "/installation/installation-parameters" >}})
 2. Import the weather forecast
 3. Press **HP Parameters** and enter the kWh consumption of the pump/AC for each hour (minimum 2 values for different temperatures)
 4. Press **Calculate HP forecast** and check the results

@@ -62,7 +62,7 @@ The optimizer switches the inverter between four modes depending on the current 
 | **Discharge** | Forced battery discharge to the grid. Used when the sale price is high and it is profitable to sell energy |
 | **DisableCharge** | Block charging from PV. Used to leave room in the battery for later cheap grid charging |
 
-Configuration details for charging can be found in the [Charging module]({{< relref "/konfiguracja/ladowanie" >}}), and for discharging in the [Discharge module]({{< relref "/konfiguracja/rozladowanie" >}}).
+Configuration details for charging can be found in the [Charging module]({{< relref "/configuration/charging" >}}), and for discharging in the [Discharge module]({{< relref "/configuration/discharging" >}}).
 
 ## Price-based optimizer
 
@@ -73,7 +73,7 @@ By default, the "Price-based optimizer" is selected. It analyzes purchase and sa
 - **How much to charge** — takes into account the PV forecast (to avoid grid-charging what PV will produce anyway) and the battery's {{< glossary "MaxSOC" >}}
 - **How much to discharge** — takes into account the home consumption forecast and the battery's {{< glossary "MinSOC" >}}
 
-The entire plan is visualized in the [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) module.
+The entire plan is visualized in the [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) module.
 
 ## Key parameters
 
@@ -106,5 +106,5 @@ Configuration details for individual inverters can be found in the [Installation
 
 - [Quick start]({{< relref "/introduction/quick-start" >}}) — step by step how to set up the system
 - [Best practices]({{< relref "/introduction/best-practices" >}}) — tips from experienced users
-- [Prices]({{< relref "/konfiguracja/ceny" >}}) — configuring purchase and sale prices
-- [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) — the central optimizer module
+- [Prices]({{< relref "/configuration/prices" >}}) — configuring purchase and sale prices
+- [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) — the central optimizer module

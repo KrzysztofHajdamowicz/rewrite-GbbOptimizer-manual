@@ -23,7 +23,7 @@ You can modify the charging parameters:
 - Change the **SOC limit** — column "New SOCLimit"
 
 After making changes:
-- **Save** — changes are saved in the program but not sent to the installation. This lets you test scenarios in [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}})
+- **Save** — changes are saved in the program but not sent to the installation. This lets you test scenarios in [Battery Forecast]({{< relref "/configuration/battery-forecast" >}})
 - **Send to Installation** — changes are saved and sent to the inverter
 
 The **Clear all new values** button resets the "New Start", "New Duration", and "New SOCLimit" columns.
@@ -41,7 +41,7 @@ The **Clear all new values** button resets the "New Start", "New Duration", and 
 
 ## Optimizer Settings
 
-Charging is optimized by [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) if:
+Charging is optimized by [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) if:
 - It is not locked
 - "Do not optimize SOCLimit by Battery Forecast" is not checked
 

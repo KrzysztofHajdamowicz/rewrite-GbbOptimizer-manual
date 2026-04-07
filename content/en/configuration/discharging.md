@@ -130,7 +130,7 @@ The program marks hours with the maximum sale price and blocks the rest. It skip
 
 ## Dynamic MinSOC by the Optimizer
 
-To have the optimizer in {{< relref "/konfiguracja/prognoza-baterii" >}} dynamically change MinSOC:
+To have the optimizer in {{< relref "/configuration/battery-forecast" >}} dynamically change MinSOC:
 
 1. Check **Enable** (or use DD/DDBD to enable)
 2. Enter **Max GridSetpoint**
@@ -173,7 +173,7 @@ Parameters:
 The program can automatically enable discharging only during the day or only at night, based on sunrise and sunset times.
 
 > [!NOTE]
-> Requires latitude and longitude to be set in [installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}).
+> Requires latitude and longitude to be set in [installation parameters]({{< relref "/installation/installation-parameters" >}}).
 
 ## Discharging Parameters
 

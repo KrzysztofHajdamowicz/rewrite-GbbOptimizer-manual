@@ -12,7 +12,7 @@ translationKey: "evcc"
 
 - A working evcc installation
 - Local MQTT broker (Mosquitto in Home Assistant or standalone)
-- Configured [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}})
+- Configured [Mosquitto Bridge]({{< relref "/integrations/home-assistant/mosquitto-bridge" >}})
 
 ## Bridge Configuration
 

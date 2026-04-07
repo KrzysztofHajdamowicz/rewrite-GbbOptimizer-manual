@@ -29,7 +29,7 @@ Replace `<server>` and `<PlantId>` with the appropriate values for your installa
 
 ## Alternative — Custom Charts from MQTT Data
 
-If you prefer to create charts locally, you can use data transmitted via MQTT (see [Automation]({{< relref "/integracje/home-assistant/automatyzacja" >}})) combined with cards such as:
+If you prefer to create charts locally, you can use data transmitted via MQTT (see [Automation]({{< relref "/integrations/home-assistant/automation" >}})) combined with cards such as:
 
 - **ApexCharts Card** (HACS)
 - **Mini Graph Card** (HACS)

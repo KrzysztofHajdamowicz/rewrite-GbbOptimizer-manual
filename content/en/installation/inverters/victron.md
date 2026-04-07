@@ -27,7 +27,7 @@ Before starting GbbOptimizer, verify the following settings:
 
 ## Victron parameters in GbbOptimizer
 
-A detailed description of Victron parameters (VRM Portal Id, Installation Id, VRM Token, etc.) can be found in the [Installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}) section.
+A detailed description of Victron parameters (VRM Portal Id, Installation Id, VRM Token, etc.) can be found in the [Installation parameters]({{< relref "/installation/installation-parameters" >}}) section.
 
 ## MQTT topics modified by GbbOptimizer
 

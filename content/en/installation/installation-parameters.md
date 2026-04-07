@@ -34,7 +34,7 @@ Below are all the configuration parameters for an installation in GbbOptimizer, 
 | Transmission: Tariff for transmission prices | Source of transmission (transport) prices. Empty = 0 |
 | Sale: Tariff for sale prices | Source of imported energy sale prices |
 
-Details of price formulas — in the [Prices]({{< relref "/konfiguracja/ceny" >}}) module.
+Details of price formulas — in the [Prices]({{< relref "/configuration/prices" >}}) module.
 
 ## Battery
 
@@ -82,7 +82,7 @@ Details of price formulas — in the [Prices]({{< relref "/konfiguracja/ceny" >}
 
 ### Backup connection — DeyeCloud
 
-Applies only to Solarman-type installations. Details on the [DeyeCloud]({{< relref "/instalacja/metody-polaczenia/deye-cloud" >}}) page.
+Applies only to Solarman-type installations. Details on the [DeyeCloud]({{< relref "/installation/connection-methods/deye-cloud" >}}) page.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -102,7 +102,7 @@ Applies only to Solarman-type installations. Details on the [DeyeCloud]({{< relr
 
 ## GbbShunt
 
-{{< badge "deye-only" >}} Applies only to Solarman + Deye installations. Details on the [Solarman]({{< relref "/instalacja/metody-polaczenia/solarman" >}}) page.
+{{< badge "deye-only" >}} Applies only to Solarman + Deye installations. Details on the [Solarman]({{< relref "/installation/connection-methods/solarman" >}}) page.
 
 | Parameter | Unit | Description |
 |-----------|------|-------------|

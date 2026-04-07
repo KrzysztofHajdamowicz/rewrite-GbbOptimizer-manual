@@ -33,7 +33,7 @@ Before starting GbbOptimizer, verify the following on the Deye inverter:
 
 The Deye inverter can be connected to GbbOptimizer in four ways:
 
-|  | [Solarman]({{< relref "/instalacja/metody-polaczenia/solarman" >}}) / [DeyeCloud]({{< relref "/instalacja/metody-polaczenia/deye-cloud" >}}) | [GbbConnect2]({{< relref "/instalacja/metody-polaczenia/gbbconnect2" >}}) | [DongleDirect]({{< relref "/instalacja/metody-polaczenia/dongle-direct" >}}) | HomeAssistant / {{< glossary "SolarAssistant" >}} |
+|  | [Solarman]({{< relref "/installation/connection-methods/solarman" >}}) / [DeyeCloud]({{< relref "/installation/connection-methods/deye-cloud" >}}) | [GbbConnect2]({{< relref "/installation/connection-methods/gbbconnect2" >}}) | [DongleDirect]({{< relref "/installation/connection-methods/dongle-direct" >}}) | HomeAssistant / {{< glossary "SolarAssistant" >}} |
 |--|--|--|--|--|
 | **Data from GbbOptimizer to inverter** | GbbOptimizer → DeyeCloud → Solarman → Dongle → Inverter | GbbOptimizer → GbbConnect2 → Dongle → Inverter | GbbOptimizer → Dongle → Inverter | GbbOptimizer → HA Automation → Inverter |
 | **Data from inverter to GbbOptimizer** | Inverter → Dongle → Solarman → DeyeCloud → GbbOptimizer | Inverter → Dongle → GbbConnect2 → GbbOptimizer | Inverter → Dongle → GbbOptimizer | Inverter → HA Automation → GbbOptimizer |
@@ -45,4 +45,4 @@ The Deye inverter can be connected to GbbOptimizer in four ways:
 | **Parameter changes from outside home** | Yes | No (but you can use Solarman/DeyeCloud in parallel) | Your choice | Yes |
 
 > [!NOTE]
-> Detailed configuration instructions for each method can be found in the [Connection methods]({{< relref "/instalacja/metody-polaczenia" >}}) section.
+> Detailed configuration instructions for each method can be found in the [Connection methods]({{< relref "/installation/connection-methods" >}}) section.

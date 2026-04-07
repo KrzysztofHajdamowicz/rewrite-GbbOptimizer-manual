@@ -12,7 +12,7 @@ For GbbOptimizer to communicate with Home Assistant, you need to configure a bri
 
 - Home Assistant with the **Mosquitto broker** add-on installed
 - An active installation in GbbOptimizer with an assigned {{< glossary "PlantId" >}} and {{< glossary "PlantToken" >}}
-- MQTT server address — see [MQTT Servers]({{< relref "/referencje/serwery-mqtt" >}})
+- MQTT server address — see [MQTT Servers]({{< relref "/references/mqtt-servers" >}})
 
 ## Step-by-Step Configuration
 
@@ -42,7 +42,7 @@ topic # both 2 ha_gbb/ <PlantId>/ha_gbb/
 Replace:
 - `<PlantId>` — with your {{< glossary "PlantId" >}}
 - `<PlantToken>` — with your {{< glossary "PlantToken" >}}
-- `<mqtt-server-address>` — with the server address from the [MQTT Servers]({{< relref "/referencje/serwery-mqtt" >}}) table
+- `<mqtt-server-address>` — with the server address from the [MQTT Servers]({{< relref "/references/mqtt-servers" >}}) table
 
 ### 3. Restart Mosquitto
 
@@ -72,7 +72,7 @@ If you use {{< glossary "SolarAssistant" >}}, change the `topic` line to:
 topic # both 2 solar_assistant/ <PlantId>/solar_assistant/
 ```
 
-More information: [SolarAssistant]({{< relref "/integracje/home-assistant/solar-assistant" >}})
+More information: [SolarAssistant]({{< relref "/integrations/home-assistant/solar-assistant" >}})
 
 ## Bridge for evcc
 
@@ -82,7 +82,7 @@ If you are integrating with evcc, add a separate `topic` line:
 topic # both 2 evcc/loadpoints/ <PlantId>/evcc/site/loadpoints/
 ```
 
-More information: [evcc]({{< relref "/integracje/evcc" >}})
+More information: [evcc]({{< relref "/integrations/evcc" >}})
 
 > [!WARNING]
 > Make sure that {{< glossary "PlantId" >}} and {{< glossary "PlantToken" >}} are correct. Incorrect credentials will cause a connection failure — check the Mosquitto logs in HA.

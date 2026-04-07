@@ -41,7 +41,7 @@ After filling in all fields, press **"Save changes"**.
 
 ## 3. Configure prices
 
-In the [Prices]({{< relref "/konfiguracja/ceny" >}}) module:
+In the [Prices]({{< relref "/configuration/prices" >}}) module:
 
 1. Click **"Select distributor and energy supplier tariff"**
 2. Select your distribution tariff and energy supplier tariff
@@ -54,7 +54,7 @@ Alternatively, manually configure purchase and sale prices.
 
 ## 4. Configure the consumption profile
 
-In the [Consumption profiles]({{< relref "/konfiguracja/profile-zuzycia" >}}) module you have two options:
+In the [Consumption profiles]({{< relref "/configuration/consumption-profiles" >}}) module you have two options:
 
 - **Manual entry** — enter estimated consumption for each hour
 - **Import from installation** — wait ~one week for the program to collect data from the inverter and calculate average consumption
@@ -64,7 +64,7 @@ In the [Consumption profiles]({{< relref "/konfiguracja/profile-zuzycia" >}}) mo
 
 ## 5. Check the PV forecast
 
-Verify in the [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) module that the PV forecast is close to actual production. If not, try changing the PV forecast source in the installation parameters.
+Verify in the [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) module that the PV forecast is close to actual production. If not, try changing the PV forecast source in the installation parameters.
 
 {{< glossary "Correction Factor" >}} auto-calibrates over approximately one week of operation.
 
@@ -86,7 +86,7 @@ After ~one week, once you have confirmed that:
 - **PV forecast** is close to reality
 - **Consumption profile** is reasonable
 
-...disable {{< glossary "Test Mode" >}} in the [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) module. From this point on, the optimizer will start sending commands to the inverter.
+...disable {{< glossary "Test Mode" >}} in the [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) module. From this point on, the optimizer will start sending commands to the inverter.
 
 ## Instructional videos
 
@@ -110,13 +110,13 @@ If you want to optimize only electric vehicle charging, without a PV installatio
 4. Press **"Save"** — you will be taken to the Prices menu:
    - Select the distributor and energy supplier tariff
    - Press **"Import selected tariffs"**
-5. Go to the [Extra Consumption / EV]({{< relref "/konfiguracja/dodatkowe-obciazenia-ev" >}}) module:
+5. Go to the [Extra Consumption / EV]({{< relref "/configuration/additional-loads-ev" >}}) module:
    - In the "EV Charging" section, add your charger
    - In the "EV AutoCharging" section, configure charging conditions (e.g. in "Conditions" select "Price" → 3 lowest purchase prices)
 
 ## What's next?
 
 - [Best practices]({{< relref "/introduction/best-practices" >}}) — tips on getting the most out of the system
-- [Charging]({{< relref "/konfiguracja/ladowanie" >}}) — configuring charging schedules
-- [Discharge]({{< relref "/konfiguracja/rozladowanie" >}}) — configuring battery discharge
-- [Battery Forecast]({{< relref "/konfiguracja/prognoza-baterii" >}}) — the central optimizer module
+- [Charging]({{< relref "/configuration/charging" >}}) — configuring charging schedules
+- [Discharge]({{< relref "/configuration/discharging" >}}) — configuring battery discharge
+- [Battery Forecast]({{< relref "/configuration/battery-forecast" >}}) — the central optimizer module

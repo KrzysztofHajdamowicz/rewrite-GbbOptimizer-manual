@@ -6,7 +6,7 @@ translationKey: "automatyzacja"
 
 # Home Assistant Automation
 
-After configuring the [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}}) you can create automations in Home Assistant that:
+After configuring the [Mosquitto Bridge]({{< relref "/integrations/home-assistant/mosquitto-bridge" >}}) you can create automations in Home Assistant that:
 
 - **Send data** from HA sensors to GbbOptimizer
 - **React to commands** received from GbbOptimizer

@@ -73,8 +73,8 @@ The table shows data for the next 24 hours. Abbreviations: **DC** = direct curre
 ## Optimizer
 
 After clicking **Run Optimizer now**, the program can change:
-- SOCLimit in the [Charging]({{< relref "/konfiguracja/ladowanie" >}}) module (and even block charging)
-- MinSOC in the [Discharging]({{< relref "/konfiguracja/rozladowanie" >}}) Plan
+- SOCLimit in the [Charging]({{< relref "/configuration/charging" >}}) module (and even block charging)
+- MinSOC in the [Discharging]({{< relref "/configuration/discharging" >}}) Plan
 - Disable DDBD (Dynamic Battery Discharge Blocking)
 
 ### Optimizer 1: SOC-based
@@ -103,7 +103,7 @@ Tries to maximize the sum in the "Profit amount" column — finds the best combi
 
 > [!NOTE]
 > - Should be run every hour
-> - Requires the import in the [Gains]({{< relref "/konfiguracja/zyski" >}}) module to run every hour
+> - Requires the import in the [Gains]({{< relref "/configuration/gains" >}}) module to run every hour
 > - Charging when energy is never consumed (because the forecast runs for 24h) is "free" — at the end of the period, excess charging often appears. Wait a few hours for a better forecast
 > - Each additional enabled option reduces profits!
 
@@ -148,7 +148,7 @@ Tries to maximize the sum in the "Profit amount" column — finds the best combi
 
 | Parameter | Description |
 |-----------|-------------|
-| Try not to import from grid | The optimizer avoids drawing from the grid (but it may happen). To completely block — check "Locked" in the [Charging]({{< relref "/konfiguracja/ladowanie" >}}) module |
+| Try not to import from grid | The optimizer avoids drawing from the grid (but it may happen). To completely block — check "Locked" in the [Charging]({{< relref "/configuration/charging" >}}) module |
 | Try not to export to grid | The optimizer avoids export (from PV and battery) |
 | Do not sell more than the non-adjusted 24h PV forecast | *(Option for PL)* Blocks selling more from the battery than was produced from PV. Computation cost: O(n) |
 | Try not to export when sale price < 0 | Avoid export at negative prices |
@@ -179,7 +179,7 @@ Tries to maximize the sum in the "Profit amount" column — finds the best combi
 ## Testing Scenarios
 
 To test different scenarios:
-- Create more than one [Consumption Profile]({{< relref "/konfiguracja/profile-zuzycia" >}})
+- Create more than one [Consumption Profile]({{< relref "/configuration/consumption-profiles" >}})
 - Create more than one Discharge Plan
 - Temporarily disable the PV forecast (worst case scenario)
 - In the Charging module, set "New Start", "New Duration", and "New SOCLimit" without sending to the installation

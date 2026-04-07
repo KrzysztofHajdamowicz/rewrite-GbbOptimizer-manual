@@ -25,7 +25,7 @@ DeyeCloud is a backup connection method available for **Solarman**-type installa
 3. Check **Remember login credentials** — without this, manual re-login is required
 4. After connecting, select the **inverter SerialNo**
 
-A detailed description of the parameters can be found in [Installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}).
+A detailed description of the parameters can be found in [Installation parameters]({{< relref "/installation/installation-parameters" >}}).
 
 > [!NOTE]
 > DeyeCloud and Solarman are two independent portals with separate login credentials. Make sure you have an account in both services if you want to use the backup connection.

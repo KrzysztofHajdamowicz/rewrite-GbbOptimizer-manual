@@ -11,7 +11,7 @@ Solarman is a cloud-based method for connecting an inverter to GbbOptimizer. Dat
 ## Step-by-step configuration
 
 1. Add an installation: **Add new installation with inverter connected to Solarman**
-2. Fill in the fields up to the "Solarman" group (details in [Installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}))
+2. Fill in the fields up to the "Solarman" group (details in [Installation parameters]({{< relref "/installation/installation-parameters" >}}))
 3. Log in to the Solarman servers: enter your **email** and **password** (the same as for the Solarman app) and press **Connect**
 4. Select your inverter from the list **Select inverter SerialNo**
 5. Select the **Inverter type**
@@ -42,7 +42,7 @@ GbbShunt is a module designed to control lead-acid batteries. It performs two fu
 
 ### GbbShunt parameters
 
-A detailed description of GbbShunt parameters can be found in [Installation parameters]({{< relref "/instalacja/parametry-instalacji" >}}).
+A detailed description of GbbShunt parameters can be found in [Installation parameters]({{< relref "/installation/installation-parameters" >}}).
 
 ### How does GbbShunt calculate SOC?
 

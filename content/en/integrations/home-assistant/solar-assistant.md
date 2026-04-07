@@ -18,7 +18,7 @@ GbbOptimizer integration with the Deye inverter via {{< glossary "SolarAssistant
 
 - Home Assistant with Mosquitto broker
 - SolarAssistant installed and connected to the Deye inverter
-- Configured [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}}) with a topic for SolarAssistant
+- Configured [Mosquitto Bridge]({{< relref "/integrations/home-assistant/mosquitto-bridge" >}}) with a topic for SolarAssistant
 
 ## SolarAssistant Configuration
 
@@ -34,7 +34,7 @@ In the `/share/mosquitto/GbbOptimizer.conf` file use the following `topic` line:
 topic # both 2 solar_assistant/ <PlantId>/solar_assistant/
 ```
 
-Instead of the standard `ha_gbb/` line described in [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}}).
+Instead of the standard `ha_gbb/` line described in [Mosquitto Bridge]({{< relref "/integrations/home-assistant/mosquitto-bridge" >}}).
 
 ## MQTT Topics
 
@@ -68,7 +68,7 @@ Instead of the standard `ha_gbb/` line described in [Mosquitto Bridge]({{< relre
 
 For Deye installations with Solarman or DeyeCloud, consumption data can be imported from SolarAssistant instead of from the inverter:
 
-1. Configure [Mosquitto Bridge]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}})
+1. Configure [Mosquitto Bridge]({{< relref "/integrations/home-assistant/mosquitto-bridge" >}})
 2. Add the following topic to the bridge configuration:
 
 ```conf
@@ -80,4 +80,4 @@ topic # both 2 solar_assistant/total/load_energy/ <PlantId>/solar_assistant/tota
 ## More Information
 
 - [SolarAssistant MQTT Documentation](https://solar-assistant.io/help/integration/mqtt)
-- [Deye Mode Mappings]({{< relref "/referencje/mapowania-trybow/deye" >}})
+- [Deye Mode Mappings]({{< relref "/references/mode-mappings/deye" >}})

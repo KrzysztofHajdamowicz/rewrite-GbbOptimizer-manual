@@ -11,7 +11,7 @@ GbbOptimizer sends signals to external programs (e.g. Home Assistant) every hour
 MQTT connection parameters (address, port, TLS, ClientID) — see [Request / Response]({{< relref "/mqtt-api/request-response" >}}).
 
 > [!NOTE]
-> - Signals must first be enabled in the [Discharge]({{< relref "/configuration/discharge" >}}) module
+> - Signals must first be enabled in the [Discharge]({{< relref "/configuration/discharging" >}}) module
 > - A given signal is not sent if the "X" parameter is not defined (field empty)
 
 ## Binary Signals
