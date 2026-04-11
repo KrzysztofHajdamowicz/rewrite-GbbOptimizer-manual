@@ -40,5 +40,9 @@ Istnieje wersja **GbbConnect2Console** dla Dockera:
 1. Zacznij od wersji **Windows** — przetestuj połączenie i stwórz plik konfiguracyjny
 2. Przenieś się na wersję **Docker** z tym samym plikiem konfiguracyjnym
 
+## Addon Home Assistant
+
+GbbConnect2 jest również dostępny jako **addon Home Assistant** — nie wymaga osobnego komputera ani kontenera Docker. Szczegóły instalacji i konfiguracji: [GbbConnect2 Addon]({{< relref "/integracje/home-assistant/gbbconnect2-addon" >}}).
+
 > [!NOTE]
 > Program powinien działać **24/7**, aby zbierać dane statystyczne z falownika i wykonywać polecenia z GbbOptimizer.

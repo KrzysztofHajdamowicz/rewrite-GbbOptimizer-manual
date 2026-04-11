@@ -40,5 +40,9 @@ There is a **GbbConnect2Console** version for Docker:
 1. Start with the **Windows** version — test the connection and create a configuration file
 2. Switch to the **Docker** version with the same configuration file
 
+## Home Assistant Addon
+
+GbbConnect2 is also available as a **Home Assistant addon** — no separate computer or Docker container required. For installation and configuration details, see [GbbConnect2 Addon]({{< relref "/integrations/home-assistant/gbbconnect2-addon" >}}).
+
 > [!NOTE]
 > The program should run **24/7** to collect statistical data from the inverter and execute commands from GbbOptimizer.
