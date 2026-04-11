@@ -34,3 +34,25 @@ Jeśli wolisz tworzyć wykresy lokalnie, możesz użyć danych przesyłanych prz
 - **ApexCharts Card** (HACS)
 - **Mini Graph Card** (HACS)
 - Wbudowane karty historii HA
+
+### Gotowy pakiet — GBB Forecast Downloader
+
+Dostępny jest gotowy pakiet Home Assistant, który automatycznie pobiera prognozę SOC baterii z GbbOptimizera przez MQTT i udostępnia ją jako sensor do wizualizacji w **ApexCharts Card**.
+
+![Przykładowy wykres prognozy SOC baterii](https://github.com/user-attachments/assets/7e6d2477-d76e-4630-a835-b0d68d7e3699)
+
+Pakiet tworzy sensor `sensor.gbb_battery_forecast`, który co 5 minut odpytuje API MQTT o prognozę i udostępnia dane w atrybutach (timestampy + wartości SOC). Prognoza wyświetlana jest jako linia przerywana na wykresie ApexCharts.
+
+**Instalacja:**
+
+1. Upewnij się, że masz skonfigurowany [most MQTT]({{< relref "/integracje/home-assistant/mosquitto-bridge" >}})
+2. Skopiuj plik `gbb_battery_forecast.yaml` do katalogu `/config/packages/` w Home Assistant
+3. Upewnij się, że packages są włączone w `configuration.yaml`:
+   ```yaml
+   homeassistant:
+     packages: !include_dir_named packages
+   ```
+4. Zainstaluj **ApexCharts Card** z HACS
+5. Zrestartuj Home Assistant
+
+Pełna dokumentacja i plik YAML: [HomeAssistant-pull-forecast-from-GbbOptimizer](https://github.com/KrzysztofHajdamowicz/HomeAssistant-pull-forecast-from-GbbOptimizer)
