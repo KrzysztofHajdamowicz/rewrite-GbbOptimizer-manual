@@ -1,0 +1,104 @@
+plantid:
+  term: "PlantId"
+  short: "Unieke identifier van een PV-installatie"
+  definition: "Een unieke tekenreeks die wordt toegewezen aan elke installatie die in GbbOptimizer is geregistreerd. Wordt gebruikt als prefix in alle MQTT-topics en voor authenticatie."
+
+planttoken:
+  term: "PlantToken"
+  short: "Authenticatietoken voor MQTT en API"
+  definition: "Een geheim token dat voor elke installatie wordt gegenereerd en wordt gebruikt als MQTT-wachtwoord en voor API-authenticatie."
+
+soc:
+  term: "SOC"
+  short: "State of Charge — laadniveau van de batterij als percentage (0–100%)"
+  definition: "State of Charge geeft het actuele energieniveau van de batterij weer als percentage van 0% (leeg) tot 100% (vol)."
+
+minsoc:
+  term: "MinSOC"
+  short: "Minimale drempel voor de laadtoestand"
+  definition: "Het minimale laadniveau van de batterij dat door de optimizer wordt gehandhaafd. Het systeem voorkomt ontlading onder deze drempel en beschermt zo de levensduur van de batterij."
+
+maxsoc:
+  term: "MaxSOC"
+  short: "Maximaal gewenste laadtoestand"
+  definition: "De maximale SOC waartoe de optimizer de batterij zal opladen. De aanbevolen waarde is 90% om een buffer te bieden voor onnauwkeurigheden in de PV-prognose."
+
+gridsetpoint:
+  term: "GridSetpoint"
+  short: "Gewenste vermogensuitwisseling met het net in watt"
+  definition: "Bepaalt hoeveel vermogen er tijdens normaal bedrijf naar/van het net moet stromen. Positieve waarden betekenen import uit het net, negatieve waarden export naar het net."
+
+dynamicdischarge:
+  term: "Dynamic Discharge"
+  short: "Ontlaadalgoritme dat reageert op de energieprijs"
+  definition: "Een geavanceerde ontlaadmodus die het uitgangsvermogen van de batterij in realtime aanpast op basis van veranderingen in de verkoopprijs van energie, in plaats van vaste tijdvensters te gebruiken."
+
+rte:
+  term: "RTE"
+  short: "Round-trip-efficiëntie van de laad-/ontlaadcyclus"
+  definition: "De verhouding tussen geleverde en opgenomen energie in een volledige laad- en ontlaadcyclus. Meet de totale efficiëntie van het batterijsysteem, inclusief conversieverliezen."
+
+fastsetup:
+  term: "FastSetup"
+  short: "Snelle initiële configuratie-wizard"
+  definition: "Een configuratieproces dat wordt gestart na het aanmaken van een nieuwe installatie. Stelt de basisparameters in en brengt de eerste verbinding met de omvormer tot stand."
+
+testmode:
+  term: "Test Mode"
+  short: "Observatiemodus — berekent maar stuurt geen commando's"
+  definition: "De initiële bedrijfsmodus voor nieuwe installaties. De optimizer voert berekeningen en prognoses uit, maar stuurt geen commando's naar de omvormer. Moet ongeveer een week actief blijven totdat het systeem zichzelf kalibreert."
+
+ess:
+  term: "ESS"
+  short: "Energy Storage System"
+  definition: "Victron's Energy Storage System-module, die het laden en ontladen van de batterij en de interactie met het net beheert."
+
+vrm:
+  term: "VRM"
+  short: "Victron Remote Management-portaal"
+  definition: "Het cloudportaal van Victron (VRM Portal) voor het op afstand bewaken en beheren van Victron-systemen."
+
+modbus:
+  term: "Modbus"
+  short: "Serieel communicatieprotocol voor industriële apparaten"
+  definition: "Een serieel communicatieprotocol dat wordt gebruikt voor communicatie met omvormers. GbbConnect2 gebruikt ModbusInMqtt om Modbus-commando's in MQTT-berichten te verzenden."
+
+modbusinmqtt:
+  term: "ModbusInMqtt"
+  short: "Modbus-commando's verzonden via MQTT"
+  definition: "Een protocol dat door GbbConnect2 wordt gebruikt, waarbij lees-/schrijfcommando's voor Modbus-registers worden ingekapseld in MQTT-berichten. Zo kan de omvormer op afstand via de cloud worden aangestuurd."
+
+selfconsumption:
+  term: "Self-Consumption"
+  short: "Percentage zonne-energie dat lokaal wordt verbruikt"
+  definition: "Het deel van de opgewekte zonne-energie dat rechtstreeks door het huishouden wordt verbruikt in plaats van naar het net te worden geëxporteerd."
+
+selfsufficiency:
+  term: "Self-Sufficiency"
+  short: "Percentage van het verbruik dat door PV wordt gedekt"
+  definition: "Het deel van het totale energieverbruik van het huishouden dat wordt gedekt door de PV-installatie in plaats van te worden geïmporteerd uit het net."
+
+correctionfactor:
+  term: "Correction Factor"
+  short: "Kalibratie van de nauwkeurigheid van de PV-prognose"
+  definition: "Een vermenigvuldiger die in ongeveer een week bedrijf wordt berekend en die de waarden van de PV-prognose corrigeert zodat ze overeenkomen met de werkelijke productie, waardoor de nauwkeurigheid van de voorspelling verbetert."
+
+batteryfulldate:
+  term: "Battery Full Date"
+  short: "Geplande dag waarop volledig wordt opgeladen tot 100% SOC"
+  definition: "Specifieke dagen van de maand waarop de optimizer de batterij tot 100% SOC probeert op te laden. Opgegeven als door komma's gescheiden waarden (bijv. '1, 15'). Maakt periodieke volledige laadcycli mogelijk voor de gezondheid van de batterij."
+
+gbbconnect2:
+  term: "GbbConnect2"
+  short: "Lokale software voor directe verbinding met de omvormer"
+  definition: "Een applicatie die lokaal draait (Windows of Docker) en de omvormer rechtstreeks met GbbOptimizer verbindt via ModbusInMqtt, waarbij cloud-diensten zoals Solarman worden omzeild."
+
+dongledirect:
+  term: "DongleDirect"
+  short: "Verbindingsmethode via herleiding van de dongle"
+  definition: "Een verbindingsmethode waarbij de WiFi-dongle van de omvormer opnieuw wordt geconfigureerd om rechtstreeks met de GbbOptimizer-server te communiceren in plaats van met de cloud van de fabrikant."
+
+solarassistant:
+  term: "SolarAssistant"
+  short: "Monitoringsoftware voor omvormers"
+  definition: "Een monitoringapplicatie die verbinding maakt met omvormers en gegevens publiceert via MQTT. Kan dienen als brug tussen Deye-omvormers en GbbOptimizer via Home Assistant."
