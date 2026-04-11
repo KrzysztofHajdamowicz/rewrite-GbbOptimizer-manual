@@ -18,7 +18,15 @@ defaultContentLanguageInSubdir = false
     weight = 2
     [languages.en.params]
       BookEditPath = "edit/main/content/en"
- 
+
+  [languages.nl]
+    languageName = "Nederlands"
+    contentDir = "content/nl"
+    title = "GbbOptimizer — Handleiding"
+    weight = 3
+    [languages.nl.params]
+      BookEditPath = "edit/main/content/nl"
+
 [module]
   [[module.imports]]
     path = "github.com/alex-shpak/hugo-book"
