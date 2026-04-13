@@ -41,3 +41,28 @@ External programs can subscribe to the following topics:
 | `PurchasePrice` | decimal | Current purchase price (absent if no price) |
 | `FromGrid_kWh` | decimal | Forecast grid import |
 | `ToGrid_kWh` | decimal | Forecast grid export |
+
+## EV Charger Signals
+
+Signals sent by the EV module. External programs (e.g. Home Assistant) can subscribe to these topics to switch EV charging on or off.
+
+> [!NOTE]
+> - A "HomeAssistant EV Car" must be added in the program first
+> - See also [SetCar]({{< relref "/mqtt-api/data-commands" >}}) for setting EV car parameters
+
+{{< mqtt-endpoint name="EVCharger_On" topic="{PlantId}/signals/EVCharger_On" direction="publish" description="Switch on EV charger" >}}
+Payload — JSON:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `Name` | string | Name of the HomeAssistant EV Car |
+| `ChargeSpeedA` | decimal | Charge speed (A) |
+{{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="EVCharger_Off" topic="{PlantId}/signals/EVCharger_Off" direction="publish" description="Switch off EV charger" >}}
+Payload — JSON:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `Name` | string | Name of the HomeAssistant EV Car |
+{{< /mqtt-endpoint >}}
