@@ -41,3 +41,28 @@ Zewnętrzny program może subskrybować następujące tematy:
 | `PurchasePrice` | decimal | Bieżąca cena zakupu (brak jeśli nie ma ceny) |
 | `FromGrid_kWh` | decimal | Prognozowany import z sieci |
 | `ToGrid_kWh` | decimal | Prognozowany eksport do sieci |
+
+## Sygnały ładowarki EV
+
+Sygnały wysyłane przez moduł EV. Zewnętrzne programy (np. Home Assistant) mogą subskrybować te tematy, aby włączać lub wyłączać ładowanie EV.
+
+> [!NOTE]
+> - Samochód „HomeAssistant EV Car" musi być najpierw dodany w programie
+> - Patrz także [SetCar]({{< relref "/mqtt-api/komendy-danych" >}}) — ustawianie parametrów samochodu EV
+
+{{< mqtt-endpoint name="EVCharger_On" topic="{PlantId}/signals/EVCharger_On" direction="publish" description="Włącz ładowarkę EV" >}}
+Payload — JSON:
+
+| Pole | Typ | Opis |
+|------|-----|------|
+| `Name` | string | Nazwa samochodu HomeAssistant EV Car |
+| `ChargeSpeedA` | decimal | Prędkość ładowania (A) |
+{{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="EVCharger_Off" topic="{PlantId}/signals/EVCharger_Off" direction="publish" description="Wyłącz ładowarkę EV" >}}
+Payload — JSON:
+
+| Pole | Typ | Opis |
+|------|-----|------|
+| `Name` | string | Nazwa samochodu HomeAssistant EV Car |
+{{< /mqtt-endpoint >}}

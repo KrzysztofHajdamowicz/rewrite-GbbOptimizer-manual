@@ -41,3 +41,28 @@ Een extern programma kan de volgende topics abonneren:
 | `PurchasePrice` | decimal | Huidige inkoopprijs (ontbreekt als er geen prijs is) |
 | `FromGrid_kWh` | decimal | Voorspelde import uit het net |
 | `ToGrid_kWh` | decimal | Voorspelde export naar het net |
+
+## EV-ladersignalen
+
+Signalen verzonden door de EV-module. Externe programma's (bijv. Home Assistant) kunnen deze topics abonneren om het laden van een EV in of uit te schakelen.
+
+> [!NOTE]
+> - Een „HomeAssistant EV Car" moet eerst in het programma worden toegevoegd
+> - Zie ook [SetCar]({{< relref "/mqtt-api/data-commands" >}}) voor het instellen van EV-autoparameters
+
+{{< mqtt-endpoint name="EVCharger_On" topic="{PlantId}/signals/EVCharger_On" direction="publish" description="EV-lader inschakelen" >}}
+Payload — JSON:
+
+| Veld | Type | Beschrijving |
+|------|------|--------------|
+| `Name` | string | Naam van de HomeAssistant EV Car |
+| `ChargeSpeedA` | decimal | Laadsnelheid (A) |
+{{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="EVCharger_Off" topic="{PlantId}/signals/EVCharger_Off" direction="publish" description="EV-lader uitschakelen" >}}
+Payload — JSON:
+
+| Veld | Type | Beschrijving |
+|------|------|--------------|
+| `Name` | string | Naam van de HomeAssistant EV Car |
+{{< /mqtt-endpoint >}}
