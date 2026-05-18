@@ -161,3 +161,43 @@ Komendy pozwalające zewnętrznym programom zmieniać dane w GbbOptimizer. Każd
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetPVForecast" topic="{PlantId}/ha_gbb/api/setpvforecast" direction="subscribe" description="Ustaw prognozę produkcji PV" >}}
+
+| Pole | | Typ | Wymagane | Opis |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nie | Tekst skopiowany do odpowiedzi |
+| `Data` | | tablica | tak | Tablica prognoz po dniach |
+| | `Date` | date | tak | Data prognozy (dziś, jutro, do 7 dni) |
+| | `Number` | int | nie | Numer płaszczyzny PV (domyślnie 1) |
+| | `Hours` | tablica | tak | Wartości godzinowe (patrz niżej) |
+
+**Pola elementu `Hours`:**
+
+| Pole | Typ | Wymagane | Opis |
+|------|-----|---------|------|
+| `Hour` | decimal (0-23) | tak | Godzina prognozy |
+| `kWh` | decimal | tak | Prognoza produkcji PV |
+
+> [!NOTE]
+> Ta komenda pozwala na przesyłanie prognozy PV z zewnętrznych źródeł, np. z Home Assistant. Ustaw źródło prognozy PV na „HomeAssistant" w parametrach instalacji.
+
+**Przykład:**
+```json
+{
+  "Data": [
+    {
+      "Date": "2024-04-20",
+      "Hours": [
+        {"Hour": 6, "kWh": 0.5},
+        {"Hour": 7, "kWh": 1.23},
+        {"Hour": 8, "kWh": 2.45},
+        {"Hour": 12, "kWh": 5.67},
+        {"Hour": 18, "kWh": 1.10}
+      ]
+    }
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}

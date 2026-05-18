@@ -54,6 +54,17 @@ Domyślne źródło prognozy PV to **forecast.solar**. Rozważ zmianę na **solc
 > [!NOTE]
 > Solcast ma limit zapytań na darmowym koncie — jedno konto „Home” obsługuje maksymalnie dwie płaszczyzny PV. Jeśli masz więcej, potrzebujesz dodatkowych kont.
 
+### Home Assistant jako źródło prognozy PV
+
+Jeśli korzystasz z Home Assistant i masz integrację z serwisem prognozy PV (np. [Forecast.Solar](https://www.home-assistant.io/integrations/forecast_solar/) lub [Solcast](https://github.com/BJReplay/ha-solcast-solar)), możesz przesyłać prognozę bezpośrednio z HA do GbbOptimizer przez MQTT:
+
+1. Ustaw źródło prognozy PV na „HomeAssistant” w parametrach instalacji
+2. Skonfiguruj automatyzację HA, która wysyła prognozę na temat MQTT za pomocą komendy [SetPVForecast]({{< relref "/mqtt-api/komendy-danych" >}})
+3. Automatyzacja powinna uruchamiać się co najmniej raz dziennie (np. rano)
+
+> [!NOTE]
+> Zaletą tego podejścia jest możliwość użycia dowolnego źródła prognozy dostępnego w HA, a także łączenia danych z wielu źródeł.
+
 ## Mniej opcji = większe zyski
 
 Im mniej dodatkowych opcji zaznaczonych w parametrach optymalizatora, tym lepsze wyniki. Każda dodatkowa opcja to dodatkowe ograniczenie, które zmniejsza pole manewru optymalizatora.
@@ -106,6 +117,6 @@ Daj optymalizatorowi dzień lub dwa na przeliczenie nowych danych, zanim pozwoli
 | Poczekaj tydzień przed wyłączeniem trybu testowego | {{< badge "required" >}} |
 | Sprawdź poprawność cen i kosztów transportu | {{< badge "required" >}} |
 | Ustaw MaxSOC = 90% | {{< badge "recommended" >}} |
-| Zmień prognozę PV na Solcast | {{< badge "recommended" >}} |
+| Zmień prognozę PV na Solcast lub Home Assistant | {{< badge "recommended" >}} |
 | Ustaw peryodyczne ładowanie do 100% (np. 1, 15 dnia miesiąca) | {{< badge "recommended" >}} |
 | Minimalizuj liczbę dodatkowych opcji | {{< badge "recommended" >}} |

@@ -54,6 +54,17 @@ The default PV forecast source is **forecast.solar**. Consider switching to **so
 > [!NOTE]
 > Solcast has a request limit on the free account — one "Home" account supports a maximum of two PV planes. If you have more, you need additional accounts.
 
+### Home Assistant as PV forecast source
+
+If you use Home Assistant with a PV forecast integration (e.g. [Forecast.Solar](https://www.home-assistant.io/integrations/forecast_solar/) or [Solcast](https://github.com/BJReplay/ha-solcast-solar)), you can send the forecast directly from HA to GbbOptimizer via MQTT:
+
+1. Set the PV forecast source to "HomeAssistant" in the installation parameters
+2. Configure an HA automation that publishes the forecast using the [SetPVForecast]({{< relref "/mqtt-api/data-commands" >}}) command
+3. The automation should run at least once daily (e.g. in the morning)
+
+> [!NOTE]
+> The advantage of this approach is the ability to use any forecast source available in HA, as well as combining data from multiple sources.
+
 ## Fewer options = greater savings
 
 The fewer additional options checked in the optimizer parameters, the better the results. Each additional option is an additional constraint that reduces the optimizer's room to maneuver.
@@ -106,6 +117,6 @@ Give the optimizer a day or two to recalculate the new data before letting it co
 | Wait one week before disabling test mode | {{< badge "required" >}} |
 | Verify correctness of prices and transport costs | {{< badge "required" >}} |
 | Set MaxSOC = 90% | {{< badge "recommended" >}} |
-| Change PV forecast to Solcast | {{< badge "recommended" >}} |
+| Change PV forecast to Solcast or Home Assistant | {{< badge "recommended" >}} |
 | Set periodic charging to 100% (e.g. 1st, 15th of the month) | {{< badge "recommended" >}} |
 | Minimize the number of additional options | {{< badge "recommended" >}} |
