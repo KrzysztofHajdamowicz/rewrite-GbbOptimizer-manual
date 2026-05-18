@@ -161,3 +161,43 @@ Commands that allow external programs to modify data in GbbOptimizer. Each comma
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetPVForecast" topic="{PlantId}/ha_gbb/api/setpvforecast" direction="subscribe" description="Set PV production forecast" >}}
+
+| Field | | Type | Required | Description |
+|-------|--|------|----------|-------------|
+| `OrderId` | | string | no | Text copied to the response |
+| `Data` | | array | yes | Forecasts by day |
+| | `Date` | date | yes | Forecast date (today, tomorrow, up to 7 days) |
+| | `Number` | int | no | PV field number (default 1) |
+| | `Hours` | array | yes | Hourly values (see below) |
+
+**`Hours` item fields:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `Hour` | decimal (0-23) | yes | Forecast hour |
+| `kWh` | decimal | yes | PV production forecast |
+
+> [!NOTE]
+> This command allows sending a PV forecast from external sources, e.g. from Home Assistant. Set the PV forecast source to "HomeAssistant" in the installation parameters.
+
+**Example:**
+```json
+{
+  "Data": [
+    {
+      "Date": "2024-04-20",
+      "Hours": [
+        {"Hour": 6, "kWh": 0.5},
+        {"Hour": 7, "kWh": 1.23},
+        {"Hour": 8, "kWh": 2.45},
+        {"Hour": 12, "kWh": 5.67},
+        {"Hour": 18, "kWh": 1.10}
+      ]
+    }
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}

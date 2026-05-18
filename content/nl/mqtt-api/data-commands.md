@@ -161,3 +161,43 @@ Commando's waarmee externe programma's gegevens in GbbOptimizer kunnen wijzigen.
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetPVForecast" topic="{PlantId}/ha_gbb/api/setpvforecast" direction="subscribe" description="PV-productieprognose instellen" >}}
+
+| Veld | | Type | Vereist | Beschrijving |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nee | Tekst die naar het antwoord wordt gekopieerd |
+| `Data` | | array | ja | Prognoses per dag |
+| | `Date` | date | ja | Prognosedatum (vandaag, morgen, tot 7 dagen) |
+| | `Number` | int | nee | Nummer van het PV-vlak (standaard 1) |
+| | `Hours` | array | ja | Uurwaarden (zie hieronder) |
+
+**Velden van een `Hours`-element:**
+
+| Veld | Type | Vereist | Beschrijving |
+|------|-----|---------|------|
+| `Hour` | decimal (0-23) | ja | Prognose-uur |
+| `kWh` | decimal | ja | PV-productieprognose |
+
+> [!NOTE]
+> Dit commando maakt het mogelijk om een PV-prognose vanuit externe bronnen te sturen, bijv. vanuit Home Assistant. Stel de bron voor de PV-prognose in op „HomeAssistant" in de installatieparameters.
+
+**Voorbeeld:**
+```json
+{
+  "Data": [
+    {
+      "Date": "2024-04-20",
+      "Hours": [
+        {"Hour": 6, "kWh": 0.5},
+        {"Hour": 7, "kWh": 1.23},
+        {"Hour": 8, "kWh": 2.45},
+        {"Hour": 12, "kWh": 5.67},
+        {"Hour": 18, "kWh": 1.10}
+      ]
+    }
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}

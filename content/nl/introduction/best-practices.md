@@ -54,6 +54,17 @@ De standaardbron voor de PV-prognose is **forecast.solar**. Overweeg om te schak
 > [!NOTE]
 > Solcast heeft een limiet op het aantal verzoeken op een gratis account — één „Home"-account ondersteunt maximaal twee PV-vlakken. Als je er meer hebt, heb je extra accounts nodig.
 
+### Home Assistant als bron voor de PV-prognose
+
+Als je Home Assistant gebruikt met een PV-prognose-integratie (bijv. [Forecast.Solar](https://www.home-assistant.io/integrations/forecast_solar/) of [Solcast](https://github.com/BJReplay/ha-solcast-solar)), kun je de prognose rechtstreeks vanuit HA naar GbbOptimizer sturen via MQTT:
+
+1. Stel de bron voor de PV-prognose in op „HomeAssistant" in de installatieparameters
+2. Configureer een HA-automatisering die de prognose publiceert met het commando [SetPVForecast]({{< relref "/mqtt-api/data-commands" >}})
+3. De automatisering moet minstens één keer per dag draaien (bijv. 's ochtends)
+
+> [!NOTE]
+> Het voordeel van deze aanpak is dat je elke prognosebron kunt gebruiken die in HA beschikbaar is, en dat je gegevens uit meerdere bronnen kunt combineren.
+
 ## Minder opties = grotere winst
 
 Hoe minder aanvullende opties er zijn aangevinkt in de parameters van de optimizer, hoe beter het resultaat. Elke extra optie is een bijkomende beperking die de bewegingsruimte van de optimizer verkleint.
@@ -106,6 +117,6 @@ Geef de optimizer een dag of twee om de nieuwe gegevens te verwerken voordat je 
 | Wacht een week voordat je de testmodus uitschakelt | {{< badge "required" >}} |
 | Controleer de juistheid van prijzen en transportkosten | {{< badge "required" >}} |
 | Stel MaxSOC in op 90% | {{< badge "recommended" >}} |
-| Schakel de PV-prognose om naar Solcast | {{< badge "recommended" >}} |
+| Schakel de PV-prognose om naar Solcast of Home Assistant | {{< badge "recommended" >}} |
 | Stel periodiek volledig laden in (bijv. op de 1e en 15e van de maand) | {{< badge "recommended" >}} |
 | Minimaliseer het aantal extra opties | {{< badge "recommended" >}} |
