@@ -137,6 +137,26 @@ Commands that allow external programs to modify data in GbbOptimizer. Each comma
 
 {{< /mqtt-endpoint >}}
 
+{{< mqtt-endpoint name="SetAutoCharging" topic="{PlantId}/ha_gbb/api/setautocharging" direction="subscribe" description="Set EV AutoCharging parameters" >}}
+
+| Field | | Type | Required | Description |
+|-------|--|------|----------|-------------|
+| `OrderId` | | string | no | Text copied to the response |
+| `Data` | | array | yes | More than one entry can be updated |
+| | `Name` | string | yes | AutoCharging schedule name |
+| | `On` | int | no | 0 — off, 1 — on |
+
+**Example:**
+```json
+{
+  "Data": [
+    {"Name": "Codziennie", "On": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}
+
 {{< mqtt-endpoint name="SetHP" topic="{PlantId}/ha_gbb/api/sethp" direction="subscribe" description="Set heat pump parameters" >}}
 
 | Field | | Type | Required | Description |

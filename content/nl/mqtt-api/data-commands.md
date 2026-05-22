@@ -137,6 +137,26 @@ Commando's waarmee externe programma's gegevens in GbbOptimizer kunnen wijzigen.
 
 {{< /mqtt-endpoint >}}
 
+{{< mqtt-endpoint name="SetAutoCharging" topic="{PlantId}/ha_gbb/api/setautocharging" direction="subscribe" description="EV AutoCharging-parameters instellen" >}}
+
+| Veld | | Type | Vereist | Beschrijving |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nee | Tekst die naar het antwoord wordt gekopieerd |
+| `Data` | | array | ja | Meerdere items kunnen worden bijgewerkt |
+| | `Name` | string | ja | Naam van het laadschema |
+| | `On` | int | nee | 0 — uit, 1 — aan |
+
+**Voorbeeld:**
+```json
+{
+  "Data": [
+    {"Name": "Codziennie", "On": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}
+
 {{< mqtt-endpoint name="SetHP" topic="{PlantId}/ha_gbb/api/sethp" direction="subscribe" description="Parameters van de warmtepomp instellen" >}}
 
 | Veld | | Type | Vereist | Beschrijving |

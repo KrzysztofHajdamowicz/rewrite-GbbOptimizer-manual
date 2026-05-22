@@ -137,6 +137,26 @@ Komendy pozwalające zewnętrznym programom zmieniać dane w GbbOptimizer. Każd
 
 {{< /mqtt-endpoint >}}
 
+{{< mqtt-endpoint name="SetAutoCharging" topic="{PlantId}/ha_gbb/api/setautocharging" direction="subscribe" description="Ustaw parametry automatycznego ładowania EV" >}}
+
+| Pole | | Typ | Wymagane | Opis |
+|------|--|-----|---------|------|
+| `OrderId` | | string | nie | Tekst skopiowany do odpowiedzi |
+| `Data` | | tablica | tak | Można aktualizować wiele wpisów |
+| | `Name` | string | tak | Nazwa harmonogramu ładowania |
+| | `On` | int | nie | 0 — wyłącz, 1 — włącz |
+
+**Przykład:**
+```json
+{
+  "Data": [
+    {"Name": "Codziennie", "On": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}
+
 {{< mqtt-endpoint name="SetHP" topic="{PlantId}/ha_gbb/api/sethp" direction="subscribe" description="Ustaw parametry pompy ciepła" >}}
 
 | Pole | | Typ | Wymagane | Opis |
