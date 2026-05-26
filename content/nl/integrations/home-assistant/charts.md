@@ -6,26 +6,121 @@ translationKey: "wykresy"
 
 # Grafieken in Home Assistant
 
-GbbOptimizer biedt interactieve grafieken (PV-productie, verbruik, SOC, energieprijzen enz.) via de webinterface. Je kunt ze inbedden in een Home Assistant-dashboard.
+GbbOptimizer biedt een interactieve **Batterijprognose**-grafiek die als iframe-kaart in een Home Assistant-dashboard kan worden ingesloten.
 
-## Grafieken inbedden
+## URL van de grafiek
 
-Gebruik de **Webpage**-kaart (of **iFrame**) in een HA-dashboard:
+```
+https://<adres>/Forecast/IndexChart?PlantId=<PlantId>&PlantToken=<PlantToken>&NoMenu=1&ui-culture=nl
+```
 
-1. Ga naar het HA-dashboard -> **Bewerken** -> **Kaart toevoegen**
-2. Kies de kaart **Webpage** (of een handmatige `iframe`-kaart)
-3. Plak het grafieken-URL van GbbOptimizer in het URL-veld
+Waarbij:
+- `<adres>` — het serveradres van GbbOptimizer (zie [Servertabel]({{< relref "/references/mqtt-servers" >}})), zonder `<` of `>`
+- `<PlantId>` — {{< glossary "PlantId" >}} van jouw installatie
+- `<PlantToken>` — {{< glossary "PlantToken" >}} van jouw installatie
+
+> [!WARNING]
+> Als jouw {{< glossary "PlantToken" >}} een **plusteken** (`+`) bevat, vervang dit dan in de URL door `%2b`.
+> Als het een **schuine streep** (`/`) bevat, vervang dit dan door `%2f`.
+
+Om de **Donkere modus** in te schakelen, voeg `&DarkMode=1` toe aan het einde van de URL.
+
+## URL-bouwer
+
+Vul de velden in om automatisch een kant-en-klaar adres voor Home Assistant te genereren:
+
+<div class="gbb-url-builder">
+  <div class="gbb-field">
+    <label for="gbb-server">Serveradres</label>
+    <input type="text" id="gbb-server" placeholder="bijv. gbboptimizer.gbbsoft.pl" />
+    <small>Zonder https:// — zie <a href="{{< relref "/references/mqtt-servers" >}}">Servertabel</a></small>
+  </div>
+  <div class="gbb-field">
+    <label for="gbb-plantid">PlantId</label>
+    <input type="text" id="gbb-plantid" placeholder="bijv. A12345" />
+  </div>
+  <div class="gbb-field">
+    <label for="gbb-planttoken">PlantToken</label>
+    <input type="text" id="gbb-planttoken" placeholder="Token uit installatie-instellingen" />
+  </div>
+  <div class="gbb-field gbb-checkbox">
+    <label><input type="checkbox" id="gbb-darkmode" /> Donkere modus (DarkMode)</label>
+  </div>
+  <button onclick="gbbBuildUrl()" class="gbb-btn">URL genereren</button>
+  <div id="gbb-result" style="display:none">
+    <label>Gegenereerde URL:</label>
+    <div class="gbb-url-box">
+      <code id="gbb-url-text"></code>
+      <button onclick="gbbCopyUrl()" class="gbb-btn gbb-btn-small">Kopiëren</button>
+    </div>
+    <details class="gbb-preview-toggle">
+      <summary>Voorvertoning (iframe)</summary>
+      <iframe id="gbb-iframe" src="" style="width:100%;height:400px;border:1px solid #ccc;margin-top:8px;border-radius:4px;" loading="lazy"></iframe>
+    </details>
+  </div>
+</div>
+
+<script>
+function gbbBuildUrl() {
+  var server = document.getElementById('gbb-server').value.trim().replace(/^https?:\/\//, '').replace(/\/$/, '');
+  var plantId = document.getElementById('gbb-plantid').value.trim();
+  var plantToken = document.getElementById('gbb-planttoken').value.trim();
+  var darkMode = document.getElementById('gbb-darkmode').checked;
+
+  if (!server || !plantId || !plantToken) {
+    alert('Vul alle velden in: Serveradres, PlantId en PlantToken.');
+    return;
+  }
+
+  var encodedToken = plantToken.replace(/\+/g, '%2b').replace(/\//g, '%2f');
+  var url = 'https://' + server + '/Forecast/IndexChart?PlantId=' + plantId + '&PlantToken=' + encodedToken + '&NoMenu=1&ui-culture=nl';
+  if (darkMode) url += '&DarkMode=1';
+
+  document.getElementById('gbb-url-text').textContent = url;
+  document.getElementById('gbb-iframe').src = url;
+  document.getElementById('gbb-result').style.display = 'block';
+}
+
+function gbbCopyUrl() {
+  var text = document.getElementById('gbb-url-text').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = event.target;
+    var orig = btn.textContent;
+    btn.textContent = 'Gekopieerd!';
+    setTimeout(function() { btn.textContent = orig; }, 1500);
+  });
+}
+</script>
+
+<style>
+.gbb-url-builder { background: var(--body-background, #f8f8f8); border: 1px solid var(--hint-color, #ccc); border-radius: 6px; padding: 1.2em 1.4em; margin: 1.2em 0; }
+.gbb-field { margin-bottom: 0.8em; }
+.gbb-field label { display: block; font-weight: 600; margin-bottom: 0.25em; font-size: 0.9em; }
+.gbb-field input[type="text"] { width: 100%; max-width: 480px; padding: 0.4em 0.6em; border: 1px solid #bbb; border-radius: 4px; font-size: 0.95em; box-sizing: border-box; }
+.gbb-field small { display: block; color: #666; font-size: 0.8em; margin-top: 0.2em; }
+.gbb-checkbox label { font-weight: normal; display: flex; align-items: center; gap: 0.4em; cursor: pointer; }
+.gbb-btn { background: #2080c8; color: #fff; border: none; padding: 0.45em 1.1em; border-radius: 4px; cursor: pointer; font-size: 0.95em; margin-top: 0.4em; }
+.gbb-btn:hover { background: #1a6aaa; }
+.gbb-btn-small { padding: 0.25em 0.7em; font-size: 0.85em; margin-top: 0; margin-left: 0.5em; }
+.gbb-url-box { display: flex; align-items: center; background: #fff; border: 1px solid #bbb; border-radius: 4px; padding: 0.5em 0.7em; margin-top: 0.4em; word-break: break-all; }
+.gbb-url-box code { flex: 1; font-size: 0.85em; }
+#gbb-result label { font-weight: 600; font-size: 0.9em; margin-top: 0.8em; display: block; }
+.gbb-preview-toggle { margin-top: 0.8em; }
+.gbb-preview-toggle summary { cursor: pointer; font-size: 0.9em; color: #2080c8; }
+</style>
+
+## Inbedden in Home Assistant
+
+Kopieer de gegenereerde URL en plak deze in een **Webpage**-kaart (of handmatig als `iframe`):
 
 ```yaml
 type: iframe
-url: "https://<server>.gbbsoft.pl/Charts?PlantId=<PlantId>"
+url: "https://<adres>/Forecast/IndexChart?PlantId=<PlantId>&PlantToken=<PlantToken>&NoMenu=1&ui-culture=nl"
 aspect_ratio: "16:9"
 ```
 
-Vervang `<server>` en `<PlantId>` door de juiste waarden voor jouw installatie.
-
 > [!NOTE]
-> De grafieken vereisen internettoegang. Als Home Assistant in een lokaal netwerk draait zonder toegang tot externe diensten, worden de grafieken niet geladen.
+> De grafiek vereist internettoegang. Als Home Assistant in een lokaal netwerk draait zonder toegang tot externe diensten, wordt de grafiek niet geladen.
 
 ## Alternatief — eigen grafieken uit MQTT-data
 
