@@ -1,4 +1,4 @@
-baseURL = "https://krzysztofahajdamowicz.github.io/rewrite-GbbOptimizer-manual/"
+baseURL = "https://krzysztofhajdamowicz.codeberg.page/rewrite-GbbOptimizer-manual/"
 defaultContentLanguage = "pl"
 defaultContentLanguageInSubdir = false
  
@@ -36,7 +36,7 @@ defaultContentLanguageInSubdir = false
   BookToC = true
   BookSection = "/"
   BookSearch = true
-  BookRepo = "https://github.com/KrzysztofHajdamowicz/rewrite-GbbOptimizer-manual"
+  BookRepo = "https://codeberg.org/KrzysztofHajdamowicz/rewrite-GbbOptimizer-manual"
   BookTranslatedOnly = true
  
 [markup]
