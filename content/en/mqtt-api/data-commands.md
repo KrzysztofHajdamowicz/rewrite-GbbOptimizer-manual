@@ -221,3 +221,23 @@ Commands that allow external programs to modify data in GbbOptimizer. Each comma
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetIoT" topic="{PlantId}/ha_gbb/api/setiot" direction="subscribe" description="Enable or disable IoT switches" >}}
+
+| Field | | Type | Required | Description |
+|-------|--|------|----------|-------------|
+| `OrderId` | | string(255) | no | Text copied to the response |
+| `Data` | | array | yes | Multiple devices can be updated |
+| | `Name` | string | yes | IoT switch name |
+| | `IsDisabled` | int | no | 0 — enabled, 1 — disabled |
+
+**Example:**
+```json
+{
+  "Data": [
+    {"Name": "Grzałka", "IsDisabled": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}

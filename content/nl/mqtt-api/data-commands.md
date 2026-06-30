@@ -221,3 +221,23 @@ Commando's waarmee externe programma's gegevens in GbbOptimizer kunnen wijzigen.
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetIoT" topic="{PlantId}/ha_gbb/api/setiot" direction="subscribe" description="IoT-schakelaars in- of uitschakelen" >}}
+
+| Veld | | Type | Vereist | Beschrijving |
+|------|--|-----|---------|------|
+| `OrderId` | | string(255) | nee | Tekst die naar het antwoord wordt gekopieerd |
+| `Data` | | array | ja | Meerdere apparaten kunnen worden bijgewerkt |
+| | `Name` | string | ja | Naam van de IoT-schakelaar |
+| | `IsDisabled` | int | nee | 0 — ingeschakeld, 1 — uitgeschakeld |
+
+**Voorbeeld:**
+```json
+{
+  "Data": [
+    {"Name": "Grzałka", "IsDisabled": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}
