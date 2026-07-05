@@ -221,3 +221,23 @@ Komendy pozwalające zewnętrznym programom zmieniać dane w GbbOptimizer. Każd
 ```
 
 {{< /mqtt-endpoint >}}
+
+{{< mqtt-endpoint name="SetIoT" topic="{PlantId}/ha_gbb/api/setiot" direction="subscribe" description="Włącz lub wyłącz przełączniki IoT" >}}
+
+| Pole | | Typ | Wymagane | Opis |
+|------|--|-----|---------|------|
+| `OrderId` | | string(255) | nie | Tekst skopiowany do odpowiedzi |
+| `Data` | | tablica | tak | Można aktualizować wiele urządzeń |
+| | `Name` | string | tak | Nazwa przełącznika IoT |
+| | `IsDisabled` | int | nie | 0 — włączony, 1 — wyłączony |
+
+**Przykład:**
+```json
+{
+  "Data": [
+    {"Name": "Grzałka", "IsDisabled": 1}
+  ]
+}
+```
+
+{{< /mqtt-endpoint >}}
