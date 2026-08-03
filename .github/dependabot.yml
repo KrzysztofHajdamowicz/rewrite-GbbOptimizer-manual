@@ -6,3 +6,17 @@ updates:
       interval: "weekly"
     assignees:
       - "KrzysztofHajdamowicz"
+
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "KrzysztofHajdamowicz"
+
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "KrzysztofHajdamowicz"
