@@ -4,7 +4,7 @@ defaultContentLanguageInSubdir = false
  
 [languages]
   [languages.pl]
-    languageName = "Polski"
+    label = "Polski"
     contentDir = "content/pl"
     title = "GbbOptimizer — Podręcznik"
     weight = 1
@@ -12,7 +12,7 @@ defaultContentLanguageInSubdir = false
       BookEditPath = "edit/main/content/pl"
  
   [languages.en]
-    languageName = "English"
+    label = "English"
     contentDir = "content/en"
     title = "GbbOptimizer — Manual"
     weight = 2
@@ -20,7 +20,7 @@ defaultContentLanguageInSubdir = false
       BookEditPath = "edit/main/content/en"
 
   [languages.nl]
-    languageName = "Nederlands"
+    label = "Nederlands"
     contentDir = "content/nl"
     title = "GbbOptimizer — Handleiding"
     weight = 3
