@@ -39,17 +39,11 @@ Use native markdown alerts, NOT `{{< hint >}}`:
  
 The `{{< >}}` angle-bracket shortcode syntax does NOT process inner markdown — this is why we use native alerts.
  
-### Deprecation overrides
- 
-Three layout files override hugo-book templates to fix Hugo v0.156+ deprecations:
- 
-| File | What it fixes |
-|------|--------------|
-| `layouts/baseof.html` | `.Site.LanguageCode` → `.Site.Language.Lang`, `.Language.LanguageDirection` → `.Language.Direction` |
-| `layouts/_partials/docs/html-head.html` | `.Site.LanguageCode` → `.Language.Lang` in `hreflang` |
-| `layouts/_partials/docs/brand.html` | `.Sites.Default` → `(index hugo.Sites 0)` |
- 
-When updating the hugo-book theme, check if these fixes were merged upstream and remove the local overrides if so.
+### Theme updates
+
+The theme is vendored in `_vendor/` (Hugo prefers it over the module cache). After bumping the theme version in `go.mod`, always run `hugo mod vendor` — otherwise the old vendored snapshot keeps being used.
+
+Historical note: three local layout overrides (baseof.html, html-head.html, brand.html) fixed Hugo v0.156+ deprecations; they were removed after upstream merged the fixes in hugo-book v0.14.0.
  
 ### Cross-linking
  
