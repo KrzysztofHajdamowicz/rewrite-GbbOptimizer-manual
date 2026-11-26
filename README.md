@@ -2,13 +2,14 @@
 
 Documentation site for [GbbOptimizer](https://gbboptimizer.gbbsoft.pl) — a solar energy battery optimization platform for hybrid inverters (Victron, Deye, Goodwe, Afore, Hinen, Sofar).
 
-**Live documentation:** https://krzysztofahajdamowicz.github.io/rewrite-GbbOptimizer-manual/
+**Live documentation:** https://krzysztofhajdamowicz.github.io/rewrite-GbbOptimizer-manual/
 
 ## About
 
 This is a rewrite of the original GbbOptimizer manual into a structured, searchable Hugo static site. Key improvements over the original:
 
-- Logical information architecture (6 top-level sections, ~55 pages)
+- Logical information architecture (7 top-level sections, 59 pages per language)
+- Polish (default), English and Dutch, every page in all three
 - Swagger-like expandable MQTT API reference with colored PUB/SUB/REQ/RES badges
 - Cross-linked glossary system with tooltip previews
 - Full-text search
@@ -33,21 +34,19 @@ Open http://localhost:1313/rewrite-GbbOptimizer-manual/
 
 ```
 .
-├── hugo.toml                    # Hugo configuration
+├── hugo.toml                    # Hugo configuration (languages: pl at /, en at /en/, nl at /nl/)
 ├── go.mod / go.sum              # Hugo Module dependencies (hugo-book theme)
-├── content/                     # All documentation pages (Markdown)
-│   ├── getting-started/         # Welcome, Quick Start, How It Works
-│   ├── configuration/           # Optimizer modules (Battery Forecast, Prices, etc.)
-│   ├── integrations/            # Inverters, connection methods, Home Assistant, other
-│   ├── mqtt-api/                # MQTT API reference (Swagger-like)
-│   ├── reference/               # Glossary, errors, comparisons, mode mappings
-│   └── advanced/                # IoT procedures, GBB Shunt
-├── layouts/
-│   ├── shortcodes/              # Custom shortcodes (mqtt-endpoint, glossary, badge)
-│   ├── baseof.html              # Theme override (deprecation fixes)
-│   └── _partials/docs/          # Theme partial overrides
+├── _vendor/                     # Vendored theme; refresh with `hugo mod vendor` after a bump
+├── content/
+│   ├── pl/                      # Polish: wprowadzenie, instalacja, konfiguracja, integracje,
+│   │                            #         mqtt-api, referencje, zaawansowane
+│   ├── en/                      # English: introduction, installation, configuration, integrations,
+│   │                            #          mqtt-api, references, advanced
+│   └── nl/                      # Dutch: same directory names as en/
+├── layouts/shortcodes/          # Custom shortcodes (mqtt-endpoint, mqtt-topic, glossary, badge)
 ├── assets/_custom.scss          # Custom styles (MQTT cards, badges, glossary)
-├── data/glossary.yaml           # Glossary terms data
+├── data/glossary/{pl,en,nl}.yaml # Glossary terms, same keys in every language
+├── originals/                   # Snapshot of the original manual (2026-04-06) and its converter
 ├── scripts/hugo-server.sh       # Dev server wrapper script
 └── .github/workflows/deploy.yml # CI/CD pipeline
 ```
