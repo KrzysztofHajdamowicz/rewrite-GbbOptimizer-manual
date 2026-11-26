@@ -4,7 +4,7 @@
  
 A Hugo static site rewriting the GbbOptimizer user manual (solar energy battery optimizer). The original docs at `gbboptimizer.gbbsoft.pl/Manual` were a chaotic ~40-page SPA. This repo reorganizes them into a structured, cross-linked documentation site with Swagger-like MQTT API reference.
  
-**Live site:** https://krzysztofahajdamowicz.github.io/rewrite-GbbOptimizer-manual/
+**Live site:** https://krzysztofhajdamowicz.github.io/rewrite-GbbOptimizer-manual/
  
 ## Tech stack
  
@@ -21,7 +21,7 @@ A Hugo static site rewriting the GbbOptimizer user manual (solar energy battery 
 - Theme: `github.com/alex-shpak/hugo-book` — Wiki-style sidebar, collapsible sections, built-in search
 - Custom SCSS **must** be at `assets/_custom.scss` (not `assets/scss/custom.scss`) — this is where hugo-book imports it
 - `markup.goldmark.renderer.unsafe = true` in `hugo.toml` — required for shortcode HTML output
-- **Multilingual**: configured via `[languages]` block in `hugo.toml`. Polish is the default language (`defaultContentLanguage = "pl"`, no URL prefix). English lives under `/en/` prefix.
+- **Multilingual**: configured via `[languages]` block in `hugo.toml`. Polish is the default language (`defaultContentLanguage = "pl"`, no URL prefix). English lives under the `/en/` prefix and Dutch under `/nl/`.
 - `BookTranslatedOnly = true` — language switcher only shows links for pages that have a translation
 - Do NOT add `"JSON"` to `[outputs] home` — hugo-book search uses `assets/search-data.json` via JS, not Hugo's JSON output format
  
@@ -128,28 +128,30 @@ content/
 │   ├── mqtt-api/              # MQTT API reference (6 pages)
 │   ├── referencje/            # References (glossary, errors, mode mappings)
 │   └── zaawansowane/          # Advanced (IoT procedures, GBB Shunt)
-└── en/                        # English (URL prefix: /en/)
-    ├── introduction/
-    ├── installation/
-    ├── configuration/
-    ├── integrations/
-    ├── mqtt-api/
-    ├── references/
-    └── advanced/
+├── en/                        # English (URL prefix: /en/)
+│   ├── introduction/
+│   ├── installation/
+│   ├── configuration/
+│   ├── integrations/
+│   ├── mqtt-api/
+│   ├── references/
+│   └── advanced/
+└── nl/                        # Dutch (URL prefix: /nl/), same directory names as en/
 ```
  
 ### Multilingual conventions
  
-- Each content file **must** have a `translationKey` in front matter to link PL↔EN pages
+- Each content file **must** have a `translationKey` in front matter to link the PL, EN and NL versions of a page
 - Convention: use the Polish filename (without `.md`) as the key, or directory name for `_index.md`
 - Example: `translationKey: "szybki-start"` in both `content/pl/wprowadzenie/szybki-start.md` and `content/en/introduction/quick-start.md`
-- Glossary data lives in `data/glossary/pl.yaml` and `data/glossary/en.yaml` (same keys, translated values)
+- Every page exists in all three languages. Add or change a page in PL, EN and NL in the same change; a missing translation hides the page from that language's switcher (`BookTranslatedOnly`)
+- Glossary data lives in `data/glossary/pl.yaml`, `en.yaml` and `nl.yaml` (same keys, translated values). The glossary page itself has `translationKey: "slowniczek"`; the `glossary` shortcode links to it by that key
  
 ## Adding new content
  
-1. Create `.md` file in the appropriate language's content directory (`content/pl/` or `content/en/`)
+1. Create the `.md` file in each language's content directory (`content/pl/`, `content/en/`, `content/nl/`)
 2. Add front matter: `title`, `weight`, and `translationKey`
-3. If adding a translation, use the **same `translationKey`** as the existing page in the other language
+3. Use the **same `translationKey`** in all three languages (the Polish filename)
 4. Use `{{< glossary "Term" >}}` for key terms (must exist in `data/glossary/<lang>.yaml`)
 5. Use `{{< relref "/path" >}}` for cross-links
 6. Use native `> [!NOTE]` / `> [!WARNING]` for callouts
@@ -157,9 +159,9 @@ content/
  
 ## Adding glossary terms
  
-Edit both `data/glossary/pl.yaml` and `data/glossary/en.yaml`:
+Edit `data/glossary/pl.yaml`, `data/glossary/en.yaml` and `data/glossary/nl.yaml`:
 ```yaml
-termkey:            # lowercase, no special chars — must be the same in both files
+termkey:            # lowercase, no special chars — must be the same in all three files
   term: "TermName"  # display name (usually not translated for technical terms)
   short: "One-line definition for tooltips"
   definition: "Extended definition for glossary page"
@@ -173,3 +175,12 @@ Push to `main` triggers `.github/workflows/deploy.yml`:
 3. Deploys to GitHub Pages
  
 Requires GitHub Pages source set to "GitHub Actions" in repo settings.
+
+## Changes from the official manual
+
+`originals/` is a frozen snapshot of the official manual from 2026-04-06 (commit `91d1ec1`, "before-rewrite") plus the converter that produced `originals/markdown/`. Don't edit it. Later changes to GbbOptimizer are documented one feature per PR, in PL, EN and NL together; the `upstream-change` skill (`.claude/skills/upstream-change/`) has the steps.
+
+## Repository and hosting
+
+- GitHub (`origin`) is the main repository; pushes to `main` deploy the site. A `codeberg` remote holds a mirror.
+- The site is unofficial: GbbOptimizer and its official manual belong to Gbbsoft. Facts about GbbOptimizer's behaviour come from the official manual, Gbbsoft or Krzysztof, never from guesses.

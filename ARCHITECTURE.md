@@ -4,27 +4,25 @@ Technical deep-dive into the GbbOptimizer Manual documentation site.
 
 ## Hugo theme: hugo-book
 
-We use [hugo-book](https://github.com/alex-shpak/hugo-book) installed as a **Hugo Module** (not git submodule). This means:
+We use [hugo-book](https://github.com/alex-shpak/hugo-book) installed as a **Hugo Module** (not git submodule), pinned to v0.14.0:
 
-- Theme source lives in Go module cache (`~/Library/Caches/hugo_cache/modules/...`)
 - `go.mod` and `go.sum` track the pinned version
-- Update with: `hugo mod get -u github.com/alex-shpak/hugo-book`
+- The theme is **vendored** in `_vendor/`; Hugo prefers it over the module cache, so CI builds exactly the committed copy
+- Update with `hugo mod get -u github.com/alex-shpak/hugo-book`, then `hugo mod vendor` (without it the old vendored snapshot keeps being used)
 
-### Local layout overrides
+There are no local overrides of theme templates. Three overrides (`baseof.html`, `brand.html`, `html-head.html`) fixed Hugo v0.156+ deprecations until hugo-book v0.14.0 merged the fixes upstream (removed in `52b79a2`, 2026-08-03).
 
-Three files in `layouts/` override theme templates to fix Hugo v0.156+ deprecations:
+## Languages
 
-```
-layouts/
-├── baseof.html                  # fixes .Site.LanguageCode, .Language.LanguageDirection
-└── _partials/docs/
-    ├── brand.html               # fixes .Sites.Default → (index hugo.Sites 0)
-    └── html-head.html           # fixes .Site.LanguageCode in hreflang
-```
+Configured in the `[languages]` block of `hugo.toml`, one `contentDir` per language:
 
-**Important:** After updating hugo-book, check if these deprecations were fixed upstream. If so, delete the local overrides to stay in sync with the theme.
+| Language | Content | URL prefix |
+|----------|---------|------------|
+| Polish (default) | `content/pl/` | none |
+| English | `content/en/` | `/en/` |
+| Dutch | `content/nl/` | `/nl/` |
 
-To check: `grep -rn '\.Site\.LanguageCode\|\.Language\.LanguageDirection\|\.Sites\.Default' <hugo-book-cache-path>`
+Pages are linked across languages by `translationKey` (the Polish filename), not by path: the PL directories have Polish names, EN and NL share English names. `BookTranslatedOnly = true` hides a language from a page's switcher when that page has no translation, so every page exists in all three languages (59 each).
 
 ## Custom shortcodes
 
@@ -61,16 +59,16 @@ A non-expandable card for listing MQTT topics. Left border color indicates direc
 
 ### `glossary.html` — Inline term cross-link
 
-Looks up term in `data/glossary.yaml` using a normalized key (lowercase, stripped of non-alphanumeric chars).
+Looks up the term in `data/glossary/<lang>.yaml` for the page's language, using a normalized key (lowercase, stripped of non-alphanumeric chars).
 
-- Found: renders `<a>` with tooltip (from `short` field) linking to `/reference/glossary#key`
+- Found: renders `<a>` with tooltip (from `short` field) linking to `#key` on the glossary page of the same language, found by `translationKey: "slowniczek"`
 - Not found: renders red dashed-underline `<span>` with warning title
 
 Uses `hugo.Data.glossary` (not the deprecated `.Site.Data`).
 
 ### `glossary-list.html` — Full glossary page
 
-Iterates `hugo.Data.glossary`, renders alphabetically sorted definition list. Used only on `reference/glossary.md`.
+Iterates the current language's `hugo.Data.glossary.<lang>` and renders a definition list sorted by key. Used only on the glossary pages (`referencje/slowniczek.md`, `references/glossary.md`).
 
 ### `badge.html` — Colored inline label
 
@@ -111,9 +109,9 @@ Retained        → #8e44ad (purple)
 
 ## Data files
 
-### `data/glossary.yaml`
+### `data/glossary/{pl,en,nl}.yaml`
 
-~21 terms. Each entry structure:
+21 terms, the same keys in all three files (values translated). Each entry structure:
 
 ```yaml
 keyname:               # lowercase, no special chars (used as HTML anchor)
@@ -134,14 +132,15 @@ keyname:               # lowercase, no special chars (used as HTML anchor)
 
 ### Section weights (sidebar order)
 
-| Section | Weight | Purpose |
+| Section (PL / EN, NL) | Weight | Purpose |
 |---------|--------|---------|
-| Getting Started | 10 | First-time user flow |
-| Configuration | 20 | Module-by-module settings |
-| Integrations | 30 | Hardware & platform setup |
-| MQTT API | 40 | Protocol reference |
-| Reference | 50 | Lookup tables, glossary, errors |
-| Advanced | 60 | IoT, lead-acid battery management |
+| `wprowadzenie` / `introduction` | 10 | First-time user flow, best practices |
+| `instalacja` / `installation` | 20 | Inverters and connection methods |
+| `konfiguracja` / `configuration` | 30 | Module-by-module settings |
+| `integracje` / `integrations` | 40 | Home Assistant, Evcc, Tuya, Supla |
+| `mqtt-api` | 50 | Protocol reference |
+| `referencje` / `references` | 60 | Lookup tables, glossary, errors, mode mappings |
+| `zaawansowane` / `advanced` | 70 | IoT procedures, GBB Shunt |
 
 ### Within sections
 
@@ -172,13 +171,15 @@ Push to main → Install Hugo Extended 0.160.0 + Go 1.22
 
 3. **Custom SCSS location:** hugo-book specifically imports `assets/_custom.scss`. Not `assets/custom.scss`, not `assets/scss/custom.scss`. If styles aren't applying, check the filename first.
 
-4. **Hugo Modules require Go:** The CI pipeline needs both Hugo and Go installed. Locally, both must be in PATH.
+4. **Hugo Modules require Go:** The CI pipeline needs both Hugo and Go installed. Locally, both must be in PATH. With the theme vendored, a version bump in `go.mod` does nothing until `hugo mod vendor` runs.
 
 5. **`[outputs] home` and search:** hugo-book implements search through JavaScript that processes `assets/search-data.json` at build time. It does NOT use Hugo's JSON output format. Adding `"JSON"` to `[outputs] home` causes a `no layout file for "json"` warning because the theme has no `layouts/index.json` template.
 
-6. **Deprecation velocity:** Hugo deprecates template APIs aggressively (v0.156: `.Site.Sites`/`.Site.Data`, v0.158: `.Site.LanguageCode`/`.Language.LanguageDirection`). Theme maintainers may lag behind. Local layout overrides are the fix.
+6. **Deprecation velocity:** Hugo deprecates template APIs aggressively (v0.156: `.Site.Sites`/`.Site.Data`, v0.158: `.Site.LanguageCode`/`.Language.LanguageDirection`). Theme maintainers may lag behind; local layout overrides bridged the gap until hugo-book v0.14.0 and were then removed.
 
 ### Content migration insights
+
+`originals/` keeps the source of the rewrite: each original page saved as HTML (`NN-name/Manual - GbbOptimizer.html`), converted to `originals/markdown/` by `convert_html.py` (run with `uv run python3 originals/convert_html.py`), plus `PL.txt`, a raw HTML export of the Polish texts. It is a snapshot from 2026-04-06 and is not updated; later changes to GbbOptimizer go straight into `content/` (see the `upstream-change` skill).
 
 - The original manual was a SPA accessed via `?Filters.PageNo=N` (N=1..40+)
 - Content was in Polish and English, mixed inconsistently
